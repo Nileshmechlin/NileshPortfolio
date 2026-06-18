@@ -1,0 +1,239 @@
+.section {
+  position: relative;
+  z-index: 2;
+  padding: 2.5rem 2rem;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+.container {
+  width: 100%;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: var(--orange-dim);
+  border: 1px solid var(--orange-glow);
+  color: var(--orange);
+  margin-bottom: 1.25rem;
+  font-family: var(--font-mono);
+}
+
+.title {
+  font-size: 2.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  background: var(--name-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  color: var(--foreground-dim);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Timeline Layout */
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 200px;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--border-glow) 10%, var(--border-glow) 90%, transparent);
+}
+
+@media (max-width: 768px) {
+  .line {
+    left: 20px;
+  }
+}
+
+.item {
+  display: flex;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .item {
+    flex-direction: column;
+    padding-left: 50px;
+  }
+}
+
+/* Timeline Marker */
+.marker {
+  position: absolute;
+  left: 201px;
+  top: 24px;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  background: var(--bg-primary);
+  border: 2px solid var(--orange);
+  border-radius: 50%;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .marker {
+    left: 21px;
+    top: 18px;
+  }
+}
+
+.markerInner {
+  width: 4px;
+  height: 4px;
+  background: var(--text-bright);
+  border-radius: 50%;
+}
+
+/* Date / Location Column */
+.timeWrapper {
+  width: 180px;
+  padding-right: 30px;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  margin-top: 14px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .timeWrapper {
+    width: 100%;
+    text-align: left;
+    padding-right: 0;
+    margin-bottom: 1rem;
+    margin-top: 0;
+  }
+}
+
+.time {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-bright);
+}
+
+.location {
+  font-size: 0.8rem;
+  color: var(--foreground-dim);
+  margin-top: 4px;
+}
+
+/* Card */
+.cardWrapper {
+  flex-grow: 1;
+}
+
+.card {
+  width: 100%;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  backdrop-filter: blur(16px);
+  box-shadow: var(--glass-shadow);
+  transition: border-color 0.4s ease, background-color 0.4s ease;
+}
+
+.card:hover {
+  border-color: var(--card-border-hover);
+  background: var(--card-bg-hover);
+}
+
+.cardContent {
+  padding: 2.25rem;
+}
+
+@media (max-width: 768px) {
+  .cardContent {
+    padding: 1.5rem;
+  }
+}
+
+.roleTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  letter-spacing: -0.01em;
+}
+
+.companyName {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--orange);
+  margin-top: 4px;
+}
+
+.bullets {
+  list-style: none;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.bulletItem {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--foreground-dim);
+  margin-bottom: 0.75rem;
+  position: relative;
+  padding-left: 18px;
+}
+
+.bulletItem::before {
+  content: "↳";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--orange);
+  font-family: var(--font-mono);
+}
+
+/* Skill Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  padding: 4px 10px;
+  background: var(--orange-dim);
+  border: 1px solid var(--border-glow);
+  color: var(--orange);
+  border-radius: 4px;
+}
