@@ -9,7 +9,7 @@ interface WorkflowModalProps {
   projectTitle: string;
 }
 
-type ViewMode = "story" | "pipeline" | "architecture" | "blueprint" | "terminal" | "specs";
+type ViewMode = "story" | "pipeline" | "architecture" | "workflow" | "terminal" | "specs";
 
 export default function WorkflowModal({ isOpen, onClose, projectTitle }: WorkflowModalProps) {
   const [activeStage, setActiveStage] = useState<number | null>(null);
@@ -23,7 +23,9 @@ export default function WorkflowModal({ isOpen, onClose, projectTitle }: Workflo
   const [terminalLogs, setTerminalLogs] = useState<string[]>([]);
   const terminalContainerRef = React.useRef<HTMLDivElement>(null);
 
-  const views: ViewMode[] = ["story", "pipeline", "architecture", "blueprint", "terminal", "specs"];
+  const views: ViewMode[] = projectTitle.includes("Thermo")
+    ? ["story", "pipeline", "architecture", "workflow", "terminal", "specs"]
+    : ["story", "pipeline", "architecture", "terminal", "specs"];
   const currentIdx = views.indexOf(viewMode);
 
   const handleNext = () => {
@@ -53,32 +55,67 @@ export default function WorkflowModal({ isOpen, onClose, projectTitle }: Workflo
         { text: "Execution Time: 4m 11s", delay: 300 }
       ];
     }
-    if (projectTitle.includes("RAG")) {
+    if (projectTitle.includes("Autonomous")) {
       return [
-        { text: "$ qdrant-query --search=\"real estate tax benefit\"", delay: 400 },
-        { text: "Connecting...", delay: 500 },
-        { text: "✓ Qdrant vector store online", delay: 300 },
-        { text: "Embedding query...", delay: 600 },
-        { text: "✓ Jina AI vector ready", delay: 300 },
-        { text: "Searching index...", delay: 600 },
-        { text: "✓ Retrieved 4 context chunks (52ms)", delay: 400 },
-        { text: "Synthesizing...", delay: 600 },
-        { text: "✓ Response ready", delay: 400 },
-        { text: "Query processed. (0.8s)", delay: 300 }
+        { text: "$ voice-platform --initiate-call=\"+1234567890\" --orchestrator=\"custom-fastapi\"", delay: 500 },
+        { text: "Dialing number via Twilio telephony trunk...", delay: 600 },
+        { text: "✓ Twilio connection established. Spawning real-time voice stream...", delay: 350 },
+        { text: "Initializing custom audio state engine in FastAPI backend...", delay: 550 },
+        { text: "✓ Speech-to-Text (STT) worker online", delay: 300 },
+        { text: "User input: 'Can I book a technician for tomorrow at 2 PM?'", delay: 800 },
+        { text: "Querying Groq LLM for low-latency custom conversational response...", delay: 400 },
+        { text: "✓ Groq reasoning complete: 'Let me check availability...' (115ms latency)", delay: 300 },
+        { text: "FastAPI scheduling hook verifying DB calendar availability...", delay: 500 },
+        { text: "✓ Slot confirmed. Logging interaction to Supabase DB...", delay: 300 },
+        { text: "Pushing event update to Next.js dashboard UI via websockets...", delay: 450 },
+        { text: "✓ Client UI synced. Triggering automated follow-up SMS...", delay: 600 },
+        { text: "✓ Call completed successfully.", delay: 300 }
       ];
     }
-    if (projectTitle.includes("Calling") || projectTitle.includes("Voice")) {
+    if (projectTitle.includes("Bear")) {
       return [
-        { text: "$ call --lead=\"+1234567\" --agent=\"Qualify\"", delay: 500 },
-        { text: "Connecting Twilio...", delay: 600 },
-        { text: "✓ Voice trunk active", delay: 300 },
-        { text: "Vocode pipeline...", delay: 600 },
-        { text: "✓ Speech-to-Text active (180ms latency)", delay: 400 },
-        { text: "Intent parsing...", delay: 600 },
-        { text: "✓ CloseBot intent: motivated seller", delay: 300 },
-        { text: "Booking slot...", delay: 700 },
-        { text: "✓ CRM slot secured (Friday 3pm)", delay: 300 },
-        { text: "Simulation finished.", delay: 300 }
+        { text: "$ n8n-trigger --webhook=\"query\" --data=\"key takeaways from script\"", delay: 400 },
+        { text: "Generating query embedding via Jina AI...", delay: 450 },
+        { text: "✓ Embeddings vector generated (38ms)", delay: 300 },
+        { text: "Searching Qdrant index (10,000+ files)...", delay: 550 },
+        { text: "✓ Retrieved 15 raw chunks (42ms)", delay: 300 },
+        { text: "Applying temporal-aware filtering logic...", delay: 500 },
+        { text: "✓ Identified 6 timeline-relevant chunks (18ms)", delay: 300 },
+        { text: "Structuring Groq LLM context window...", delay: 400 },
+        { text: "Requesting answer from Groq API...", delay: 650 },
+        { text: "✓ Groq response ready: 'Here are the key takeaways...'", delay: 350 },
+        { text: "Returning HTTP response to Next.js client.", delay: 300 }
+      ];
+    }
+    if (projectTitle.includes("Thermo")) {
+      return [
+        { text: "$ n8n-trigger --schedule=\"15m\"", delay: 400 },
+        { text: "Reading new leads from Google Sheets...", delay: 450 },
+        { text: "✓ 3 new leads detected", delay: 300 },
+        { text: "Checking DNC list...", delay: 500 },
+        { text: "✓ Lead \"John Smith\" eligible for call", delay: 300 },
+        { text: "Initiating Retell AI outbound voice call...", delay: 600 },
+        { text: "✓ Call completed (Duration: 2m 14s)", delay: 350 },
+        { text: "Webhook received. Fetching transcript...", delay: 450 },
+        { text: "Analyzing dialogue with OpenAI GPT...", delay: 500 },
+        { text: "✓ Structured JSON output generated", delay: 300 },
+        { text: "Updating database: AC Repair qualified (Score: 85)", delay: 400 },
+        { text: "Sending follow-up SMS...", delay: 350 },
+        { text: "✓ Done", delay: 300 }
+      ];
+    }
+    if (projectTitle.includes("Tapsy")) {
+      return [
+        { text: "$ tapsy-transcode --file=\"review_SarahK_coffee.mov\"", delay: 400 },
+        { text: "Compressing video to H.264 standard format...", delay: 450 },
+        { text: "✓ Transcoded to 4.2MB web-optimized stream (310ms)", delay: 350 },
+        { text: "Saving file to cloud storage...", delay: 600 },
+        { text: "✓ Storage upload confirmed", delay: 300 },
+        { text: "Triggering social feed dispatch API...", delay: 500 },
+        { text: "✓ Notifying 4,200 followers via Firebase FCM", delay: 400 },
+        { text: "Syncing business popular time graphs in Redis...", delay: 550 },
+        { text: "✓ Cache updated successfully (8ms)", delay: 300 },
+        { text: "Transaction completed successfully.", delay: 300 }
       ];
     }
     return [
@@ -91,6 +128,30 @@ export default function WorkflowModal({ isOpen, onClose, projectTitle }: Workflo
       { text: "✓ Synced Stripe with HubSpot CRM", delay: 300 },
       { text: "Mesh healthy. (Uptime: 99.9%)", delay: 300 }
     ];
+  };
+
+  const getArchitectureImage = () => {
+    if (projectTitle.includes("Tapsy")) {
+      return "/architecture.png";
+    }
+    if (projectTitle.includes("Bear")) {
+      return "/bear-architecture.jpg";
+    }
+    if (projectTitle.includes("Thermo")) {
+      return "/thermoconnect-architecture.jpg";
+    }
+    if (projectTitle.includes("Autonomous")) {
+      return "/autonomous-voice-architecture.png";
+    }
+    return "/n8n-workflow.png";
+  };
+
+  const getStageCount = () => {
+    if (projectTitle.includes("Bear")) return 8;
+    if (projectTitle.includes("SEO")) return 6;
+    if (projectTitle.includes("Thermo")) return 10;
+    if (projectTitle.includes("Autonomous")) return 8;
+    return 5;
   };
 
   // Listen for Escape key
@@ -155,7 +216,7 @@ export default function WorkflowModal({ isOpen, onClose, projectTitle }: Workflo
       const interval = setInterval(() => {
         setActiveStage((prev) => {
           if (prev === null) return 1;
-          const maxStages = projectTitle.includes("SEO") ? 6 : 5;
+          const maxStages = getStageCount();
           if (prev >= maxStages) return 1;
           return prev + 1;
         });
@@ -225,48 +286,34 @@ export default function WorkflowModal({ isOpen, onClose, projectTitle }: Workflo
         <div className={styles.header}>
           <div className={styles.headerTitleArea}>
             <span className={styles.headerBadge}>
-              {projectTitle.includes("Calling") ? "🏠 GoHighLevel Snapshot" : "⚡ n8n Pipeline"}
+              {projectTitle.includes("Calling") ? "🏠 GoHighLevel Snapshot" : projectTitle.includes("Tapsy") ? "📦 System Architecture" : "⚡ n8n Pipeline"}
             </span>
             <h3 className={styles.title}>{projectTitle}</h3>
           </div>
           <div className={styles.headerActions}>
             <div className={styles.modeToggleGroup}>
-              <button
-                className={`${styles.modeToggleBtn} ${viewMode === "story" ? styles.modeToggleActive : ""}`}
-                onClick={() => setViewMode("story")}
-              >
-                ● 1. Problem
-              </button>
-              <button
-                className={`${styles.modeToggleBtn} ${viewMode === "pipeline" ? styles.modeToggleActive : ""}`}
-                onClick={() => setViewMode("pipeline")}
-              >
-                ● 2. Pipeline
-              </button>
-              <button
-                className={`${styles.modeToggleBtn} ${viewMode === "architecture" ? styles.modeToggleActive : ""}`}
-                onClick={() => setViewMode("architecture")}
-              >
-                ● 3. Architecture
-              </button>
-              <button
-                className={`${styles.modeToggleBtn} ${viewMode === "blueprint" ? styles.modeToggleActive : ""}`}
-                onClick={() => setViewMode("blueprint")}
-              >
-                ● 4. Blueprint
-              </button>
-              <button
-                className={`${styles.modeToggleBtn} ${viewMode === "terminal" ? styles.modeToggleActive : ""}`}
-                onClick={() => setViewMode("terminal")}
-              >
-                ● 5. Live Simulation
-              </button>
-              <button
-                className={`${styles.modeToggleBtn} ${viewMode === "specs" ? styles.modeToggleActive : ""}`}
-                onClick={() => setViewMode("specs")}
-              >
-                ● 6. Specs
-              </button>
+              {views.map((view) => {
+                const getViewLabel = (v: ViewMode) => {
+                  switch (v) {
+                    case "story": return "● 1. Problem";
+                    case "pipeline": return "● 2. Pipeline";
+                    case "architecture": return "● 3. Architecture";
+                    case "workflow": return "● 4. n8n Workflow";
+                    case "terminal": return projectTitle.includes("Thermo") ? "● 5. Live Simulation" : "● 4. Live Simulation";
+                    case "specs": return projectTitle.includes("Thermo") ? "● 6. Specs" : "● 5. Specs";
+                    default: return "";
+                  }
+                };
+                return (
+                  <button
+                    key={view}
+                    className={`${styles.modeToggleBtn} ${viewMode === view ? styles.modeToggleActive : ""}`}
+                    onClick={() => setViewMode(view)}
+                  >
+                    {getViewLabel(view)}
+                  </button>
+                );
+              })}
             </div>
             <button className={styles.closeBtn} onClick={onClose} aria-label="Close modal">
               ✕
@@ -285,27 +332,27 @@ export default function WorkflowModal({ isOpen, onClose, projectTitle }: Workflo
                 <p className={styles.caseStudySubtitle}>A detailed summary of the operational problem, core automation solution, and immediate business values.</p>
               </div>
               <div className={styles.caseStudyGrid}>
-                {projectTitle.includes("Calling") ? (
+                {projectTitle.includes("Autonomous") ? (
                   <>
                     <div className={styles.caseStudyCard}>
                       <div className={styles.caseStudyIcon}>🎯</div>
                       <h5 className={styles.caseStudySectionTitle}>Business Problem</h5>
                       <p className={styles.caseStudyText}>
-                        Lead response times dictate client acquisition success. Inbound leads left uncontacted for more than 5 minutes drop in conversion by 80%. Hiring 24/7 manual dialers is costly and introduces human scheduling errors.
+                        Businesses lose customer conversion opportunities due to slow manual response times, high overhead for 24/7 manual dialers, and lack of automated call logging.
                       </p>
                     </div>
                     <div className={styles.caseStudyCard}>
                       <div className={styles.caseStudyIcon}>⚡</div>
                       <h5 className={styles.caseStudySectionTitle}>System Solution</h5>
                       <p className={styles.caseStudyText}>
-                        Deploy a voice qualification funnel linking Twilio call webhooks with a real-time Vocode WebRTC speech agent. CloseBot AI intent classification qualifies motivation level and syncs slot bookings straight to GoHighLevel CRM.
+                        Engineered a custom conversational routing and orchestration platform using FastAPI websockets, Twilio media streams, and Groq reasoning pipelines.
                       </p>
                     </div>
                     <div className={styles.caseStudyCard}>
                       <div className={styles.caseStudyIcon}>📈</div>
                       <h5 className={styles.caseStudySectionTitle}>Key Outcomes</h5>
                       <p className={styles.caseStudyText}>
-                        Secures a verified 42% slot booking rate, qualification logic operates 24/7/365 without manual oversight, and response latency is reduced to sub-200ms WebRTC voice frames.
+                        Achieves 100% data ownership (via Supabase), custom state machines control conversation orchestration, and Groq reasoning outputs sub-150ms speech response frames.
                       </p>
                     </div>
                   </>
@@ -333,27 +380,75 @@ export default function WorkflowModal({ isOpen, onClose, projectTitle }: Workflo
                       </p>
                     </div>
                   </>
-                ) : projectTitle.includes("RAG") ? (
+                ) : projectTitle.includes("Thermo") ? (
                   <>
                     <div className={styles.caseStudyCard}>
                       <div className={styles.caseStudyIcon}>🎯</div>
                       <h5 className={styles.caseStudySectionTitle}>Business Problem</h5>
                       <p className={styles.caseStudyText}>
-                        Accessing context across internal PDFs, spreadsheets, and databases is slow. Operators search directories manually, which increases support times and leads to outdated document references.
+                        HVAC companies lose hot leads due to slow manual response times, high labor calling overhead, and failed follow-up coordination.
                       </p>
                     </div>
                     <div className={styles.caseStudyCard}>
                       <div className={styles.caseStudyIcon}>⚡</div>
                       <h5 className={styles.caseStudySectionTitle}>System Solution</h5>
                       <p className={styles.caseStudyText}>
-                        Create an ingestion pipeline chunking documents with Jina AI embeddings, indexing vectors inside Qdrant, and querying semantic answers through a production-ready Next.js search layout.
+                        An autonomous Retell AI outbound calling agent integrated with n8n. Reads fresh leads, validates fields, dials/qualifies them over phone streams, extracts structured specs with OpenAI, and logs details in Google Sheets.
                       </p>
                     </div>
                     <div className={styles.caseStudyCard}>
                       <div className={styles.caseStudyIcon}>📈</div>
                       <h5 className={styles.caseStudySectionTitle}>Key Outcomes</h5>
                       <p className={styles.caseStudyText}>
-                        Enables semantic query retrieval under 80ms, indexes 10,000+ knowledge files, and outputs contextually accurate answers with verified 99.2% recall rates.
+                        Saves 100+ hours of calling labor monthly, achieves 30-50% higher booking conversions, operates 24/7/365, and ensures zero missed customer requests.
+                      </p>
+                    </div>
+                  </>
+                ) : projectTitle.includes("Bear") ? (
+                  <>
+                    <div className={styles.caseStudyCard}>
+                      <div className={styles.caseStudyIcon}>🎯</div>
+                      <h5 className={styles.caseStudySectionTitle}>Business Problem</h5>
+                      <p className={styles.caseStudyText}>
+                        Transforming large collections of unstructured scripts, transcripts, and documents into timeline-aware natural language answers was complex, inaccurate, and slow.
+                      </p>
+                    </div>
+                    <div className={styles.caseStudyCard}>
+                      <div className={styles.caseStudyIcon}>⚡</div>
+                      <h5 className={styles.caseStudySectionTitle}>System Solution</h5>
+                      <p className={styles.caseStudyText}>
+                        Built an end-to-end Temporal RAG platform. Ingests docs using Jina AI embeddings into a Qdrant vector database. Leverages n8n workflows for webhook-driven queries, custom temporal logic for timeline filtering, and Groq LLM for real-time answer generation.
+                      </p>
+                    </div>
+                    <div className={styles.caseStudyCard}>
+                      <div className={styles.caseStudyIcon}>📈</div>
+                      <h5 className={styles.caseStudySectionTitle}>Key Outcomes</h5>
+                      <p className={styles.caseStudyText}>
+                        Ensures context-aware answers with 99.2% accuracy, sub-200ms average response times, indexes 10,000+ files, and operates 24/7/365 with dynamic Vercel scaling.
+                      </p>
+                    </div>
+                  </>
+                ) : projectTitle.includes("Tapsy") ? (
+                  <>
+                    <div className={styles.caseStudyCard}>
+                      <div className={styles.caseStudyIcon}>🎯</div>
+                      <h5 className={styles.caseStudySectionTitle}>Business Problem</h5>
+                      <p className={styles.caseStudyText}>
+                        Boring text reviews are easily faked and fail to convey the true look, feel, or vibe of physical businesses. Reading "great view" or "amazing food" doesn't match the confidence of watching an authentic 30s video review from a real customer showing the actual atmosphere.
+                      </p>
+                    </div>
+                    <div className={styles.caseStudyCard}>
+                      <div className={styles.caseStudyIcon}>⚡</div>
+                      <h5 className={styles.caseStudySectionTitle}>System Solution</h5>
+                      <p className={styles.caseStudyText}>
+                        Designed and engineered a scalable backend on Node.js/TypeScript. Implemented a microservice that optimizes and transcodes 30s video reviews to cloud storage, distributes notifications to follower activity feeds via Firebase FCM, caches popular review time insights in Redis, and maps NFC/QR scans to dynamic business profiles.
+                      </p>
+                    </div>
+                    <div className={styles.caseStudyCard}>
+                      <div className={styles.caseStudyIcon}>📈</div>
+                      <h5 className={styles.caseStudySectionTitle}>Key Outcomes</h5>
+                      <p className={styles.caseStudyText}>
+                        Enables sub-40ms Fastify API gateway responses, sub-80ms video review feed fetching, supports printable and dynamic QR stickers plus NFC physical tags, and ensures fail-safe pre-commit tests with Husky.
                       </p>
                     </div>
                   </>
@@ -475,135 +570,412 @@ export default function WorkflowModal({ isOpen, onClose, projectTitle }: Workflo
                     </div>
                   </div>
                 </>
-              ) : projectTitle.includes("RAG") ? (
+              ) : projectTitle.includes("Autonomous") ? (
                 <>
                   <div className={`${styles.stageGroup} ${styles.stage1} ${activeStage === 1 ? styles.stageActive : ""}`}>
-                    <div className={styles.stageTitle}>1. Ingestion</div>
+                    <div className={styles.stageTitle}>1. Trigger</div>
                     <div className={styles.nodesRow}>
                       <div className={styles.node} data-type="trigger">
-                        <div className={styles.nodeIcon}>📂</div>
+                        <div className={styles.nodeIcon}>📞</div>
                         <div className={styles.nodeContent}>
-                          <div className={styles.nodeName}>Doc Ingestion</div>
-                          <div className={styles.nodeDesc}>4 Sources</div>
+                          <div className={styles.nodeName}>Call Event</div>
+                          <div className={styles.nodeDesc}>Inbound/Outbound</div>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   <div className={`${styles.stageGroup} ${styles.stage2} ${activeStage === 2 ? styles.stageActive : ""}`}>
-                    <div className={styles.stageTitle}>2. Chunking</div>
+                    <div className={styles.stageTitle}>2. Telephony</div>
                     <div className={styles.nodesRow}>
-                      <div className={styles.node} data-type="code">
-                        <div className={styles.nodeIcon}>{"{}"}</div>
+                      <div className={styles.node} data-type="merge">
+                        <div className={styles.nodeIcon}>🔌</div>
                         <div className={styles.nodeContent}>
-                          <div className={styles.nodeName}>Node Parser</div>
-                          <div className={styles.nodeDesc}>Recursive Text</div>
+                          <div className={styles.nodeName}>Twilio stream</div>
+                          <div className={styles.nodeDesc}>Call Routing</div>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   <div className={`${styles.stageGroup} ${styles.stage3} ${activeStage === 3 ? styles.stageActive : ""}`}>
-                    <div className={styles.stageTitle}>3. Embedding</div>
+                    <div className={styles.stageTitle}>3. Orchestrator</div>
                     <div className={styles.nodesRow}>
-                      <div className={styles.node} data-type="ai">
-                        <div className={styles.nodeIcon}>🧠</div>
+                      <div className={styles.node} data-type="code">
+                        <div className={styles.nodeIcon}>{"{}"}</div>
                         <div className={styles.nodeContent}>
-                          <div className={styles.nodeName}>Vector Creation</div>
-                          <div className={styles.nodeDesc}>Jina Embeddings</div>
+                          <div className={styles.nodeName}>FastAPI Engine</div>
+                          <div className={styles.nodeDesc}>State Machine</div>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   <div className={`${styles.stageGroup} ${styles.stage4} ${activeStage === 4 ? styles.stageActive : ""}`}>
-                    <div className={styles.stageTitle}>4. Qdrant Index</div>
+                    <div className={styles.stageTitle}>4. Reasoning</div>
                     <div className={styles.nodesRow}>
-                      <div className={styles.node} data-type="merge">
-                        <div className={styles.nodeIcon}>🗄️</div>
+                      <div className={styles.node} data-type="ai">
+                        <div className={styles.nodeIcon}>🤖</div>
                         <div className={styles.nodeContent}>
-                          <div className={styles.nodeName}>Vector Database</div>
-                          <div className={styles.nodeDesc}>Qdrant Cloud</div>
+                          <div className={styles.nodeName}>Groq LLM</div>
+                          <div className={styles.nodeDesc}>Low-Latency AI</div>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   <div className={`${styles.stageGroup} ${styles.stage5} ${activeStage === 5 ? styles.stageActive : ""}`}>
-                    <div className={styles.stageTitle}>5. Search API</div>
+                    <div className={styles.stageTitle}>5. Voice Processing</div>
                     <div className={styles.nodesRow}>
                       <div className={styles.node} data-type="ai">
-                        <div className={styles.nodeIcon}>🔍</div>
+                        <div className={styles.nodeIcon}>🗣️</div>
                         <div className={styles.nodeContent}>
-                          <div className={styles.nodeName}>Semantic Query</div>
-                          <div className={styles.nodeDesc}>Next.js UI</div>
+                          <div className={styles.nodeName}>STT / TTS</div>
+                          <div className={styles.nodeDesc}>Media Streams</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={`${styles.stageGroup} ${styles.stage6} ${activeStage === 6 ? styles.stageActive : ""}`}>
+                    <div className={styles.stageTitle}>6. Storage</div>
+                    <div className={styles.nodesRow}>
+                      <div className={styles.node} data-type="sheet">
+                        <div className={styles.nodeIcon}>🗄️</div>
+                        <div className={styles.nodeContent}>
+                          <div className={styles.nodeName}>Supabase logs</div>
+                          <div className={styles.nodeDesc}>PostgreSQL DB</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={`${styles.stageGroup} ${styles.stage7} ${activeStage === 7 ? styles.stageActive : ""}`}>
+                    <div className={styles.stageTitle}>7. Dashboard</div>
+                    <div className={styles.nodesRow}>
+                      <div className={styles.node} data-type="doc">
+                        <div className={styles.nodeIcon}>📊</div>
+                        <div className={styles.nodeContent}>
+                          <div className={styles.nodeName}>Next.js UI</div>
+                          <div className={styles.nodeDesc}>Live Monitoring</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={`${styles.stageGroup} ${styles.stage8} ${activeStage === 8 ? styles.stageActive : ""}`}>
+                    <div className={styles.stageTitle}>8. Follow up</div>
+                    <div className={styles.nodesRow}>
+                      <div className={styles.node} data-type="doc">
+                        <div className={styles.nodeIcon}>✉️</div>
+                        <div className={styles.nodeContent}>
+                          <div className={styles.nodeName}>Workflow Actions</div>
+                          <div className={styles.nodeDesc}>CRM Scheduling</div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </>
-              ) : projectTitle.includes("Calling") ? (
+              ) : projectTitle.includes("Thermo") ? (
                 <>
                   <div className={`${styles.stageGroup} ${styles.stage1} ${activeStage === 1 ? styles.stageActive : ""}`}>
-                    <div className={styles.stageTitle}>1. Inbound Trigger</div>
+                    <div className={styles.stageTitle}>1. Trigger</div>
                     <div className={styles.nodesRow}>
                       <div className={styles.node} data-type="trigger">
-                        <div className={styles.nodeIcon}>📞</div>
+                        <div className={styles.nodeIcon}>⏰</div>
                         <div className={styles.nodeContent}>
-                          <div className={styles.nodeName}>Lead Inbound</div>
-                          <div className={styles.nodeDesc}>Twilio Voice</div>
+                          <div className={styles.nodeName}>Schedule Trigger</div>
+                          <div className={styles.nodeDesc}>Runs every 15m</div>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   <div className={`${styles.stageGroup} ${styles.stage2} ${activeStage === 2 ? styles.stageActive : ""}`}>
-                    <div className={styles.stageTitle}>2. Dispatcher</div>
+                    <div className={styles.stageTitle}>2. Get Leads</div>
                     <div className={styles.nodesRow}>
-                      <div className={styles.node} data-type="merge">
-                        <div className={styles.nodeIcon}>🔗</div>
+                      <div className={styles.node} data-type="sheet">
+                        <div className={styles.nodeIcon}>📥</div>
                         <div className={styles.nodeContent}>
-                          <div className={styles.nodeName}>Call Handshake</div>
-                          <div className={styles.nodeDesc}>Webhook Router</div>
+                          <div className={styles.nodeName}>Read New Leads</div>
+                          <div className={styles.nodeDesc}>Sheets / DB</div>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   <div className={`${styles.stageGroup} ${styles.stage3} ${activeStage === 3 ? styles.stageActive : ""}`}>
-                    <div className={styles.stageTitle}>3. Vocode Audio</div>
+                    <div className={styles.stageTitle}>3. Format Lead</div>
                     <div className={styles.nodesRow}>
-                      <div className={styles.node} data-type="ai">
-                        <div className={styles.nodeIcon}>🗣️</div>
+                      <div className={styles.node} data-type="code">
+                        <div className={styles.nodeIcon}>{"{}"}</div>
                         <div className={styles.nodeContent}>
-                          <div className={styles.nodeName}>WebRTC Stream</div>
-                          <div className={styles.nodeDesc}>Vocode Voice</div>
+                          <div className={styles.nodeName}>Validate & Structure</div>
+                          <div className={styles.nodeDesc}>Lead Data</div>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   <div className={`${styles.stageGroup} ${styles.stage4} ${activeStage === 4 ? styles.stageActive : ""}`}>
-                    <div className={styles.stageTitle}>4. Intent Parser</div>
+                    <div className={styles.stageTitle}>4. Check DNC</div>
                     <div className={styles.nodesRow}>
-                      <div className={styles.node} data-type="ai">
-                        <div className={styles.nodeIcon}>🤖</div>
+                      <div className={styles.node} data-type="filter">
+                        <div className={styles.nodeIcon}>⚙️</div>
                         <div className={styles.nodeContent}>
-                          <div className={styles.nodeName}>Intent Evaluate</div>
-                          <div className={styles.nodeDesc}>CloseBot Parser</div>
+                          <div className={styles.nodeName}>Check Do-Not-Call</div>
+                          <div className={styles.nodeDesc}>Registry Check</div>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   <div className={`${styles.stageGroup} ${styles.stage5} ${activeStage === 5 ? styles.stageActive : ""}`}>
-                    <div className={styles.stageTitle}>5. GHL Calendar</div>
+                    <div className={styles.stageTitle}>5. Initiate Call</div>
+                    <div className={styles.nodesRow}>
+                      <div className={styles.node} data-type="trigger">
+                        <div className={styles.nodeIcon}>📞</div>
+                        <div className={styles.nodeContent}>
+                          <div className={styles.nodeName}>Start Retell Call</div>
+                          <div className={styles.nodeDesc}>Outbound Dial</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={`${styles.stageGroup} ${styles.stage6} ${activeStage === 6 ? styles.stageActive : ""}`}>
+                    <div className={styles.stageTitle}>6. AI Talk</div>
+                    <div className={styles.nodesRow}>
+                      <div className={styles.node} data-type="ai">
+                        <div className={styles.nodeIcon}>🗣️</div>
+                        <div className={styles.nodeContent}>
+                          <div className={styles.nodeName}>Retell AI voice</div>
+                          <div className={styles.nodeDesc}>Qualify Lead</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={`${styles.stageGroup} ${styles.stage7} ${activeStage === 7 ? styles.stageActive : ""}`}>
+                    <div className={styles.stageTitle}>7. Extract Data</div>
+                    <div className={styles.nodesRow}>
+                      <div className={styles.node} data-type="ai">
+                        <div className={styles.nodeIcon}>🧠</div>
+                        <div className={styles.nodeContent}>
+                          <div className={styles.nodeName}>Extract Structured</div>
+                          <div className={styles.nodeDesc}>OpenAI API</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={`${styles.stageGroup} ${styles.stage8} ${activeStage === 8 ? styles.stageActive : ""}`}>
+                    <div className={styles.stageTitle}>8. Score Lead</div>
+                    <div className={styles.nodesRow}>
+                      <div className={styles.node} data-type="code">
+                        <div className={styles.nodeIcon}>🎯</div>
+                        <div className={styles.nodeContent}>
+                          <div className={styles.nodeName}>AI Lead Scoring</div>
+                          <div className={styles.nodeDesc}>Evaluate Budget</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={`${styles.stageGroup} ${styles.stage9} ${activeStage === 9 ? styles.stageActive : ""}`}>
+                    <div className={styles.stageTitle}>9. Update Database</div>
                     <div className={styles.nodesRow}>
                       <div className={styles.node} data-type="sheet">
-                        <div className={styles.nodeIcon}>📅</div>
+                        <div className={styles.nodeIcon}>🗄️</div>
                         <div className={styles.nodeContent}>
-                          <div className={styles.nodeName}>Slot Booking</div>
-                          <div className={styles.nodeDesc}>CRM Sync</div>
+                          <div className={styles.nodeName}>Save Structured</div>
+                          <div className={styles.nodeDesc}>Sheets / DB</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={`${styles.stageGroup} ${styles.stage10} ${activeStage === 10 ? styles.stageActive : ""}`}>
+                    <div className={styles.stageTitle}>10. Follow Up</div>
+                    <div className={styles.nodesRow}>
+                      <div className={styles.node} data-type="doc">
+                        <div className={styles.nodeIcon}>✉️</div>
+                        <div className={styles.nodeContent}>
+                          <div className={styles.nodeName}>Send Notification</div>
+                          <div className={styles.nodeDesc}>SMS / Email</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              ) : projectTitle.includes("Bear") ? (
+                <>
+                  <div className={`${styles.stageGroup} ${styles.stage1} ${activeStage === 1 ? styles.stageActive : ""}`}>
+                    <div className={styles.stageTitle}>1. Webhook Trigger</div>
+                    <div className={styles.nodesRow}>
+                      <div className={styles.node} data-type="trigger">
+                        <div className={styles.nodeIcon}>🔌</div>
+                        <div className={styles.nodeContent}>
+                          <div className={styles.nodeName}>n8n Webhook</div>
+                          <div className={styles.nodeDesc}>Incoming Query</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={`${styles.stageGroup} ${styles.stage2} ${activeStage === 2 ? styles.stageActive : ""}`}>
+                    <div className={styles.stageTitle}>2. Embedding</div>
+                    <div className={styles.nodesRow}>
+                      <div className={styles.node} data-type="ai">
+                        <div className={styles.nodeIcon}>🧠</div>
+                        <div className={styles.nodeContent}>
+                          <div className={styles.nodeName}>Jina AI</div>
+                          <div className={styles.nodeDesc}>Query Vectors</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={`${styles.stageGroup} ${styles.stage3} ${activeStage === 3 ? styles.stageActive : ""}`}>
+                    <div className={styles.stageTitle}>3. Search Qdrant</div>
+                    <div className={styles.nodesRow}>
+                      <div className={styles.node} data-type="code">
+                        <div className={styles.nodeIcon}>🗄️</div>
+                        <div className={styles.nodeContent}>
+                          <div className={styles.nodeName}>Qdrant Vector</div>
+                          <div className={styles.nodeDesc}>Semantic Search</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={`${styles.stageGroup} ${styles.stage4} ${activeStage === 4 ? styles.stageActive : ""}`}>
+                    <div className={styles.stageTitle}>4. Temporal Logic</div>
+                    <div className={styles.nodesRow}>
+                      <div className={styles.node} data-type="filter">
+                        <div className={styles.nodeIcon}>⏱️</div>
+                        <div className={styles.nodeContent}>
+                          <div className={styles.nodeName}>Time Filtering</div>
+                          <div className={styles.nodeDesc}>Temporal Engine</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={`${styles.stageGroup} ${styles.stage5} ${activeStage === 5 ? styles.stageActive : ""}`}>
+                    <div className={styles.stageTitle}>5. Fetch Chunks</div>
+                    <div className={styles.nodesRow}>
+                      <div className={styles.node} data-type="sheet">
+                        <div className={styles.nodeIcon}>📂</div>
+                        <div className={styles.nodeContent}>
+                          <div className={styles.nodeName}>Data Retrieval</div>
+                          <div className={styles.nodeDesc}>Timeline Chunks</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={`${styles.stageGroup} ${styles.stage6} ${activeStage === 6 ? styles.stageActive : ""}`}>
+                    <div className={styles.stageTitle}>6. Build Context</div>
+                    <div className={styles.nodesRow}>
+                      <div className={styles.node} data-type="merge">
+                        <div className={styles.nodeIcon}>⚙️</div>
+                        <div className={styles.nodeContent}>
+                          <div className={styles.nodeName}>Context Builder</div>
+                          <div className={styles.nodeDesc}>Optimized Window</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={`${styles.stageGroup} ${styles.stage7} ${activeStage === 7 ? styles.stageActive : ""}`}>
+                    <div className={styles.stageTitle}>7. Ask Groq</div>
+                    <div className={styles.nodesRow}>
+                      <div className={styles.node} data-type="ai">
+                        <div className={styles.nodeIcon}>🤖</div>
+                        <div className={styles.nodeContent}>
+                          <div className={styles.nodeName}>Groq Reasoning</div>
+                          <div className={styles.nodeDesc}>Answer Generation</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={`${styles.stageGroup} ${styles.stage8} ${activeStage === 8 ? styles.stageActive : ""}`}>
+                    <div className={styles.stageTitle}>8. Respond</div>
+                    <div className={styles.nodesRow}>
+                      <div className={styles.node} data-type="doc">
+                        <div className={styles.nodeIcon}>💬</div>
+                        <div className={styles.nodeContent}>
+                          <div className={styles.nodeName}>Display Chat</div>
+                          <div className={styles.nodeDesc}>Return AI Response</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              ) : projectTitle.includes("Tapsy") ? (
+                <>
+                  <div className={`${styles.stageGroup} ${styles.stage1} ${activeStage === 1 ? styles.stageActive : ""}`}>
+                    <div className={styles.stageTitle}>1. Video Record</div>
+                    <div className={styles.nodesRow}>
+                      <div className={styles.node} data-type="trigger">
+                        <div className={styles.nodeIcon}>📹</div>
+                        <div className={styles.nodeContent}>
+                          <div className={styles.nodeName}>Video Upload</div>
+                          <div className={styles.nodeDesc}>30s Clip</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={`${styles.stageGroup} ${styles.stage2} ${activeStage === 2 ? styles.stageActive : ""}`}>
+                    <div className={styles.stageTitle}>2. Transcoding</div>
+                    <div className={styles.nodesRow}>
+                      <div className={styles.node} data-type="code">
+                        <div className={styles.nodeIcon}>⚙️</div>
+                        <div className={styles.nodeContent}>
+                          <div className={styles.nodeName}>Node.js Job</div>
+                          <div className={styles.nodeDesc}>FFmpeg Compression</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={`${styles.stageGroup} ${styles.stage3} ${activeStage === 3 ? styles.stageActive : ""}`}>
+                    <div className={styles.stageTitle}>3. Feed Router</div>
+                    <div className={styles.nodesRow}>
+                      <div className={styles.node} data-type="ai">
+                        <div className={styles.nodeIcon}>🗄️</div>
+                        <div className={styles.nodeContent}>
+                          <div className={styles.nodeName}>Redis Cache</div>
+                          <div className={styles.nodeDesc}>Followers Dispatch</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={`${styles.stageGroup} ${styles.stage4} ${activeStage === 4 ? styles.stageActive : ""}`}>
+                    <div className={styles.stageTitle}>4. Analytics</div>
+                    <div className={styles.nodesRow}>
+                      <div className={styles.node} data-type="sheet">
+                        <div className={styles.nodeIcon}>📊</div>
+                        <div className={styles.nodeContent}>
+                          <div className={styles.nodeName}>Prisma DB</div>
+                          <div className={styles.nodeDesc}>Views & Ratings</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={`${styles.stageGroup} ${styles.stage5} ${activeStage === 5 ? styles.stageActive : ""}`}>
+                    <div className={styles.stageTitle}>5. NFC/QR Event</div>
+                    <div className={styles.nodesRow}>
+                      <div className={styles.node} data-type="merge">
+                        <div className={styles.nodeIcon}>🔌</div>
+                        <div className={styles.nodeContent}>
+                          <div className={styles.nodeName}>Profile Matching</div>
+                          <div className={styles.nodeDesc}>QR Tag Dispatch</div>
                         </div>
                       </div>
                     </div>
@@ -680,91 +1052,141 @@ export default function WorkflowModal({ isOpen, onClose, projectTitle }: Workflo
             </div>
           )}
 
-          {viewMode === "architecture" && (
+          {viewMode === "architecture" && (() => {
+            const archImageSrc = getArchitectureImage();
+            return (
+              <div className={styles.macWindowWrapperCol}>
+                <div
+                  className={styles.macWindowWrapper}
+                  onClick={() => openZoom(archImageSrc)}
+                >
+                  <div className={styles.macTitlebar}>
+                    <div className={styles.macDotRed}></div>
+                    <div className={styles.macDotYellow}></div>
+                    <div className={styles.macDotGreen}></div>
+                    <span className={styles.macTitle}>Pipeline Architecture</span>
+                    <span className={styles.inspectBadge}>🔍 Click to inspect</span>
+                  </div>
+                  <div className={styles.macContent}>
+                    <img
+                      src={archImageSrc}
+                      alt="System Architecture Diagram"
+                      className={styles.architectureImg}
+                    />
+                  </div>
+                </div>
+                <div className={styles.modalArchitectureFlowSequence}>
+                  {projectTitle.includes("SEO") ? (
+                    <>
+                      <span className={styles.modalArchSequenceNode}>Research</span>
+                      <span className={styles.modalArchSequenceArrow}>→</span>
+                      <span className={styles.modalArchSequenceNode}>Qualification</span>
+                      <span className={styles.modalArchSequenceArrow}>→</span>
+                      <span className={styles.modalArchSequenceNode}>Writing</span>
+                      <span className={styles.modalArchSequenceArrow}>→</span>
+                      <span className={styles.modalArchSequenceNode}>Publishing</span>
+                    </>
+                  ) : projectTitle.includes("Autonomous") ? (
+                    <>
+                      <span className={styles.modalArchSequenceNode}>Twilio Telephony</span>
+                      <span className={styles.modalArchSequenceArrow}>→</span>
+                      <span className={styles.modalArchSequenceNode}>FastAPI Engine</span>
+                      <span className={styles.modalArchSequenceArrow}>→</span>
+                      <span className={styles.modalArchSequenceNode}>Groq LLM</span>
+                      <span className={styles.modalArchSequenceArrow}>→</span>
+                      <span className={styles.modalArchSequenceNode}>Supabase DB</span>
+                      <span className={styles.modalArchSequenceArrow}>→</span>
+                      <span className={styles.modalArchSequenceNode}>Next.js UI</span>
+                    </>
+                  ) : projectTitle.includes("Thermo") ? (
+                    <>
+                      <span className={styles.modalArchSequenceNode}>Lead Intake</span>
+                      <span className={styles.modalArchSequenceArrow}>→</span>
+                      <span className={styles.modalArchSequenceNode}>Retell AI Call</span>
+                      <span className={styles.modalArchSequenceArrow}>→</span>
+                      <span className={styles.modalArchSequenceNode}>Webhook Dispatch</span>
+                      <span className={styles.modalArchSequenceArrow}>→</span>
+                      <span className={styles.modalArchSequenceNode}>OpenAI Extraction</span>
+                      <span className={styles.modalArchSequenceArrow}>→</span>
+                      <span className={styles.modalArchSequenceNode}>Sheets Update</span>
+                    </>
+                  ) : projectTitle.includes("Bear") ? (
+                    <>
+                      <span className={styles.modalArchSequenceNode}>User Query</span>
+                      <span className={styles.modalArchSequenceArrow}>→</span>
+                      <span className={styles.modalArchSequenceNode}>Jina AI Embedding</span>
+                      <span className={styles.modalArchSequenceArrow}>→</span>
+                      <span className={styles.modalArchSequenceNode}>Qdrant Vector DB</span>
+                      <span className={styles.modalArchSequenceArrow}>→</span>
+                      <span className={styles.modalArchSequenceNode}>Temporal Filtering</span>
+                      <span className={styles.modalArchSequenceArrow}>→</span>
+                      <span className={styles.modalArchSequenceNode}>Groq LLM</span>
+                      <span className={styles.modalArchSequenceArrow}>→</span>
+                      <span className={styles.modalArchSequenceNode}>Next.js Chat UI</span>
+                    </>
+                  ) : projectTitle.includes("Tapsy") ? (
+                    <>
+                      <span className={styles.modalArchSequenceNode}>Mobile Recording</span>
+                      <span className={styles.modalArchSequenceArrow}>→</span>
+                      <span className={styles.modalArchSequenceNode}>Node.js Transcoder</span>
+                      <span className={styles.modalArchSequenceArrow}>→</span>
+                      <span className={styles.modalArchSequenceNode}>Redis Feed Router</span>
+                      <span className={styles.modalArchSequenceArrow}>→</span>
+                      <span className={styles.modalArchSequenceNode}>Firebase FCM</span>
+                      <span className={styles.modalArchSequenceArrow}>→</span>
+                      <span className={styles.modalArchSequenceNode}>QR Discovery</span>
+                    </>
+                  ) : (
+                    <>
+                      <span className={styles.modalArchSequenceNode}>Checkout Webhook</span>
+                      <span className={styles.modalArchSequenceArrow}>→</span>
+                      <span className={styles.modalArchSequenceNode}>n8n Route Node</span>
+                      <span className={styles.modalArchSequenceArrow}>→</span>
+                      <span className={styles.modalArchSequenceNode}>HubSpot CRM</span>
+                      <span className={styles.modalArchSequenceArrow}>→</span>
+                      <span className={styles.modalArchSequenceNode}>Slack Alerts</span>
+                    </>
+                  )}
+                </div>
+              </div>
+            );
+          })()}
+
+          {viewMode === "workflow" && (
             <div className={styles.macWindowWrapperCol}>
               <div
                 className={styles.macWindowWrapper}
-                onClick={() => openZoom("/n8n-workflow.png")}
+                onClick={() => openZoom("/thermoconnect-workflow.png")}
               >
                 <div className={styles.macTitlebar}>
                   <div className={styles.macDotRed}></div>
                   <div className={styles.macDotYellow}></div>
                   <div className={styles.macDotGreen}></div>
-                  <span className={styles.macTitle}>Pipeline Architecture</span>
+                  <span className={styles.macTitle}>n8n Workflow Canvas</span>
                   <span className={styles.inspectBadge}>🔍 Click to inspect</span>
                 </div>
                 <div className={styles.macContent}>
                   <img
-                    src="/n8n-workflow.png"
-                    alt="System Architecture Diagram"
+                    src="/thermoconnect-workflow.png"
+                    alt="n8n Workflow Canvas"
                     className={styles.architectureImg}
                   />
                 </div>
               </div>
               <div className={styles.modalArchitectureFlowSequence}>
-                {projectTitle.includes("SEO") ? (
-                  <>
-                    <span className={styles.modalArchSequenceNode}>Research</span>
-                    <span className={styles.modalArchSequenceArrow}>→</span>
-                    <span className={styles.modalArchSequenceNode}>Qualification</span>
-                    <span className={styles.modalArchSequenceArrow}>→</span>
-                    <span className={styles.modalArchSequenceNode}>Writing</span>
-                    <span className={styles.modalArchSequenceArrow}>→</span>
-                    <span className={styles.modalArchSequenceNode}>Publishing</span>
-                  </>
-                ) : projectTitle.includes("RAG") ? (
-                  <>
-                    <span className={styles.modalArchSequenceNode}>Ingestion</span>
-                    <span className={styles.modalArchSequenceArrow}>→</span>
-                    <span className={styles.modalArchSequenceNode}>Chunking</span>
-                    <span className={styles.modalArchSequenceArrow}>→</span>
-                    <span className={styles.modalArchSequenceNode}>Embedding</span>
-                    <span className={styles.modalArchSequenceArrow}>→</span>
-                    <span className={styles.modalArchSequenceNode}>Qdrant Vector DB</span>
-                    <span className={styles.modalArchSequenceArrow}>→</span>
-                    <span className={styles.modalArchSequenceNode}>Search UI</span>
-                  </>
-                ) : projectTitle.includes("Calling") ? (
-                  <>
-                    <span className={styles.modalArchSequenceNode}>Twilio Inbound</span>
-                    <span className={styles.modalArchSequenceArrow}>→</span>
-                    <span className={styles.modalArchSequenceNode}>Vocode voice</span>
-                    <span className={styles.modalArchSequenceArrow}>→</span>
-                    <span className={styles.modalArchSequenceNode}>CloseBot AI</span>
-                    <span className={styles.modalArchSequenceArrow}>→</span>
-                    <span className={styles.modalArchSequenceNode}>GoHighLevel Booking</span>
-                  </>
-                ) : (
-                  <>
-                    <span className={styles.modalArchSequenceNode}>Checkout Webhook</span>
-                    <span className={styles.modalArchSequenceArrow}>→</span>
-                    <span className={styles.modalArchSequenceNode}>n8n Route Node</span>
-                    <span className={styles.modalArchSequenceArrow}>→</span>
-                    <span className={styles.modalArchSequenceNode}>HubSpot CRM</span>
-                    <span className={styles.modalArchSequenceArrow}>→</span>
-                    <span className={styles.modalArchSequenceNode}>Slack Alerts</span>
-                  </>
-                )}
+                <span className={styles.modalArchSequenceNode}>Schedule Trigger</span>
+                <span className={styles.modalArchSequenceArrow}>→</span>
+                <span className={styles.modalArchSequenceNode}>Read Leads</span>
+                <span className={styles.modalArchSequenceArrow}>→</span>
+                <span className={styles.modalArchSequenceNode}>Retell Call</span>
+                <span className={styles.modalArchSequenceArrow}>→</span>
+                <span className={styles.modalArchSequenceNode}>AI Analysis</span>
+                <span className={styles.modalArchSequenceArrow}>→</span>
+                <span className={styles.modalArchSequenceNode}>Update sheets & Send Followup</span>
               </div>
             </div>
           )}
 
-          {viewMode === "blueprint" && (
-            <div className={styles.screenshotView}>
-              <div
-                className={styles.blueprintImageWrapper}
-                onClick={() => openZoom("/n8n-workflow.png")}
-              >
-                <div className={styles.blueprintBadgeOverlay}>n8n Production Workflow Blueprint</div>
-                <img
-                  src="/n8n-workflow.png"
-                  alt="Actual n8n Workflow Screenshot Blueprint"
-                  className={styles.screenshotImg}
-                />
-                <span className={styles.inspectBadgeOverlay}>🔍 Click to inspect</span>
-              </div>
-            </div>
-          )}
 
           {viewMode === "terminal" && (
             <div className={styles.terminalView}>
@@ -795,26 +1217,44 @@ export default function WorkflowModal({ isOpen, onClose, projectTitle }: Workflo
                 <div className={styles.specsCard}>
                   <h5 className={styles.specsSectionTitle}>Verified Business Outcomes</h5>
                   <ul className={styles.specsList}>
-                    {projectTitle.includes("SEO") ? (
+                    {projectTitle.includes("Thermo") ? (
+                      <>
+                        <li>⚡ **Retell AI Call Flow**: Human-like conversational outbound qualification stream under 2s latency.</li>
+                        <li>🤖 **OpenAI Insights**: Automated transcription analysis, dynamic lead scoring, and service classification.</li>
+                        <li>📊 **Google Sheets Sync**: Real-time sheets reconciliation updating call outcomes, transcripts, and statuses.</li>
+                        <li>📅 **DNC Safeguard**: Integrated Do-Not-Call check verifying customer eligibility before dial triggers.</li>
+                        <li>🔗 **n8n Automation**: Complete lead intake schedule mapping, call status triggers, and webhook management.</li>
+                      </>
+                    ) : projectTitle.includes("Bear") ? (
+                      <>
+                        <li>⚡ **sub-200ms response time**: Real-time webhook-driven responses returned instantly to client interface.</li>
+                        <li>🗄️ **High-performance vector search**: Scalable index in Qdrant database queries context elements easily.</li>
+                        <li>⏱️ **Temporal-aware logic**: Filters relevant chunks chronologically for precise timeline conversations.</li>
+                        <li>🤖 **Groq LLM answers**: Translates query context vectors into natural answers with minimal latency.</li>
+                        <li>🧠 **Jina AI Embeddings**: Robust semantic representation of files, scripts, and transcripts.</li>
+                        <li>🔗 **n8n Automation Mesh**: Orchestrates the entire webhook-to-database-to-LLM event grid.</li>
+                      </>
+                    ) : projectTitle.includes("Tapsy") ? (
+                      <>
+                        <li>⚡ **sub-40ms Fastify Latency**: High-speed lookup matching profiles with active cached views.</li>
+                        <li>◭ **Optimized Prisma Indices**: Database queries accelerated 4x with schema spatial indexing.</li>
+                        <li>🔥 **Firebase Social Alerts**: Real-time push notifications dispatch follows, comments, and chats instantly.</li>
+                        <li>🗄️ **Redis popular time cache**: Caches popular review time insights and rating distributions.</li>
+                        <li>🐶 **Husky Pre-commit Gates**: Automated linting, styling checking, and test validation.</li>
+                      </>
+                    ) : projectTitle.includes("SEO") ? (
                       <>
                         <li>📈 **30+ Hours Saved**: Displaces weekly manual trend mapping and copywriting.</li>
                         <li>📝 **4,000-Word Generation**: Complete long-form editorial drafts published automatically.</li>
                         <li>🛡️ **Review Gate**: Safe dual-mode AI + Human approval path.</li>
                         <li>☁️ **Google Workspace Sync**: Instantly saves docs to Drive folders.</li>
                       </>
-                    ) : projectTitle.includes("RAG") ? (
+                    ) : projectTitle.includes("Autonomous") ? (
                       <>
-                        <li>📚 **10,000+ Docs Indexed**: Ingests files recursively from 4 channels.</li>
-                        <li>⚡ **Sub-80ms Latency**: Real-time vector retrieval search queries inside Qdrant.</li>
-                        <li>🧠 **Jina AI Context**: Accurate parsing of dense, structural knowledge files.</li>
-                        <li>🛡️ **Production Clustering**: Scalable database schema with semantic guardrails.</li>
-                      </>
-                    ) : projectTitle.includes("Calling") ? (
-                      <>
-                        <li>📞 **5,000+ Calls Run**: Qualifications executed 24/7 without manual operator needs.</li>
-                        <li>📅 **42% Booking Rate**: Converts intentions straight into calendar slots.</li>
-                        <li>🗣️ **Vocode WebRTC**: Inbound response latency under 200ms.</li>
-                        <li>🏠 **CRM Integration**: Automatic syncing of transcription logs back to GHL.</li>
+                        <li>📞 **5,000+ Calls Automated**: High-volume voice operations processed without human dialer overhead.</li>
+                        <li>⚡ **Ultra-low Latency Loop**: Groq LLM reasoning yields sub-150ms speech response frames.</li>
+                        <li>🔒 **Custom state orchestration**: 100% control over call logic directly in FastAPI (no middleware dependencies).</li>
+                        <li>📅 **Supabase & CRM Sync**: Real-time webhook reconciliation for logs, scheduling, and analytics.</li>
                       </>
                     ) : (
                       <>
@@ -830,16 +1270,22 @@ export default function WorkflowModal({ isOpen, onClose, projectTitle }: Workflo
                 <div className={styles.specsCard}>
                   <h5 className={styles.specsSectionTitle}>Tech Stack & APIs</h5>
                   <div className={styles.techPillsContainer}>
+                    {projectTitle.includes("Tapsy") && ["Node.js", "TypeScript", "Prisma ORM", "Redis Cache", "Firebase FCM", "Twilio API", "Husky", "DB Indexing", "ESLint"].map(p => (
+                      <span key={p} className={styles.techPill}>{p}</span>
+                    ))}
                     {projectTitle.includes("SEO") && ["n8n", "GPT-5", "Google Sheets", "Google Docs", "Google Drive", "Deep Research API", "OAuth2", "REST API"].map(p => (
                       <span key={p} className={styles.techPill}>{p}</span>
                     ))}
-                    {projectTitle.includes("RAG") && ["n8n", "Jina Embeddings", "Qdrant Vector DB", "Next.js", "Docker", "Node Parser API", "Semantic Guardrails"].map(p => (
+                    {projectTitle.includes("Autonomous") && ["Next.js", "FastAPI", "Supabase", "Groq LLM", "Twilio", "Python", "TypeScript", "REST APIs", "Webhooks"].map(p => (
                       <span key={p} className={styles.techPill}>{p}</span>
                     ))}
-                    {projectTitle.includes("Calling") && ["Twilio Voice", "Vocode Audio", "CloseBot AI", "GHL CRM API", "Node.js", "WebRTC Stream", "Google Calendar"].map(p => (
+                    {projectTitle.includes("Bear") && ["n8n Workflow", "Jina AI Embeddings", "Qdrant Vector DB", "Groq LLM", "Next.js UI", "Temporal-aware logic", "Webhooks"].map(p => (
                       <span key={p} className={styles.techPill}>{p}</span>
                     ))}
-                    {!projectTitle.includes("SEO") && !projectTitle.includes("RAG") && !projectTitle.includes("Calling") && ["n8n Mesh", "HubSpot CRM", "Stripe API", "Slack Webhooks", "OAuth2", "Make.com Router", "Fail-safe retries"].map(p => (
+                    {projectTitle.includes("Thermo") && ["n8n", "Retell AI", "OpenAI API", "Google Sheets", "FastAPI", "Webhooks", "JSON Schema", "Docker"].map(p => (
+                      <span key={p} className={styles.techPill}>{p}</span>
+                    ))}
+                    {!projectTitle.includes("SEO") && !projectTitle.includes("Autonomous") && !projectTitle.includes("Tapsy") && !projectTitle.includes("Bear") && !projectTitle.includes("Thermo") && ["n8n Mesh", "HubSpot CRM", "Stripe API", "Slack Webhooks", "OAuth2", "Make.com Router", "Fail-safe retries"].map(p => (
                       <span key={p} className={styles.techPill}>{p}</span>
                     ))}
                   </div>
@@ -861,7 +1307,7 @@ export default function WorkflowModal({ isOpen, onClose, projectTitle }: Workflo
           <div className={styles.footerNote}>
             <span>🟢 Status: Active Simulation</span>
             <span className={styles.divider}>|</span>
-            <span>Running stage {activeStage || 1} of {projectTitle.includes("SEO") ? 6 : 5}</span>
+            <span>Running stage {activeStage || 1} of {getStageCount()}</span>
           </div>
           <div className={styles.footerActions}>
             <button
@@ -872,7 +1318,7 @@ export default function WorkflowModal({ isOpen, onClose, projectTitle }: Workflo
               ← Previous
             </button>
             <span className={styles.stepIndicator}>
-              Step {currentIdx + 1} of 6
+              Step {currentIdx + 1} of {views.length}
             </span>
             <button
               className={styles.nextStepBtn}

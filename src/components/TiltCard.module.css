@@ -24,3 +24,13 @@
   border-radius: inherit;
   z-index: 1;
 }
+
+@media (max-width: 768px) {
+  .container {
+    height: auto !important;
+    min-height: auto !important;
+  }
+  .inner {
+    height: auto !important;
+  }
+}

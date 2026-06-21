@@ -426,3 +426,84 @@
   color: var(--green);
   text-transform: uppercase;
 }
+
+@media (max-width: 480px) {
+  .section {
+    padding: 1rem 0.5rem;
+  }
+
+  .title {
+    font-size: 1.85rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .badge {
+    font-size: 0.65rem;
+    padding: 4px 10px;
+  }
+
+  .header {
+    margin-bottom: 1.5rem;
+  }
+
+  .profilePanel,
+  .skillsPanel {
+    padding: 1.25rem;
+    border-radius: 14px;
+  }
+
+  .shieldWrapper {
+    width: 55px;
+    height: 55px;
+  }
+
+  .shield {
+    font-size: 1.4rem;
+  }
+
+  .levelCard {
+    gap: 1rem;
+  }
+
+  .rankTitle {
+    font-size: 1.1rem;
+  }
+
+  .rankDesc {
+    font-size: 0.78rem;
+  }
+
+  .rankLabel {
+    font-size: 0.65rem;
+  }
+
+  .missionCard {
+    padding: 1.25rem;
+    border-radius: 10px;
+  }
+
+  .missionTitle {
+    font-size: 0.95rem;
+  }
+
+  .missionDesc {
+    font-size: 0.78rem;
+    margin-bottom: 1rem;
+  }
+
+  .panelTitle {
+    font-size: 1.05rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .skillName {
+    font-size: 0.82rem;
+  }
+
+  .miniStatCard {
+    padding: 0.75rem 1rem;
+  }
+}

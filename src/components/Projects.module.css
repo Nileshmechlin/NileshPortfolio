@@ -450,6 +450,21 @@
   border: 1px solid var(--blue-glow);
 }
 
+.gradYellow {
+  background: linear-gradient(135deg, var(--grad-yellow-start) 0%, var(--grad-yellow-end) 100%);
+  border: 1px solid var(--yellow-glow);
+}
+
+.gradBear {
+  background: linear-gradient(135deg, var(--grad-cyan-start) 0%, var(--grad-cyan-end) 100%);
+  border: 1px solid rgba(0, 255, 255, 0.25);
+}
+
+.gradThermo {
+  background: linear-gradient(135deg, #ff5c00 0%, #ff007f 100%);
+  border: 1px solid rgba(255, 92, 0, 0.25);
+}
+
 /* Interactive Tab Viewport */
 .interactiveViewport {
   margin: 0.4rem 0.75rem 0 0.75rem;
@@ -1272,13 +1287,13 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  opacity: 0.12;
+  opacity: 0.45;
 }
 
 .progStepBtn:hover {
   color: var(--text-bright);
   background: rgba(255, 255, 255, 0.05);
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .progStepActive {
@@ -1520,10 +1535,7 @@
   box-shadow: 0 12px 30px rgba(255, 92, 0, 0.08), var(--glass-shadow) !important;
 }
 
-.cardRAG:hover {
-  border-color: rgba(138, 43, 226, 0.4) !important;
-  box-shadow: 0 12px 30px rgba(138, 43, 226, 0.08), var(--glass-shadow) !important;
-}
+
 
 .cardVoice:hover {
   border-color: rgba(0, 191, 255, 0.4) !important;
@@ -1533,6 +1545,21 @@
 .cardGHL:hover {
   border-color: rgba(0, 255, 102, 0.4) !important;
   box-shadow: 0 12px 30px rgba(0, 255, 102, 0.08), var(--glass-shadow) !important;
+}
+
+.cardTapsy:hover {
+  border-color: rgba(245, 158, 11, 0.4) !important;
+  box-shadow: 0 12px 30px rgba(245, 158, 11, 0.08), var(--glass-shadow) !important;
+}
+
+.cardBear:hover {
+  border-color: rgba(0, 255, 255, 0.4) !important;
+  box-shadow: 0 12px 30px rgba(0, 255, 255, 0.08), var(--glass-shadow) !important;
+}
+
+.cardThermo:hover {
+  border-color: rgba(255, 92, 0, 0.4) !important;
+  box-shadow: 0 12px 30px rgba(255, 92, 0, 0.08), var(--glass-shadow) !important;
 }
 
 .interactiveViewport {
@@ -1554,13 +1581,42 @@
     transform: translateY(0);
   }
 }
-.cardRAG:hover .metricGlassCard {
+
+
+.cardTapsy:hover .metricGlassCard {
   transform: scale(1.05);
-  border-color: rgba(138, 43, 226, 0.3);
-  box-shadow: 0 0 10px rgba(138, 43, 226, 0.1);
+  border-color: rgba(245, 158, 11, 0.3);
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.1);
+}
+
+.cardBear:hover .metricGlassCard {
+  transform: scale(1.05);
+  border-color: rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+}
+
+.cardThermo:hover .metricGlassCard {
+  transform: scale(1.05);
+  border-color: rgba(255, 92, 0, 0.3);
+  box-shadow: 0 0 10px rgba(255, 92, 0, 0.1);
 }
 
 .cardSEO:hover .flowNodeCard {
+  border-color: rgba(255, 92, 0, 0.3);
+  box-shadow: 0 0 8px rgba(255, 92, 0, 0.15);
+}
+
+.cardTapsy:hover .flowNodeCard {
+  border-color: rgba(245, 158, 11, 0.3);
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.15);
+}
+
+.cardBear:hover .flowNodeCard {
+  border-color: rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.15);
+}
+
+.cardThermo:hover .flowNodeCard {
   border-color: rgba(255, 92, 0, 0.3);
   box-shadow: 0 0 8px rgba(255, 92, 0, 0.15);
 }
@@ -1660,4 +1716,446 @@
 
 .primaryActionBtn:hover .btnArrow {
   transform: translateX(4px);
+}
+
+/* ===== COMPREHENSIVE MOBILE RESPONSIVE OVERRIDES ===== */
+
+@media (max-width: 768px) {
+  /* --- Section & Container --- */
+  .section {
+    padding: 2.5rem 0.75rem;
+  }
+
+  .container {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* --- Header & Title --- */
+  .header {
+    margin-bottom: 2rem;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+  }
+
+  .badge {
+    font-size: 0.65rem;
+    padding: 5px 10px;
+  }
+
+  /* --- Filters --- */
+  .filters {
+    gap: 0.4rem;
+    margin-bottom: 2rem;
+  }
+
+  .filterBtn {
+    padding: 7px 14px;
+    font-size: 0.78rem;
+  }
+
+  /* --- Grid --- */
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  /* --- Card --- */
+  .card {
+    height: auto !important;
+    min-height: auto !important;
+    padding-bottom: 0.5rem !important;
+    border-radius: 14px;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  /* --- Card Header --- */
+  .cardHeaderArea {
+    padding: 0.4rem 0.5rem 0.2rem 0.5rem;
+    gap: 0.35rem;
+    flex-wrap: nowrap;
+    min-width: 0;
+  }
+
+  .cardImage {
+    height: 32px;
+    width: 32px;
+    min-width: 32px;
+    border-radius: 6px;
+  }
+
+  .cardIcon {
+    font-size: 1rem;
+  }
+
+  .cardHeaderTitleWrap {
+    min-width: 0;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .cardTitle {
+    font-size: 0.82rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .cardCategoryLabel {
+    font-size: 0.5rem;
+  }
+
+  /* --- Status Indicator --- */
+  .statusIndicator {
+    flex-shrink: 0;
+  }
+
+  .statusBadge {
+    padding: 1px 5px;
+  }
+
+  .statusText {
+    font-size: 0.5rem;
+  }
+
+  .statusDot {
+    width: 5px;
+    height: 5px;
+  }
+
+  .statusActivity {
+    font-size: 0.5rem;
+  }
+
+  .statusUpdated {
+    font-size: 0.45rem;
+  }
+
+  .statusTooltip {
+    width: 180px;
+    right: -10px;
+  }
+
+  /* --- AI Orb --- */
+  .aiOrb {
+    width: 28px;
+    height: 28px;
+    top: 10px;
+    right: 10px;
+  }
+
+  .aiOrbIcon {
+    font-size: 0.85rem;
+  }
+
+  .aiOrbExplainer {
+    width: 200px;
+    right: -8px;
+    padding: 0.65rem;
+    font-size: 0.72rem;
+  }
+
+  .aiOrbTitle {
+    font-size: 0.78rem;
+  }
+
+  .aiOrbText {
+    font-size: 0.68rem;
+  }
+
+  /* --- Interactive Viewport --- */
+  .interactiveViewport {
+    margin: 0.3rem 0.5rem 0 0.5rem;
+    height: auto !important;
+    min-height: 120px !important;
+    border-radius: 6px;
+  }
+
+  /* --- Dashboard Content --- */
+  .dashboardTabContent {
+    padding: 0.35rem 0.5rem;
+  }
+
+  /* --- Flow Nodes --- */
+  .flowTitle {
+    font-size: 0.52rem;
+  }
+
+  .flowNodesList {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+    gap: 2px;
+    padding-bottom: 4px;
+  }
+
+  .flowNodeCard {
+    padding: 2px 4px;
+    gap: 3px;
+    flex-shrink: 0;
+  }
+
+  .flowNodeName {
+    font-size: 0.52rem;
+  }
+
+  .flowConnector {
+    width: 10px;
+    min-width: 10px;
+  }
+
+  /* --- Metrics Grid --- */
+  .metricsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.25rem;
+  }
+
+  .metricGlassCard {
+    padding: 3px 4px;
+  }
+
+  .metricVal {
+    font-size: 0.72rem;
+  }
+
+  .metricLabel {
+    font-size: 0.48rem;
+  }
+
+  /* --- Tags & Description --- */
+  .cardBody {
+    padding: 0.25rem 0.5rem;
+  }
+
+  .tagWrapper {
+    height: auto !important;
+    overflow: visible !important;
+    gap: 3px;
+  }
+
+  .tag {
+    font-size: 0.5rem;
+    padding: 1px 4px;
+  }
+
+  .cardText {
+    font-size: 0.62rem;
+    height: auto !important;
+    min-height: 28px !important;
+    -webkit-line-clamp: 3;
+  }
+
+  /* --- Footer Action --- */
+  .cardActionFooter {
+    padding: 0.25rem 0.5rem 0.5rem 0.5rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.4rem;
+  }
+
+  .tabButtonsGroup {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
+    padding: 3px;
+    gap: 3px;
+  }
+
+  .tabBtn {
+    font-size: 0.62rem;
+    padding: 5px 8px;
+    flex-shrink: 0;
+  }
+
+  .primaryActionBtn {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 0.68rem;
+    justify-content: center;
+  }
+
+  /* --- Progression Indicator --- */
+  .progressionIndicator {
+    margin: 0.2rem 0.5rem 0 0.5rem;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    justify-content: flex-start !important;
+    gap: 2px;
+    padding: 2px 3px;
+  }
+
+  .progStepBtn {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+    font-size: 0.48rem !important;
+    padding: 0 4px;
+    height: 20px;
+  }
+
+  .progArrow {
+    font-size: 0.5rem;
+  }
+}
+
+/* ===== EXTRA SMALL SCREENS (phones < 480px) ===== */
+@media (max-width: 480px) {
+  .section {
+    padding: 2rem 0.5rem;
+  }
+
+  .title {
+    font-size: 1.4rem;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+  }
+
+  .filterBtn {
+    padding: 5px 10px;
+    font-size: 0.72rem;
+  }
+
+  .grid {
+    gap: 1.25rem;
+  }
+
+  .card {
+    border-radius: 12px;
+  }
+
+  .cardHeaderArea {
+    padding: 0.35rem 0.4rem 0.15rem 0.4rem;
+    gap: 0.3rem;
+  }
+
+  .cardImage {
+    height: 28px;
+    width: 28px;
+    min-width: 28px;
+  }
+
+  .cardIcon {
+    font-size: 0.9rem;
+  }
+
+  .cardTitle {
+    font-size: 0.75rem;
+  }
+
+  .cardCategoryLabel {
+    font-size: 0.45rem;
+  }
+
+  .interactiveViewport {
+    margin: 0.25rem 0.4rem 0 0.4rem;
+    min-height: 100px !important;
+  }
+
+  .dashboardTabContent {
+    padding: 0.3rem 0.4rem;
+  }
+
+  .flowNodeName {
+    font-size: 0.48rem;
+  }
+
+  .flowConnector {
+    width: 8px;
+    min-width: 8px;
+  }
+
+  .metricsGrid {
+    gap: 0.2rem;
+  }
+
+  .metricVal {
+    font-size: 0.65rem;
+  }
+
+  .metricLabel {
+    font-size: 0.42rem;
+  }
+
+  .cardBody {
+    padding: 0.2rem 0.4rem;
+  }
+
+  .tag {
+    font-size: 0.45rem;
+    padding: 1px 3px;
+  }
+
+  .cardText {
+    font-size: 0.58rem;
+  }
+
+  .cardActionFooter {
+    padding: 0.2rem 0.4rem 0.4rem 0.4rem;
+  }
+
+  .tabBtn {
+    font-size: 0.58rem;
+    padding: 4px 6px;
+  }
+
+  .primaryActionBtn {
+    padding: 7px 10px;
+    font-size: 0.62rem;
+  }
+
+  .progressionIndicator {
+    margin: 0.15rem 0.4rem 0 0.4rem;
+  }
+
+  .progStepBtn {
+    font-size: 0.44rem !important;
+    padding: 0 3px;
+    height: 18px;
+  }
+
+  .aiOrb {
+    width: 24px;
+    height: 24px;
+    top: 8px;
+    right: 8px;
+  }
+
+  .aiOrbIcon {
+    font-size: 0.75rem;
+  }
+
+  .aiOrbExplainer {
+    width: 180px;
+    padding: 0.5rem;
+  }
+
+  .statusBadge {
+    padding: 1px 4px;
+    gap: 2px;
+  }
+
+  .statusText {
+    font-size: 0.45rem;
+  }
+
+  .statusDot {
+    width: 4px;
+    height: 4px;
+  }
+
+  .statusActivity,
+  .statusUpdated {
+    display: none;
+  }
 }

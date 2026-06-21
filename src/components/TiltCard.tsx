@@ -7,9 +7,17 @@ interface TiltCardProps {
   children: React.ReactNode;
   className?: string;
   maxTilt?: number; // Maximum rotation in degrees
+  onClick?: (e: MouseEvent<HTMLDivElement>) => void;
+  style?: React.CSSProperties;
 }
 
-export default function TiltCard({ children, className = "", maxTilt = 15 }: TiltCardProps) {
+export default function TiltCard({
+  children,
+  className = "",
+  maxTilt = 15,
+  onClick,
+  style = {},
+}: TiltCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [tiltStyle, setTiltStyle] = useState<React.CSSProperties>({});
   const [glareStyle, setGlareStyle] = useState<React.CSSProperties>({
@@ -78,7 +86,13 @@ export default function TiltCard({ children, className = "", maxTilt = 15 }: Til
     <div
       ref={cardRef}
       className={`${styles.container} ${className}`}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      onMouseEnter={handleMouseEnter}
+      onClick={onClick}
+      style={{ ...style, ...tiltStyle }}
     >
+      <div className={styles.glare} style={glareStyle} />
       <div className={styles.inner}>{children}</div>
     </div>
   );

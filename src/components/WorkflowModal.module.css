@@ -151,6 +151,22 @@
   border-color: rgba(0, 117, 255, 0.15);
 }
 
+.stage7 {
+  border-color: rgba(255, 92, 0, 0.15);
+}
+
+.stage8 {
+  border-color: rgba(0, 255, 102, 0.15);
+}
+
+.stage9 {
+  border-color: rgba(255, 92, 0, 0.15);
+}
+
+.stage10 {
+  border-color: rgba(0, 255, 102, 0.15);
+}
+
 .stageTitle {
   font-size: 0.8rem;
   font-family: var(--font-mono);
@@ -355,6 +371,30 @@
 .pulse6 {
   top: 50%;
   left: 90%;
+  opacity: 1;
+}
+
+.pulse7 {
+  top: 50%;
+  left: 95%;
+  opacity: 1;
+}
+
+.pulse8 {
+  top: 50%;
+  left: 98%;
+  opacity: 1;
+}
+
+.pulse9 {
+  top: 50%;
+  left: 99%;
+  opacity: 1;
+}
+
+.pulse10 {
+  top: 50%;
+  left: 99%;
   opacity: 1;
 }
 
@@ -1034,4 +1074,260 @@
   font-weight: bold;
   animation: cursorBlink 1s infinite steps(2);
   margin-left: 2px;
+}
+
+/* ===== WORKFLOW MODAL MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .overlay {
+    padding: 0;
+  }
+
+  .modal {
+    max-width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    border-radius: 0;
+    border: none;
+  }
+
+  .header {
+    padding: 0.75rem 1rem;
+  }
+
+  .title {
+    font-size: 1rem;
+  }
+
+  .headerBadge {
+    font-size: 0.62rem;
+    padding: 2px 6px;
+  }
+
+  .headerActions {
+    gap: 0.75rem;
+  }
+
+  .modeToggleBtn {
+    font-size: 0.65rem;
+    padding: 4px 8px;
+  }
+
+  .canvas {
+    padding: 1.5rem 1rem;
+  }
+
+  .workflowGrid {
+    gap: 2rem;
+    flex-direction: column;
+    min-width: auto;
+    align-items: stretch;
+  }
+
+  .stageGroup {
+    padding: 1rem;
+  }
+
+  .stageTitle {
+    font-size: 0.72rem;
+  }
+
+  .nodesRow {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .node {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .nodeName {
+    font-size: 0.7rem;
+  }
+
+  .nodeDesc {
+    font-size: 0.6rem;
+  }
+
+  .nodeIcon {
+    width: 24px;
+    height: 24px;
+    font-size: 0.82rem;
+  }
+
+  .footer {
+    padding: 0.75rem 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .footerNote {
+    font-size: 0.68rem;
+    flex-wrap: wrap;
+  }
+
+  .divider {
+    margin: 0 6px;
+  }
+
+  .prevStepBtn,
+  .nextStepBtn {
+    padding: 5px 10px;
+    font-size: 0.72rem;
+  }
+
+  .stepIndicator {
+    font-size: 0.72rem;
+  }
+
+  /* Case Study & Specs */
+  .caseStudyContainer,
+  .specsTabContent {
+    width: 95%;
+    margin: 0.75rem auto;
+    gap: 1rem;
+  }
+
+  .caseStudyTitle,
+  .specsTitle {
+    font-size: 1.05rem;
+  }
+
+  .caseStudySubtitle,
+  .specsSubtitle {
+    font-size: 0.75rem;
+  }
+
+  .caseStudyCard,
+  .specsCard {
+    padding: 1rem;
+    border-radius: 10px;
+  }
+
+  .caseStudyIcon {
+    font-size: 1.4rem;
+  }
+
+  .caseStudySectionTitle,
+  .specsSectionTitle {
+    font-size: 0.85rem;
+  }
+
+  .caseStudyText {
+    font-size: 0.75rem;
+  }
+
+  .specsList li {
+    font-size: 0.78rem;
+  }
+
+  .techPill {
+    font-size: 0.68rem;
+    padding: 3px 8px;
+  }
+
+  /* Mac Window & Blueprint */
+  .macWindowWrapper {
+    width: 98%;
+    margin: 1rem auto;
+  }
+
+  .macTitle {
+    font-size: 0.65rem;
+  }
+
+  .screenshotImg,
+  .architectureImg {
+    max-height: 50vh;
+  }
+
+  .modalArchitectureFlowSequence {
+    max-width: 100%;
+    padding: 6px 10px;
+    gap: 8px;
+  }
+
+  .modalArchSequenceNode {
+    font-size: 0.72rem;
+  }
+
+  /* Terminal in modal */
+  .terminalView {
+    width: 95%;
+    margin: 1rem auto;
+  }
+
+  .terminalBody {
+    padding: 1rem;
+    font-size: 0.78rem;
+    min-height: 200px;
+  }
+
+  /* Lightbox */
+  .lightboxControls {
+    top: -48px;
+    padding: 4px 8px;
+    gap: 4px;
+  }
+
+  .lightboxControlBtn {
+    font-size: 0.68rem;
+    padding: 4px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0.6rem 0.75rem;
+  }
+
+  .title {
+    font-size: 0.88rem;
+  }
+
+  .headerBadge {
+    display: none;
+  }
+
+  .modeToggleBtn {
+    font-size: 0.6rem;
+    padding: 3px 6px;
+  }
+
+  .canvas {
+    padding: 1rem 0.5rem;
+  }
+
+  .stageGroup {
+    padding: 0.75rem;
+  }
+
+  .node {
+    padding: 6px 10px;
+    gap: 8px;
+  }
+
+  .footer {
+    padding: 0.6rem 0.75rem;
+  }
+
+  .closeActionBtn {
+    padding: 6px 12px;
+    font-size: 0.72rem;
+  }
+
+  .caseStudyContainer,
+  .specsTabContent {
+    width: 98%;
+  }
+
+  .caseStudyCard,
+  .specsCard {
+    padding: 0.85rem;
+  }
+
+  .screenshotImg,
+  .architectureImg {
+    max-height: 40vh;
+  }
 }

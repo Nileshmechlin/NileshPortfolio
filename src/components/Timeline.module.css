@@ -237,3 +237,51 @@
   color: var(--orange);
   border-radius: 4px;
 }
+
+@media (max-width: 480px) {
+  .section {
+    padding: 1rem 0.5rem;
+  }
+
+  .title {
+    font-size: 1.85rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .badge {
+    font-size: 0.65rem;
+    padding: 4px 10px;
+  }
+
+  .item {
+    padding-left: 40px;
+  }
+
+  .cardContent {
+    padding: 1.25rem;
+  }
+
+  .roleTitle {
+    font-size: 1.05rem;
+  }
+
+  .companyName {
+    font-size: 0.85rem;
+  }
+
+  .bulletItem {
+    font-size: 0.82rem;
+  }
+
+  .tag {
+    font-size: 0.68rem;
+    padding: 3px 8px;
+  }
+
+  .tags {
+    gap: 6px;
+  }
+}

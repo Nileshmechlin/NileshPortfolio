@@ -387,3 +387,83 @@
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+@media (max-width: 480px) {
+  .section {
+    padding: 1rem 0.5rem;
+  }
+
+  .title {
+    font-size: 1.85rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .badge {
+    font-size: 0.65rem;
+    padding: 4px 10px;
+  }
+
+  .header {
+    margin-bottom: 1.5rem;
+  }
+
+  .infoTitle {
+    font-size: 1.35rem;
+  }
+
+  .infoText {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .contactIcon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+    border-radius: 10px;
+  }
+
+  .contactLabel {
+    font-size: 0.68rem;
+  }
+
+  .contactLink {
+    font-size: 0.88rem;
+  }
+
+  .formPanel {
+    padding: 1.5rem 1rem;
+    border-radius: 14px;
+  }
+
+  .formInput, .formSelect, .formTextarea {
+    font-size: 0.88rem;
+    padding: 10px 12px;
+  }
+
+  .submitBtn {
+    padding: 0.85rem;
+    font-size: 0.9rem;
+  }
+
+  .jsonWrapper {
+    height: 120px;
+    font-size: 0.72rem;
+    padding: 1rem;
+  }
+
+  .webhookTitle {
+    font-size: 0.95rem;
+  }
+
+  .stepTitle {
+    font-size: 0.82rem;
+  }
+
+  .stepSubtext {
+    font-size: 0.72rem;
+  }
+}

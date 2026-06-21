@@ -151,95 +151,11 @@ export default function Projects({ onInspect }: ProjectsProps) {
       n8nBadge: { nodes: "26 Nodes", integrations: "6 Integrations" }
     },
     {
-      title: "Production RAG Platform",
-      subtitle: "PRODUCTION RAG ENGINE",
-      description: "Enterprise semantic retrieval indexing 10,000+ files with sub-80ms search queries.",
-      category: "fullstack",
-      tags: ["⚡ n8n", "🧠 Jina", "🗄️ Qdrant", "💻 Next", "🔑 Security"],
-      gradientClass: styles.gradPurple,
-      icon: "📚",
-      linkText: "▶ Open Interactive Case Study",
-      metrics: [
-        { value: "10000 Docs", label: "Knowledgebase Files" },
-        { value: "80ms", label: "Query Retrieval" },
-        { value: "99.2%", label: "Accuracy Rate" },
-        { value: "4 Sources", label: "Ingestion Paths" }
-      ],
-      difficulty: [
-        { label: "AI & Agents", score: 85 },
-        { label: "Automation", score: 70 },
-        { label: "Backend", score: 95 },
-        { label: "Frontend", score: 85 }
-      ],
-      codeStats: [
-        { label: "Workflow Size", value: "18 Nodes" },
-        { label: "AI Models", value: "Jina Embeddings" },
-        { label: "Integrations", value: "4" },
-        { label: "Automation Level", value: "95%" }
-      ],
-      flowNodes: ["Ingest", "Chunk", "Embed", "Vector", "Search"],
-      nodeTooltips: [
-        "Parses raw files into clean text chunks.",
-        "Removes noise and structural metadata.",
-        "Creates query embeddings via Jina AI.",
-        "Indexes vector data in Qdrant store.",
-        "Delivers semantic responses inside UI."
-      ],
-      terminalScript: [
-        { text: "$ qdrant-query --search=\"real estate tax benefit\"", delay: 400 },
-        { text: "Connecting...", delay: 500 },
-        { text: "✓ Qdrant vector store online", delay: 300 },
-        { text: "Embedding query...", delay: 600 },
-        { text: "✓ Jina AI vector ready", delay: 300 },
-        { text: "Searching index...", delay: 600 },
-        { text: "✓ Retrieved 4 context chunks (52ms)", delay: 400 },
-        { text: "Synthesizing...", delay: 600 },
-        { text: "✓ Response ready", delay: 400 },
-        { text: "Query processed. (0.8s)", delay: 300 }
-      ],
-      aiExplainer: "A custom Retrieval-Augmented Generation (RAG) platform. Documents are chunked and embedded via Jina AI, stored in Qdrant, and retrieved inside a Next.js chat layout using semantic vector search.",
-      architecture: ["Raw Docs", "Node.js Parser", "Jina API", "Qdrant Vector DB", "Next.js Interface"],
-      lastUpdated: "May 2026",
-      technicalMetrics: [
-        { label: "Vector Nodes", value: "18" },
-        { label: "AI Embeddings", value: "Jina AI" },
-        { label: "Vector DB", value: "Qdrant" },
-        { label: "Indexed Docs", value: "10,000+" },
-        { label: "Query Latency", value: "< 80ms" },
-        { label: "Accuracy Rate", value: "99.2%" }
-      ],
-      hoverStats: [
-        "18 RAG Nodes",
-        "Qdrant Vector DB",
-        "Jina Embeddings",
-        "99.2% Accuracy"
-      ],
-      caseStudy: {
-        problem: "Document search is disconnected and manual analysis is slow.",
-        solution: "RAG automation indexer parses, embeddings, and formats semantic answers.",
-        impact: [
-          "✓ Sub-80ms search",
-          "✓ 99.2% accuracy",
-          "✓ Auto chunks parsed",
-          "✓ Secured local store"
-        ]
-      },
-      productionReadiness: [
-        "Vector Sync",
-        "Index Validation",
-        "Latency Safeguard",
-        "Secure Ingestion",
-        "Semantic Guardrails",
-        "Multi-source Parsing"
-      ],
-      n8nBadge: { nodes: "18 Nodes", integrations: "4 Integrations" }
-    },
-    {
-      title: "AI Voice Calling Engine",
-      subtitle: "CONVERSATIONAL AI ENGINE",
-      description: "Autonomous WebRTC conversational voice qualification agent synced with GoHighLevel CRM.",
+      title: "Autonomous Voice Architecture",
+      subtitle: "CONVERSATIONAL AI PLATFORM",
+      description: "Built a custom autonomous voice AI platform to replace expensive third-party solutions like Vapi and Retell, reducing operational costs while providing complete control over AI agents, telephony infrastructure, and business workflows.",
       category: "ghl",
-      tags: ["📞 Twilio", "🗣️ Vocode", "🤖 CloseBot", "🏠 GHL", "📅 Calendar"],
+      tags: ["📞 Twilio", "🗣️ Vocode", "🤖 Groq", "⚡ FastAPI", "🗄️ Supabase", "▲ Next.js"],
       gradientClass: styles.gradBlue,
       icon: "📞",
       linkText: "▶ Explore Production System",
@@ -253,70 +169,79 @@ export default function Projects({ onInspect }: ProjectsProps) {
         { label: "AI & Agents", score: 95 },
         { label: "Automation", score: 90 },
         { label: "Backend", score: 85 },
-        { label: "Frontend", score: 60 }
+        { label: "Frontend", score: 70 }
       ],
       codeStats: [
-        { label: "Workflow Size", value: "32 Nodes" },
-        { label: "AI Models", value: "Vocode & CloseBot" },
-        { label: "Integrations", value: "5" },
-        { label: "Automation Level", value: "98%" }
+        { label: "Voice AI", value: "Vocode" },
+        { label: "Response LLM", value: "Groq API" },
+        { label: "Telephony", value: "Twilio trunk" },
+        { label: "Database", value: "Supabase DB" }
       ],
-      flowNodes: ["Call", "STT", "AI", "Action", "CRM"],
+      flowNodes: ["Trigger", "Twilio", "Voice AI", "Groq AI", "FastAPI", "Supabase", "Dashboard", "Action"],
       nodeTooltips: [
-        "Twilio voice call trigger.",
-        "Inbound webhook dispatcher.",
-        "Vocode WebRTC speech agent.",
-        "CloseBot AI intent parser.",
-        "GoHighLevel CRM update."
+        "Customer call or outbound trigger event.",
+        "Twilio telephony and voice routing.",
+        "Real-time voice stream handled by Vocode.",
+        "Ultra-low latency reasoning and response generation via Groq API.",
+        "FastAPI backend handling request coordination and webhooks.",
+        "Supabase PostgreSQL storage for call logs, transcriptions, and lead data.",
+        "Next.js frontend dashboard updating in real-time.",
+        "Automated follow-up actions (SMS, Email, scheduling)."
       ],
       terminalScript: [
-        { text: "$ call --lead=\"+1234567\" --agent=\"Qualify\"", delay: 500 },
-        { text: "Connecting Twilio...", delay: 600 },
-        { text: "✓ Voice trunk active", delay: 300 },
-        { text: "Vocode pipeline...", delay: 600 },
-        { text: "✓ Speech-to-Text active (180ms latency)", delay: 400 },
-        { text: "Intent parsing...", delay: 600 },
-        { text: "✓ CloseBot intent: motivated seller", delay: 300 },
-        { text: "Booking slot...", delay: 700 },
-        { text: "✓ CRM slot secured (Friday 3pm)", delay: 300 },
-        { text: "Simulation finished.", delay: 300 }
+        { text: "$ voice-platform --initiate-call=\"+1234567890\" --pipeline=\"vocode-groq\"", delay: 500 },
+        { text: "Dialing number via Twilio telephony trunk...", delay: 600 },
+        { text: "✓ Call answered. Launching WebRTC voice stream...", delay: 350 },
+        { text: "Connecting Vocode voice agents...", delay: 550 },
+        { text: "✓ Real-time Speech-to-Text connection established", delay: 300 },
+        { text: "User spoken input captured: 'I need to schedule an AC tune-up tomorrow.'", delay: 800 },
+        { text: "Querying Groq LLM API for low-latency voice response...", delay: 400 },
+        { text: "✓ Groq output generated: 'I can help with that...': 140ms response latency", delay: 300 },
+        { text: "Routing callback webhook to FastAPI API backend...", delay: 500 },
+        { text: "✓ FastAPI received payload. Logging call transcription...", delay: 300 },
+        { text: "Updating Supabase database records...", delay: 450 },
+        { text: "✓ Supabase DB synced. Updating Next.js live dashboard...", delay: 300 },
+        { text: "Triggering follow-up automation: dispatching slot booking confirmation...", delay: 600 },
+        { text: "✓ System workflow execution completed successfully.", delay: 300 }
       ],
-      aiExplainer: "This voice pipeline fields inbound questions and triggers outbound qualification campaigns. It transcribes discussions, extracts purchase/sell intent, and logs scheduled bookings straight into GoHighLevel.",
-      architecture: ["Twilio Webhook", "Vocode WebRTC", "CloseBot Parser", "GoHighLevel API"],
+      aiExplainer: "Built a custom autonomous voice AI platform to replace expensive third-party solutions like Vapi and Retell, reducing operational costs while providing complete control over AI agents, telephony infrastructure, and business workflows. The system uses Twilio for phone numbers and call routing, Vocode for real-time voice conversations, Groq for fast AI responses, FastAPI for backend APIs, Supabase for database storage, and Next.js for the frontend dashboard. This platform can be used for lead qualification, appointment booking, customer support, missed-call follow-up, and outbound sales automation.",
+      architecture: ["Twilio Call Routing", "Voice AI (Vocode)", "Groq LLM Reasoning", "FastAPI Backend", "Supabase PostgreSQL Database", "Next.js Dashboard"],
       lastUpdated: "Apr 2026",
       technicalMetrics: [
-        { label: "Workflow Nodes", value: "32" },
         { label: "Voice Latency", value: "< 200ms" },
-        { label: "Integrations", value: "5" },
+        { label: "AI response loop", value: "Groq LLM" },
         { label: "Outbound Calls", value: "5000+" },
         { label: "Booking Rate", value: "42%" },
-        { label: "Active Hours", value: "24/7" }
+        { label: "Active SLA", value: "24/7" },
+        { label: "Frameworks", value: "Next.js / FastAPI" }
       ],
       hoverStats: [
-        "32 Voice Nodes",
-        "Twilio Trunking",
-        "Vocode WebRTC",
-        "CloseBot intent parsing"
+        "Twilio call routing",
+        "Vocode stream",
+        "Fast response via Groq API",
+        "FastAPI & Supabase DB"
       ],
       caseStudy: {
-        problem: "Inbound leads grow cold rapidly and manual operators are expensive.",
-        solution: "Voice AI transcribes live dialogue and filters seller intents.",
+        problem: "Businesses lose customer conversion opportunities due to slow manual response times, high overhead for 24/7 manual dialers, and lack of automated call logging.",
+        solution: "Deploy an event-driven AI Voice Calling platform leveraging Twilio voice routing, low-latency Groq response loops, and automated Supabase database reconciliation.",
         impact: [
-          "✓ Instant call reply",
-          "✓ 42% booked slots",
-          "✓ Vocode WebRTC live",
-          "✓ GHL calendar sync"
+          "✓ Automates inbound/outbound calling",
+          "✓ Eliminates manual calling labor overhead",
+          "✓ Sub-200ms audio response loop with Groq LLM",
+          "✓ Synced call records in Next.js dashboard",
+          "✓ Automatic appointment scheduling"
         ]
       },
       productionReadiness: [
-        "Trunking Verified",
-        "Vocode Audio Active",
-        "CloseBot Intent Engine",
-        "GHL Integration",
-        "Secure Logging",
-        "24/7 Uptime SLA"
+        "Twilio Trunking Active",
+        "Voice AI Stream Verified",
+        "Groq Ultra-low Latency Loop",
+        "FastAPI Webhook Handler",
+        "Supabase DB Persistence",
+        "Next.js Dashboard Live",
+        "24/7 Voice SLA"
       ],
-      n8nBadge: { nodes: "32 Nodes", integrations: "5 Integrations" }
+      n8nBadge: { nodes: "N/A", integrations: "Vocode, Twilio, Supabase, Groq" }
     },
     {
       title: "GHL Revenue Automation",
@@ -399,6 +324,268 @@ export default function Projects({ onInspect }: ProjectsProps) {
         "Disaster Recovery Plan"
       ],
       n8nBadge: { nodes: "45 Nodes", integrations: "15 Integrations" }
+    },
+    {
+      title: "Tapsy Backend Platform",
+      subtitle: "MOBILE VIDEO REVIEW PLATFORM",
+      description: "Engineered the backend for Tapsy, a short-form video review app replacing boring text reviews with authentic 30s clips, social feeds, QR/NFC integrations, and real-time business dashboards.",
+      category: "fullstack",
+      tags: ["🟢 Node.js", "📘 TypeScript", "◭ Prisma", "🗄️ Redis", "🔥 Firebase", "📱 Mobile Backend", "🔌 QR/NFC APIs", "🐶 Husky"],
+      gradientClass: styles.gradYellow,
+      icon: "🚕",
+      linkText: "▶ Inspect Architecture Detail",
+      metrics: [
+        { value: "< 40ms", label: "Fastify API Response" },
+        { value: "sub-80ms", label: "Video Feed Fetch" },
+        { value: "Unlimited", label: "Chat & Social Feeds" },
+        { value: "Print/NFC", label: "QR Business Targets" }
+      ],
+      difficulty: [
+        { label: "AI & Agents", score: 45 },
+        { label: "Automation", score: 85 },
+        { label: "Backend", score: 98 },
+        { label: "Frontend", score: 70 }
+      ],
+      codeStats: [
+        { label: "Video Upload", value: "30s limit transcoding" },
+        { label: "Analytics", value: "Real-time feeds/trends" },
+        { label: "Caching", value: "Redis rating graphs" },
+        { label: "Dev Workflow", value: "Husky hooks" }
+      ],
+      flowNodes: ["Record", "Transcode", "Social Feed", "Analytics", "QR Discover"],
+      nodeTooltips: [
+        "User records 30s video review on mobile device.",
+        "Node.js transcoder processes video for low-bandwidth streaming.",
+        "Redis routes new reviews to followers and syncs feed instantly.",
+        "Calculates real-time ratings, trend graphs, and popular times.",
+        "NFC/QR scanner retrieves profile details for business onboarding."
+      ],
+      terminalScript: [
+        { text: "$ tapsy-transcode --file=\"review_SarahK_coffee.mov\"", delay: 400 },
+        { text: "Compressing video to H.264 standard format...", delay: 450 },
+        { text: "✓ Transcoded to 4.2MB web-optimized stream (310ms)", delay: 350 },
+        { text: "Saving file to cloud storage...", delay: 600 },
+        { text: "✓ Storage upload confirmed", delay: 300 },
+        { text: "Triggering social feed dispatch API...", delay: 500 },
+        { text: "✓ Notifying 4,200 followers via Firebase FCM", delay: 400 },
+        { text: "Syncing business popular time graphs in Redis...", delay: 550 },
+        { text: "✓ Cache updated successfully (8ms)", delay: 300 },
+        { text: "Transaction completed successfully.", delay: 300 }
+      ],
+      aiExplainer: "This high-performance taxi backend utilizes Node.js and TypeScript for rapid execution, Redis caching for ultra-low latency driver routing, database indexing for rapid Prisma queries, Twilio for communication, and Firebase for socket synchronization.",
+      architecture: ["Node.js API", "Redis Caching", "Prisma DB", "Twilio Messaging", "Firebase Sync"],
+      lastUpdated: "Jun 2026",
+      technicalMetrics: [
+        { label: "Fastify Latency", value: "< 40ms" },
+        { label: "DB Query Time", value: "< 20ms" },
+        { label: "Runtime Engine", value: "NodeJS & TS" },
+        { label: "SLA Deliverability", value: "99.98%" },
+        { label: "Telephony Route", value: "Twilio Gateway" },
+        { label: "Dev Workflow", value: "Husky Hooks" }
+      ],
+      hoverStats: [
+        "Distributed Node.js Core",
+        "Prisma Database Indexing",
+        "Redis Active Cache Layer",
+        "Twilio & Firebase Sync"
+      ],
+      caseStudy: {
+        problem: "Boring text reviews are easily faked and fail to convey the true look, feel, or vibe of physical businesses like restaurants and salons.",
+        solution: "A scalable Node.js architecture utilizing Redis cache grids, Prisma spatial indexes, and real-time FCM updates.",
+        impact: [
+          "✓ sub-40ms match latency",
+          "✓ 4x faster DB lookups",
+          "✓ Automated Twilio SMS alert",
+          "✓ Real-time Firebase sync"
+        ]
+      },
+      productionReadiness: [
+        "Husky Git pre-commits",
+        "Redis replication",
+        "Prisma Indexing Audit",
+        "Twilio Voice integration",
+        "Firebase FCM sync",
+        "Docker multi-container"
+      ],
+      n8nBadge: { nodes: "N/A", integrations: "Twilio, Firebase, Redis" }
+    },
+    {
+      title: "Bear Intelligence Pipeline",
+      subtitle: "TEMPORAL RAG KNOWLEDGE SYSTEM",
+      description: "AI-powered Temporal RAG platform transforming scripts, transcripts, and documents into an intelligent Next.js conversational chat base.",
+      category: "fullstack",
+      tags: ["⚡ n8n", "🧠 Jina AI", "🗄️ Qdrant", "💻 Next.js", "🤖 Groq LLM", "🔌 Webhooks"],
+      gradientClass: styles.gradBear,
+      icon: "🐻",
+      linkText: "▶ Inspect Pipeline Detail",
+      metrics: [
+        { value: "< 200ms", label: "Avg Response Time" },
+        { value: "99.2%", label: "Accuracy Rate" },
+        { value: "10K+", label: "Docs Processed" },
+        { value: "24/7", label: "System Uptime" }
+      ],
+      difficulty: [
+        { label: "AI & Agents", score: 92 },
+        { label: "Automation", score: 88 },
+        { label: "Backend", score: 90 },
+        { label: "Frontend", score: 85 }
+      ],
+      codeStats: [
+        { label: "Fastify Latency", value: "< 200ms" },
+        { label: "Database Engine", value: "Qdrant Cloud" },
+        { label: "Automation Engine", value: "n8n Workflow" },
+        { label: "LLM Reasoner", value: "Groq LLM" }
+      ],
+      flowNodes: ["Webhook", "Embed", "Qdrant", "Temporal", "Retrieve", "Context", "Ask Groq", "Response"],
+      nodeTooltips: [
+        "Webhook receives the user query from the Next.js interface.",
+        "Query is converted into vector embedding by Jina AI.",
+        "Vector search finds the most relevant script chunks in Qdrant.",
+        "Applies time-based filters for relevance.",
+        "Fetches relevant timeline chunks from matched documents.",
+        "Context is built with temporal logic and relevance scoring.",
+        "Groq AI LLM generates the final intelligent response.",
+        "Response is sent back to the webhook and displayed in the UI."
+      ],
+      terminalScript: [
+        { text: "$ n8n-trigger --webhook=\"query\" --data=\"key takeaways from script\"", delay: 400 },
+        { text: "Generating query embedding via Jina AI...", delay: 450 },
+        { text: "✓ Embeddings vector generated (38ms)", delay: 300 },
+        { text: "Searching Qdrant index (10,000+ files)...", delay: 550 },
+        { text: "✓ Retrieved 15 raw chunks (42ms)", delay: 300 },
+        { text: "Applying temporal-aware filtering logic...", delay: 500 },
+        { text: "✓ Identified 6 timeline-relevant chunks (18ms)", delay: 300 },
+        { text: "Structuring Groq LLM context window...", delay: 400 },
+        { text: "Requesting answer from Groq API...", delay: 650 },
+        { text: "✓ Groq response ready: 'Here are the key takeaways...'", delay: 350 },
+        { text: "Returning HTTP response to Next.js client.", delay: 300 }
+      ],
+      aiExplainer: "An end-to-end AI workflow that ingests documents, generates Jina embeddings, stores them in Qdrant vector database, and processes natural language queries via n8n temporal logic routing to Groq LLM.",
+      architecture: ["Next.js UI", "n8n Webhook", "Jina AI Embeddings", "Qdrant Vector DB", "Groq AI LLM"],
+      lastUpdated: "Jun 2026",
+      technicalMetrics: [
+        { label: "Avg Latency", value: "< 200ms" },
+        { label: "Accuracy Rate", value: "99.2%" },
+        { label: "Index Engine", value: "Qdrant DB" },
+        { label: "Embedding API", value: "Jina Embeddings" },
+        { label: "Reasoning API", value: "Groq LLM" },
+        { label: "Automation Logic", value: "n8n Workflow" }
+      ],
+      hoverStats: [
+        "Next.js Chat UI",
+        "Qdrant Vector DB",
+        "Jina Embeddings",
+        "Groq LLM response"
+      ],
+      caseStudy: {
+        problem: "Transforming raw transcripts and scripts into accurate, time-contextual natural language answers was complex and prone to hallucinations.",
+        solution: "A custom Next.js UI routing query webhooks to n8n, applying temporal logic filters to Qdrant searches, and synthesizing answers via Groq LLM.",
+        impact: [
+          "✓ sub-200ms average response",
+          "✓ 99.2% retrieval accuracy",
+          "✓ 10k+ files indexed",
+          "✓ Live Next.js chat system"
+        ]
+      },
+      productionReadiness: [
+        "n8n Webhook Auth",
+        "Qdrant Index Tuning",
+        "Jina Cache Buffers",
+        "Groq Fallbacks Active",
+        "Vercel CDN Edge",
+        "Docker Local Testing"
+      ],
+      n8nBadge: { nodes: "8 Stages", integrations: "n8n, Qdrant, Groq, Jina" }
+    },
+    {
+      title: "ThermoConnect AI",
+      subtitle: "CONVERSATIONAL AI AUTOMATION ENGINE",
+      description: "Autonomous Retell AI voice qualifying agent calling, scoring, and booking appointments for HVAC leads synced to Google Sheets and CRMs.",
+      category: "automation",
+      tags: ["📞 Retell AI", "⚡ n8n", "🟢 Next.js", "🤖 OpenAI", "📊 Sheets", "🔌 Webhooks"],
+      gradientClass: styles.gradThermo,
+      icon: "🔥",
+      linkText: "▶ Inspect Calling Pipeline",
+      metrics: [
+        { value: "100%", label: "Lead Outreach SLA" },
+        { value: "30-50%", label: "Conversion Lift" },
+        { value: "100+ Hrs", label: "Monthly Labor Saved" },
+        { value: "< 2s", label: "Voice Response Latency" }
+      ],
+      difficulty: [
+        { label: "AI & Agents", score: 92 },
+        { label: "Automation", score: 95 },
+        { label: "Backend", score: 85 },
+        { label: "Frontend", score: 75 }
+      ],
+      codeStats: [
+        { label: "Workflow Size", value: "18 Nodes" },
+        { label: "AI Models", value: "Retell AI & GPT" },
+        { label: "Integrations", value: "5" },
+        { label: "Automation Level", value: "100%" }
+      ],
+      flowNodes: ["Trigger", "Read", "DNC", "Call", "Webhook", "Extract", "Score", "Update"],
+      nodeTooltips: [
+        "Triggers every 15 minutes to find new leads.",
+        "Reads customer profiles from Google Sheets or CRM database.",
+        "Checks Do-Not-Call registry and previous call history.",
+        "Triggers outbound Retell AI voice call.",
+        "Receives call completion status webhook.",
+        "Extracts structured conversation data using OpenAI.",
+        "Scores and qualifies lead based on custom business rules.",
+        "Updates Google Sheets / DB with summaries and follow-ups."
+      ],
+      terminalScript: [
+        { text: "$ n8n-trigger --schedule=\"15m\"", delay: 400 },
+        { text: "Reading new leads from Google Sheets...", delay: 450 },
+        { text: "✓ 3 new leads detected", delay: 300 },
+        { text: "Checking DNC list...", delay: 500 },
+        { text: "✓ Lead \"John Smith\" eligible for call", delay: 300 },
+        { text: "Initiating Retell AI outbound voice call...", delay: 600 },
+        { text: "✓ Call completed (Duration: 2m 14s)", delay: 350 },
+        { text: "Webhook received. Fetching transcript...", delay: 450 },
+        { text: "Analyzing dialogue with OpenAI GPT...", delay: 500 },
+        { text: "✓ Structured JSON output generated", delay: 300 },
+        { text: "Updating database: AC Repair qualified (Score: 85)", delay: 400 },
+        { text: "Sending follow-up SMS...", delay: 350 },
+        { text: "✓ Done", delay: 300 }
+      ],
+      aiExplainer: "An automated outbound voice qualifying system. It monitors lead intake, places Retell AI voice calls, transcribes/extracts structured customer details via GPT, and logs appointments directly into database sheets.",
+      architecture: ["Trigger Pool", "Google Sheets DB", "n8n Outbound Workflow", "Retell AI Voice API", "OpenAI Extractor", "Google Sheets Updater"],
+      lastUpdated: "Jun 2026",
+      technicalMetrics: [
+        { label: "Outbound Latency", value: "< 2s" },
+        { label: "Conversation Accuracy", value: "98%" },
+        { label: "Automation Level", value: "100%" },
+        { label: "Monthly Savings", value: "100+ hours" },
+        { label: "API Integrations", value: "6" },
+        { label: "Output Format", value: "JSON Schema" }
+      ],
+      hoverStats: [
+        "Retell AI Voice API",
+        "n8n Automation Engine",
+        "OpenAI JSON Extraction",
+        "Google Sheets Live Sync"
+      ],
+      caseStudy: {
+        problem: "HVAC companies lose hot leads due to slow manual response times and high administrative calling overhead.",
+        solution: "Autonomous calling agent dials leads instantly, qualifies service requirements via Retell AI, and records structured responses.",
+        impact: [
+          "✓ 100+ hours saved monthly",
+          "✓ 30-50% higher conversion",
+          "✓ Zero missed call opportunities",
+          "✓ Structured data output"
+        ]
+      },
+      productionReadiness: [
+        "Retell API Key Validation",
+        "DNC Database Check",
+        "Webhook Resiliency Retry",
+        "Structured JSON Schema",
+        "Twilio Caller ID Verification",
+        "n8n Execution Logs"
+      ],
+      n8nBadge: { nodes: "18 Nodes", integrations: "Retell AI, OpenAI, Sheets" }
     }
   ];
 
@@ -420,7 +607,7 @@ export default function Projects({ onInspect }: ProjectsProps) {
           <h2 className={styles.title}>Featured AI Systems</h2>
           <div className={styles.featuredStatsGrid}>
             <div className={styles.featuredStatItem}>
-              <span className={styles.featuredStatVal}>4</span>
+              <span className={styles.featuredStatVal}>6</span>
               <span className={styles.featuredStatLbl}>Production Systems</span>
             </div>
             <div className={styles.featuredStatDivider}></div>
@@ -479,7 +666,7 @@ interface ProjectCardProps {
 }
 
 function ProjectCard({ project, onInspect }: ProjectCardProps) {
-  const [activeTab, setActiveTab] = useState<"dashboard" | "case_study" | "architecture" | "blueprint" | "terminal" | "stats">("dashboard");
+  const [activeTab, setActiveTab] = useState<"dashboard" | "case_study" | "terminal">("dashboard");
   const [zoomImageSrc, setZoomImageSrc] = useState<string | null>(null);
   const [zoomScale, setZoomScale] = useState(1);
   const [terminalLogs, setTerminalLogs] = useState<string[]>([]);
@@ -561,9 +748,11 @@ function ProjectCard({ project, onInspect }: ProjectCardProps) {
 
   const getProjectCardClass = () => {
     if (project.title.includes("SEO")) return styles.cardSEO;
-    if (project.title.includes("RAG")) return styles.cardRAG;
     if (project.title.includes("Calling") || project.title.includes("Voice")) return styles.cardVoice;
     if (project.title.includes("Mesh") || project.title.includes("Automation")) return styles.cardGHL;
+    if (project.title.includes("Tapsy")) return styles.cardTapsy;
+    if (project.title.includes("Bear")) return styles.cardBear;
+    if (project.title.includes("Thermo")) return styles.cardThermo;
     return "";
   };
 
@@ -579,13 +768,16 @@ function ProjectCard({ project, onInspect }: ProjectCardProps) {
       return;
     }
     if (
-      project.title === "AI SEO Content Engine" ||
-      project.title === "AI Real Estate Calling System" ||
-      project.title === "Multi-Platform Automation Mesh"
+      project.title === "Production AI SEO Pipeline" ||
+      project.title === "Autonomous Voice Architecture" ||
+      project.title === "GHL Revenue Automation" ||
+      project.title === "Tapsy Backend Platform" ||
+      project.title.includes("Bear") ||
+      project.title.includes("Thermo")
     ) {
       onInspect(project.title);
     } else {
-      startTerminalSimulation();
+      setActiveTab("terminal");
     }
   };
 
@@ -667,38 +859,11 @@ function ProjectCard({ project, onInspect }: ProjectCardProps) {
           <span className={styles.progArrow}>•</span>
           <button
             type="button"
-            className={`${styles.progStepBtn} ${activeTab === "architecture" ? styles.progStepActive : ""}`}
-            onClick={() => setActiveTab("architecture")}
-            title="System design"
-          >
-            Architecture
-          </button>
-          <span className={styles.progArrow}>•</span>
-          <button
-            type="button"
-            className={`${styles.progStepBtn} ${activeTab === "blueprint" ? styles.progStepActive : ""}`}
-            onClick={() => setActiveTab("blueprint")}
-            title="Production implementation"
-          >
-            Real n8n
-          </button>
-          <span className={styles.progArrow}>•</span>
-          <button
-            type="button"
             className={`${styles.progStepBtn} ${activeTab === "terminal" ? styles.progStepActive : ""}`}
             onClick={() => setActiveTab("terminal")}
             title="Live pipeline simulator"
           >
             Execution
-          </button>
-          <span className={styles.progArrow}>•</span>
-          <button
-            type="button"
-            className={`${styles.progStepBtn} ${activeTab === "stats" ? styles.progStepActive : ""}`}
-            onClick={() => setActiveTab("stats")}
-            title="Technical specs & statistics"
-          >
-            Specs
           </button>
         </div>
 
@@ -800,92 +965,9 @@ function ProjectCard({ project, onInspect }: ProjectCardProps) {
             </div>
           )}
 
-          {activeTab === "stats" && (
-            <div className={styles.statsTabContent}>
-              <div className={styles.technicalMetricsHeader}>Production Metrics</div>
-              <div className={styles.technicalMetricsGrid}>
-                {project.technicalMetrics.map((stat, idx) => (
-                  <div key={idx} className={styles.technicalMetricCard}>
-                    <span className={styles.technicalMetricLabel}>{stat.label}</span>
-                    <span className={styles.technicalMetricVal}>{stat.value}</span>
-                  </div>
-                ))}
-              </div>
-              {/* Production Readiness checklist */}
-              <div className={styles.readinessHeader}>Production Readiness Checklist</div>
-              <div className={styles.readinessGrid}>
-                {project.productionReadiness.map((item, idx) => (
-                  <span key={idx} className={styles.readinessItem}>
-                    🟢 {item}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
 
-          {activeTab === "architecture" && (
-            <div className={styles.imageTabContentCol}>
-              <div
-                className={styles.screenshotViewportWrap}
-                onClick={() => setZoomImageSrc("/n8n-workflow.png")}
-                style={{ cursor: "zoom-in" }}
-              >
-                <img
-                  src="/n8n-workflow.png"
-                  alt="System Architecture Diagram"
-                  className={styles.largeViewportImg}
-                />
-                <span className={styles.inspectOverlayBadge}>🔍 Click to inspect</span>
-              </div>
-              <div className={styles.architectureFlowSequence}>
-                {project.title === "AI SEO Content Engine" ? (
-                  <>
-                    <span className={styles.archSequenceNode}>Research</span>
-                    <span className={styles.archSequenceArrow}>→</span>
-                    <span className={styles.archSequenceNode}>Qualification</span>
-                    <span className={styles.archSequenceArrow}>→</span>
-                    <span className={styles.archSequenceNode}>Writing</span>
-                    <span className={styles.archSequenceArrow}>→</span>
-                    <span className={styles.archSequenceNode}>Publishing</span>
-                  </>
-                ) : (
-                  project.flowNodes.map((node, nIdx) => (
-                    <React.Fragment key={nIdx}>
-                      <span className={styles.archSequenceNode}>{node}</span>
-                      {nIdx < project.flowNodes.length - 1 && (
-                        <span className={styles.archSequenceArrow}>→</span>
-                      )}
-                    </React.Fragment>
-                  ))
-                )}
-              </div>
-            </div>
-          )}
 
-          {activeTab === "blueprint" && (
-            <div className={styles.imageTabContent}>
-              <div
-                className={styles.screenshotViewportWrap}
-                onClick={() => setZoomImageSrc("/n8n-workflow.png")}
-                style={{ cursor: "zoom-in" }}
-              >
-                {/* Real n8n popup badge */}
-                <div className={styles.blueprintBadge}>
-                  <span>{project.n8nBadge.nodes}</span>
-                  <span>|</span>
-                  <span>{project.n8nBadge.integrations.replace("Integrations", "").trim()} APIs</span>
-                  <span>|</span>
-                  <span>n8n Production</span>
-                </div>
-                <img
-                  src="/n8n-workflow.png"
-                  alt="Actual n8n Workflow Screenshot Blueprint"
-                  className={styles.largeViewportImg}
-                />
-                <span className={styles.inspectOverlayBadge}>🔍 Click to inspect</span>
-              </div>
-            </div>
-          )}
+
         </div>
 
         {/* Description & Tags */}
@@ -901,15 +983,8 @@ function ProjectCard({ project, onInspect }: ProjectCardProps) {
           <p className={styles.cardText} style={{ fontWeight: 600 }}>
             {activeTab === "dashboard" && project.description}
             {activeTab === "case_study" && (project.title.includes("SEO") ? "Case Study analysis covering business problem, solution, and impact." : "Case study details highlighting business value.")}
-            {activeTab === "architecture" && "System architecture behind the automation engine."}
-            {activeTab === "blueprint" && (
-              project.title.includes("SEO") ? "Production SEO automation pipeline." :
-              project.title.includes("RAG") ? "Production knowledge retrieval system." :
-              project.title.includes("Calling") || project.title.includes("Voice") ? "Real-time conversational AI platform." :
-              "Business process automation ecosystem."
-            )}
+
             {activeTab === "terminal" && "Live execution simulation of the production pipeline."}
-            {activeTab === "stats" && "Technical metrics and production readiness."}
           </p>
         </div>
 

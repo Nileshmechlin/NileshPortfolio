@@ -95,10 +95,53 @@
 @media (max-width: 768px) {
   .grid {
     grid-template-columns: 1fr;
-    gap: 1.75rem;
+    gap: 1.5rem;
   }
   .title {
-    font-size: 2.35rem;
+    font-size: 2rem;
+  }
+  .subtitle {
+    font-size: 0.95rem;
+  }
+  .header {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 2rem 0.75rem 1.5rem 0.75rem;
+  }
+  .title {
+    font-size: 1.65rem;
+  }
+  .subtitle {
+    font-size: 0.85rem;
+  }
+  .badge {
+    font-size: 0.62rem;
+    padding: 4px 10px;
+  }
+  .grid {
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .cardHeader {
+    padding: 1.5rem 1.25rem 0 1.25rem;
+  }
+  .content {
+    padding: 1rem 1.25rem 1.5rem 1.25rem;
+  }
+  .cardTitle {
+    font-size: 1.15rem;
+  }
+  .cardDescription {
+    font-size: 0.82rem;
+    margin-bottom: 1.5rem;
+  }
+  .skillItem {
+    font-size: 0.82rem;
+    gap: 8px;
   }
 }
 
@@ -384,7 +427,24 @@
 @media (max-width: 576px) {
   .bannerGrid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1.25rem;
+  }
+  .bannerContainer {
+    padding: 1.5rem 1.25rem;
+    border-radius: 16px;
+  }
+  .bannerItem {
+    gap: 12px;
+  }
+  .bannerIconWrapper {
+    width: 36px;
+    height: 36px;
+  }
+  .bannerTitle {
+    font-size: 0.82rem;
+  }
+  .bannerSub {
+    font-size: 0.7rem;
   }
 }
 

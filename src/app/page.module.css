@@ -39,7 +39,52 @@
 
 @media (max-width: 768px) {
   .headerContainer {
-    padding: 0 1.25rem;
+    padding: 0 0.75rem;
+  }
+
+  .header {
+    height: 60px;
+  }
+
+  .headerScrolled {
+    height: 52px;
+  }
+
+  .logo {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .headerContainer {
+    padding: 0 0.5rem;
+  }
+
+  .logo {
+    font-size: 0.9rem;
+  }
+
+  .themeToggle {
+    width: 32px;
+    height: 32px;
+  }
+
+  .themeIcon {
+    width: 15px;
+    height: 15px;
+  }
+
+  .statsSection {
+    padding: 1rem 0.5rem;
+  }
+
+  .footerContainer {
+    padding: 0 0.75rem;
+    gap: 1rem;
+  }
+
+  .footerCopyright {
+    font-size: 0.78rem;
   }
 }
 
@@ -303,8 +348,17 @@
 @media (max-width: 576px) {
   .statsGrid {
     grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 2rem 1rem;
+    gap: 1.5rem;
+    padding: 1.5rem 0.75rem;
+    border-radius: 14px;
+  }
+
+  .statNum {
+    font-size: 2rem;
+  }
+
+  .statLabel {
+    font-size: 0.78rem;
   }
 }
 

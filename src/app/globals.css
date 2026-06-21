@@ -42,6 +42,10 @@
   --pink: #ff007f;
   --pink-dim: rgba(255, 0, 127, 0.1);
   
+  --yellow: #f59e0b;
+  --yellow-dim: rgba(245, 158, 11, 0.10);
+  --yellow-glow: rgba(245, 158, 11, 0.25);
+  
   --services-glow-orange: rgba(255, 92, 0, 0.12);
   --services-glow-blue: rgba(0, 117, 255, 0.12);
   --services-glow-purple: rgba(138, 43, 226, 0.12);
@@ -53,6 +57,8 @@
   --grad-purple-start: rgba(138, 43, 226, 0.25);
   --grad-purple-end: rgba(138, 43, 226, 0.03);
   --grad-blue-start: rgba(0, 117, 255, 0.25);
+  --grad-yellow-start: rgba(245, 158, 11, 0.25);
+  --grad-yellow-end: rgba(245, 158, 11, 0.03);
   --grad-blue-end: rgba(0, 117, 255, 0.03);
   --grad-pink-start: rgba(255, 0, 127, 0.25);
   --grad-pink-end: rgba(255, 0, 127, 0.03);
@@ -137,6 +143,10 @@
   
   --pink: #3f3f46;
   --pink-dim: #f4f4f5;
+
+  --yellow: #000000;
+  --yellow-dim: #f4f4f5;
+  --yellow-glow: rgba(0, 0, 0, 0.02);
   
   --services-glow-orange: rgba(0, 0, 0, 0.02);
   --services-glow-blue: rgba(0, 0, 0, 0.02);
@@ -154,6 +164,8 @@
   --grad-pink-end: rgba(0, 0, 0, 0.01);
   --grad-cyan-start: rgba(0, 0, 0, 0.06);
   --grad-cyan-end: rgba(0, 0, 0, 0.01);
+  --grad-yellow-start: rgba(0, 0, 0, 0.06);
+  --grad-yellow-end: rgba(0, 0, 0, 0.01);
   
   --primary-btn-bg: #000000;
   --primary-btn-text: #ffffff;
@@ -320,7 +332,17 @@ section {
 
 @media (max-width: 768px) {
   section {
-    padding: 1.5rem 1.25rem;
+    padding: 1.5rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  section {
+    padding: 1rem 0.5rem;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
   }
 }
 

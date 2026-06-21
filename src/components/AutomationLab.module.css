@@ -472,3 +472,86 @@
 .text_crm { color: #2563eb; }
 .text_success { color: #10b981; font-weight: 700; }
 .text_error { color: #dc2626; }
+
+@media (max-width: 480px) {
+  .section {
+    padding: 1rem 0.5rem;
+  }
+
+  .title {
+    font-size: 1.85rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .badge {
+    font-size: 0.65rem;
+    padding: 4px 10px;
+  }
+
+  .header {
+    margin-bottom: 1.5rem;
+  }
+
+  .builderPanel, .visualizerPanel {
+    padding: 1.25rem;
+    border-radius: 14px;
+  }
+
+  .panelTitle {
+    font-size: 1.05rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .selectorBtn {
+    padding: 0.75rem 1rem;
+    gap: 1rem;
+  }
+
+  .selectorIcon {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+  }
+
+  .selectorTitle {
+    font-size: 0.85rem;
+  }
+
+  .selectorDesc {
+    font-size: 0.72rem;
+  }
+
+  .runBtn {
+    padding: 0.9rem;
+    font-size: 0.9rem;
+  }
+
+  .flowMesh {
+    height: 140px;
+    margin-bottom: 1.25rem;
+  }
+
+  .nodeIcon {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+
+  .nodeName {
+    font-size: 0.72rem;
+  }
+
+  .nodeType {
+    font-size: 0.58rem;
+  }
+
+  .terminalBody {
+    padding: 1rem;
+    height: 150px;
+    font-size: 0.72rem;
+  }
+}
