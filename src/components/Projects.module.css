@@ -181,9 +181,7 @@
   display: none;
 }
 
-.card:hover .cardMouseLight {
-  /* disabled */
-}
+
 
 /* Floating AI Explainer Orb */
 .aiOrb {
@@ -285,9 +283,7 @@
   z-index: 2;
 }
 
-.card:hover .cardIcon {
-  /* static icon */
-}
+
 
 .cardHeaderTitleWrap {
   display: flex;

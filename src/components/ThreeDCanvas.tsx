@@ -193,19 +193,19 @@ export default function ThreeDCanvas() {
 
       // Rotate vertex in 3D
       const rotateAndProject3D = (coords: number[]): { sx: number; sy: number; z3: number; scale: number; x3d: number; y3d: number; z3d: number } => {
-        let [x, y, z] = coords;
+        const [x, y, z] = coords;
 
         // Yaw
-        let x1 = x * cosXY - y * sinXY;
-        let y1 = x * sinXY + y * cosXY;
+        const x1 = x * cosXY - y * sinXY;
+        const y1 = x * sinXY + y * cosXY;
 
         // Pitch
-        let x2 = x1 * cosXZ - z * sinXZ;
-        let z2 = x1 * sinXZ + z * cosXZ;
+        const x2 = x1 * cosXZ - z * sinXZ;
+        const z2 = x1 * sinXZ + z * cosXZ;
 
         // Roll
-        let y3 = y1 * cosYZ - z2 * sinYZ;
-        let z3 = y1 * sinYZ + z2 * cosYZ;
+        const y3 = y1 * cosYZ - z2 * sinYZ;
+        const z3 = y1 * sinYZ + z2 * cosYZ;
 
         // Project 3D to 2D
         const fov = 400;
