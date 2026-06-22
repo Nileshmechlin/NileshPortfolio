@@ -9,7 +9,7 @@ interface WorkflowModalProps {
   projectTitle: string;
 }
 
-type ViewMode = "story" | "pipeline" | "architecture" | "workflow" | "terminal" | "specs";
+type ViewMode = "story" | "pipeline" | "architecture" | "workflow" | "terminal" | "specs" | "website";
 
 export default function WorkflowModal({ isOpen, onClose, projectTitle }: WorkflowModalProps) {
   const [activeStage, setActiveStage] = useState<number | null>(null);
@@ -25,6 +25,8 @@ export default function WorkflowModal({ isOpen, onClose, projectTitle }: Workflo
 
   const views: ViewMode[] = projectTitle.includes("Thermo")
     ? ["story", "pipeline", "architecture", "workflow", "terminal", "specs"]
+    : projectTitle.includes("Tapsy")
+    ? ["story", "pipeline", "architecture", "website", "terminal", "specs"]
     : ["story", "pipeline", "architecture", "terminal", "specs"];
   const currentIdx = views.indexOf(viewMode);
 
@@ -118,6 +120,22 @@ export default function WorkflowModal({ isOpen, onClose, projectTitle }: Workflo
         { text: "Transaction completed successfully.", delay: 300 }
       ];
     }
+    if (projectTitle.includes("Dental")) {
+      return [
+        { text: "$ dental-ai --new-lead=\"patient_id_1234\" --source=\"google-ads\"", delay: 400 },
+        { text: "Lead captured in GoHighLevel CRM. Syncing to Supabase...", delay: 500 },
+        { text: "\u2713 Supabase record created (patient_id: 1234)", delay: 300 },
+        { text: "Triggering Vapi AI outbound call via Twilio...", delay: 600 },
+        { text: "\u2713 Call connected. AI voice agent active...", delay: 350 },
+        { text: "AI: 'Hi! Calling about your dental inquiry. What treatment are you interested in?'", delay: 800 },
+        { text: "Patient: 'I need a dental implant consultation.'", delay: 700 },
+        { text: "AI qualifying: treatment interest, availability, budget, buying intent...", delay: 500 },
+        { text: "\u2713 Call completed (Duration: 3m 42s). Extracting structured data...", delay: 400 },
+        { text: "\u2713 JSON: intent=implant, score=87, stage=HOT, budget=$3000-5000", delay: 350 },
+        { text: "Updating GHL stage \u2192 HOT LEAD. Triggering follow-up sequence...", delay: 500 },
+        { text: "\u2713 SMS sent. Appointment booked. Database updated.", delay: 300 }
+      ];
+    }
     return [
       { text: "$ mesh-status --verbose", delay: 400 },
       { text: "Checking auth...", delay: 500 },
@@ -132,7 +150,7 @@ export default function WorkflowModal({ isOpen, onClose, projectTitle }: Workflo
 
   const getArchitectureImage = () => {
     if (projectTitle.includes("Tapsy")) {
-      return "/architecture.png";
+      return "/Tapsy.png";
     }
     if (projectTitle.includes("Bear")) {
       return "/bear-architecture.jpg";
@@ -143,6 +161,9 @@ export default function WorkflowModal({ isOpen, onClose, projectTitle }: Workflo
     if (projectTitle.includes("Autonomous")) {
       return "/autonomous-voice-architecture.png";
     }
+    if (projectTitle.includes("Dental")) {
+      return "/Dental AI Revenue Engine.png";
+    }
     return "/n8n-workflow.png";
   };
 
@@ -151,6 +172,7 @@ export default function WorkflowModal({ isOpen, onClose, projectTitle }: Workflo
     if (projectTitle.includes("SEO")) return 6;
     if (projectTitle.includes("Thermo")) return 10;
     if (projectTitle.includes("Autonomous")) return 8;
+    if (projectTitle.includes("Dental")) return 9;
     return 5;
   };
 
@@ -298,9 +320,10 @@ export default function WorkflowModal({ isOpen, onClose, projectTitle }: Workflo
                     case "story": return "● 1. Problem";
                     case "pipeline": return "● 2. Pipeline";
                     case "architecture": return "● 3. Architecture";
+                    case "website": return "● 4. Website";
                     case "workflow": return "● 4. n8n Workflow";
-                    case "terminal": return projectTitle.includes("Thermo") ? "● 5. Live Simulation" : "● 4. Live Simulation";
-                    case "specs": return projectTitle.includes("Thermo") ? "● 6. Specs" : "● 5. Specs";
+                    case "terminal": return projectTitle.includes("Thermo") ? "● 5. Live Simulation" : projectTitle.includes("Tapsy") ? "● 5. Live Simulation" : "● 4. Live Simulation";
+                    case "specs": return projectTitle.includes("Thermo") || projectTitle.includes("Tapsy") ? "● 6. Specs" : "● 5. Specs";
                     default: return "";
                   }
                 };
@@ -434,21 +457,45 @@ export default function WorkflowModal({ isOpen, onClose, projectTitle }: Workflo
                       <div className={styles.caseStudyIcon}>🎯</div>
                       <h5 className={styles.caseStudySectionTitle}>Business Problem</h5>
                       <p className={styles.caseStudyText}>
-                        Boring text reviews are easily faked and fail to convey the true look, feel, or vibe of physical businesses. Reading "great view" or "amazing food" doesn't match the confidence of watching an authentic 30s video review from a real customer showing the actual atmosphere.
+                        Text reviews are unreliable and easily faked — reading "amazing food" or "great service" fails to convey the real atmosphere and vibe of a physical business. Customers need authentic proof before visiting.
                       </p>
                     </div>
                     <div className={styles.caseStudyCard}>
                       <div className={styles.caseStudyIcon}>⚡</div>
                       <h5 className={styles.caseStudySectionTitle}>System Solution</h5>
                       <p className={styles.caseStudyText}>
-                        Designed and engineered a scalable backend on Node.js/TypeScript. Implemented a microservice that optimizes and transcodes 30s video reviews to cloud storage, distributes notifications to follower activity feeds via Firebase FCM, caches popular review time insights in Redis, and maps NFC/QR scans to dynamic business profiles.
+                        Built the complete Flutter app backend: secure 30s video uploads via AWS S3 signed URLs, PostgreSQL + Prisma for data storage, Firebase FCM notifications to followers, Redis caching for popular review insights, and NFC/QR tags mapping to dynamic business profiles.
                       </p>
                     </div>
                     <div className={styles.caseStudyCard}>
                       <div className={styles.caseStudyIcon}>📈</div>
                       <h5 className={styles.caseStudySectionTitle}>Key Outcomes</h5>
                       <p className={styles.caseStudyText}>
-                        Enables sub-40ms Fastify API gateway responses, sub-80ms video review feed fetching, supports printable and dynamic QR stickers plus NFC physical tags, and ensures fail-safe pre-commit tests with Husky.
+                        Sub-40ms Fastify API responses, secure AWS S3 video delivery, real-time Firebase FCM push to followers, Redis-cached business insights, and Husky + ESLint pre-commit hooks ensuring zero broken deploys.
+                      </p>
+                    </div>
+                  </>
+                ) : projectTitle.includes("Dental") ? (
+                  <>
+                    <div className={styles.caseStudyCard}>
+                      <div className={styles.caseStudyIcon}>🎯</div>
+                      <h5 className={styles.caseStudySectionTitle}>Business Problem</h5>
+                      <p className={styles.caseStudyText}>
+                        Dental clinics waste advertising budget because leads from Google and Meta Ads are followed up hours or days later — long after buying intent has cooled. Manual calling teams miss leads, forget follow-ups, and have no structured data on patient interest or budget.
+                      </p>
+                    </div>
+                    <div className={styles.caseStudyCard}>
+                      <div className={styles.caseStudyIcon}>⚡</div>
+                      <h5 className={styles.caseStudySectionTitle}>System Solution</h5>
+                      <p className={styles.caseStudyText}>
+                        Built a complete patient acquisition engine: Ads → GoHighLevel → Supabase → Vapi AI calls the lead within 2 minutes → qualifies treatment interest, budget, availability, and objections → updates CRM stage → triggers personalized SMS/email/ringless voicemail campaigns → books appointments automatically.
+                      </p>
+                    </div>
+                    <div className={styles.caseStudyCard}>
+                      <div className={styles.caseStudyIcon}>📈</div>
+                      <h5 className={styles.caseStudySectionTitle}>Key Outcomes</h5>
+                      <p className={styles.caseStudyText}>
+                        Instant lead response under 2 minutes, 24/7 AI calling agent, 9-field structured qualification output per patient, zero missed lead opportunities, centralized Supabase intelligence database, and end-to-end automated appointment booking with no manual intervention.
                       </p>
                     </div>
                   </>
@@ -1136,6 +1183,18 @@ export default function WorkflowModal({ isOpen, onClose, projectTitle }: Workflo
                       <span className={styles.modalArchSequenceArrow}>→</span>
                       <span className={styles.modalArchSequenceNode}>QR Discovery</span>
                     </>
+                  ) : projectTitle.includes("Dental") ? (
+                    <>
+                      <span className={styles.modalArchSequenceNode}>Ads Traffic</span>
+                      <span className={styles.modalArchSequenceArrow}>→</span>
+                      <span className={styles.modalArchSequenceNode}>GHL CRM</span>
+                      <span className={styles.modalArchSequenceArrow}>→</span>
+                      <span className={styles.modalArchSequenceNode}>Vapi AI Call</span>
+                      <span className={styles.modalArchSequenceArrow}>→</span>
+                      <span className={styles.modalArchSequenceNode}>Qualify Lead</span>
+                      <span className={styles.modalArchSequenceArrow}>→</span>
+                      <span className={styles.modalArchSequenceNode}>Book Appointment</span>
+                    </>
                   ) : (
                     <>
                       <span className={styles.modalArchSequenceNode}>Checkout Webhook</span>
@@ -1151,6 +1210,39 @@ export default function WorkflowModal({ isOpen, onClose, projectTitle }: Workflo
               </div>
             );
           })()}
+
+          {viewMode === "website" && projectTitle.includes("Tapsy") && (
+            <div className={styles.macWindowWrapperCol}>
+              <div
+                className={styles.macWindowWrapper}
+                onClick={() => openZoom("/tapsy-website.png")}
+              >
+                <div className={styles.macTitlebar}>
+                  <div className={styles.macDotRed}></div>
+                  <div className={styles.macDotYellow}></div>
+                  <div className={styles.macDotGreen}></div>
+                  <span className={styles.macTitle}>tapsy.app — Live Product Website</span>
+                  <span className={styles.inspectBadge}>🔍 Click to inspect</span>
+                </div>
+                <img
+                  src="/tapsy-website.png"
+                  alt="Tapsy Website"
+                  style={{ width: "100%", display: "block", borderRadius: "0 0 8px 8px" }}
+                />
+              </div>
+              <div className={styles.modalArchitectureFlowSequence}>
+                <span className={styles.modalArchSequenceNode}>Flutter App</span>
+                <span className={styles.modalArchSequenceArrow}>→</span>
+                <span className={styles.modalArchSequenceNode}>Video Reviews</span>
+                <span className={styles.modalArchSequenceArrow}>→</span>
+                <span className={styles.modalArchSequenceNode}>AWS S3</span>
+                <span className={styles.modalArchSequenceArrow}>→</span>
+                <span className={styles.modalArchSequenceNode}>Business Profiles</span>
+                <span className={styles.modalArchSequenceArrow}>→</span>
+                <span className={styles.modalArchSequenceNode}>NFC/QR Discovery</span>
+              </div>
+            </div>
+          )}
 
           {viewMode === "workflow" && (
             <div className={styles.macWindowWrapperCol}>

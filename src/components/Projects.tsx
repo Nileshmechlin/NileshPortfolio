@@ -244,170 +244,94 @@ export default function Projects({ onInspect }: ProjectsProps) {
       n8nBadge: { nodes: "N/A", integrations: "Vocode, Twilio, Supabase, Groq" }
     },
     {
-      title: "GHL Revenue Automation",
-      subtitle: "BUSINESS AUTOMATION ENGINE",
-      description: "Complex revenue event mesh syncing Stripe webhooks to HubSpot CRM and Slack alerts.",
-      category: "automation",
-      tags: ["⚡ n8n", "🔗 Zapier", "⚙️ Make.com", "🛡️ OAuth2", "📂 Webhooks"],
-      gradientClass: styles.gradGreen,
-      icon: "⚙️",
-      linkText: "▶ Explore Production System",
-      metrics: [
-        { value: "50K Runs/mo", label: "Mesh Trigger Volume" },
-        { value: "120 Hrs Saved", label: "Admin Overhead Saved" },
-        { value: "15+ Apps", label: "Connected SaaS Nodes" },
-        { value: "99.9% Uptime", label: "Operational SLA Uptime" }
-      ],
-      difficulty: [
-        { label: "AI & Agents", score: 50 },
-        { label: "Automation", score: 100 },
-        { label: "Backend", score: 90 },
-        { label: "Frontend", score: 50 }
-      ],
-      codeStats: [
-        { label: "Workflow Size", value: "45 Nodes" },
-        { label: "AI Models", value: "1" },
-        { label: "Integrations", value: "15" },
-        { label: "Automation Level", value: "100%" }
-      ],
-      flowNodes: ["Lead", "Pipeline", "SMS", "Booking", "Follow-up"],
-      nodeTooltips: [
-        "Monitors Stripe checkout webhooks.",
-        "Authenticates connections via OAuth2.",
-        "n8n router logic flow.",
-        "Syncs CRM pipeline databases.",
-        "Dispatches team Slack alerts."
-      ],
-      terminalScript: [
-        { text: "$ mesh-status --verbose", delay: 400 },
-        { text: "Checking auth...", delay: 500 },
-        { text: "✓ OAuth2 connection tokens verified", delay: 300 },
-        { text: "Testing router...", delay: 600 },
-        { text: "✓ Webhook router pool online", delay: 400 },
-        { text: "Syncing DB...", delay: 600 },
-        { text: "✓ Synced Stripe with HubSpot CRM", delay: 300 },
-        { text: "Mesh healthy. (Uptime: 99.9%)", delay: 300 }
-      ],
-      aiExplainer: "An orchestration grid managing operational pipelines. It coordinates real-time billing, team chats, client dashboards, CRM triggers, and inventory levels across disjoint cloud tools.",
-      architecture: ["Stripe / SaaS triggers", "Webhook Receivers", "n8n Router Node", "HubSpot / Slack Sync"],
-      lastUpdated: "Mar 2026",
-      technicalMetrics: [
-        { label: "Mesh Nodes", value: "45" },
-        { label: "SaaS Integrations", value: "15" },
-        { label: "Monthly Runs", value: "50K/mo" },
-        { label: "Hours Saved", value: "120 hrs" },
-        { label: "Uptime Rate", value: "99.9%" },
-        { label: "Auth Protocol", value: "OAuth2" }
-      ],
-      hoverStats: [
-        "45 Mesh Nodes",
-        "15 Connected Apps",
-        "OAuth2 Encryption",
-        "99.9% Uptime SLA"
-      ],
-      caseStudy: {
-        problem: "Fragmented systems require constant manual syncing.",
-        solution: "OAuth2 middleware routes checkouts and updates CRM databases.",
-        impact: [
-          "✓ No manual entry",
-          "✓ OAuth2 data path",
-          "✓ 120+ hours saved",
-          "✓ Slack alerts live"
-        ]
-      },
-      productionReadiness: [
-        "OAuth2 Validation",
-        "Webhook Router Active",
-        "HubSpot CRM Sync",
-        "Stripe Checkout Hook",
-        "Uptime Monitoring",
-        "Disaster Recovery Plan"
-      ],
-      n8nBadge: { nodes: "45 Nodes", integrations: "15 Integrations" }
-    },
-    {
       title: "Tapsy Backend Platform",
-      subtitle: "MOBILE VIDEO REVIEW PLATFORM",
-      description: "Engineered the backend for Tapsy, a short-form video review app replacing boring text reviews with authentic 30s clips, social feeds, QR/NFC integrations, and real-time business dashboards.",
+      subtitle: "FLUTTER VIDEO REVIEW BACKEND SYSTEM",
+      description: "Built the complete backend architecture for Tapsy, a Flutter mobile app where users record authentic 30-second video reviews for physical businesses — replacing unreliable text reviews with real atmosphere, food, and vibe footage.",
       category: "fullstack",
-      tags: ["🟢 Node.js", "📘 TypeScript", "◭ Prisma", "🗄️ Redis", "🔥 Firebase", "📱 Mobile Backend", "🔌 QR/NFC APIs", "🐶 Husky"],
+      tags: ["🟢 Node.js", "📘 TypeScript", "⚡ Fastify", "◭ Prisma", "☁️ AWS S3", "🗄️ Redis", "🔥 Firebase", "🔌 QR/NFC"],
       gradientClass: styles.gradYellow,
-      icon: "🚕",
+      icon: "🎥",
       linkText: "▶ Inspect Architecture Detail",
       metrics: [
         { value: "< 40ms", label: "Fastify API Response" },
-        { value: "sub-80ms", label: "Video Feed Fetch" },
-        { value: "Unlimited", label: "Chat & Social Feeds" },
-        { value: "Print/NFC", label: "QR Business Targets" }
+        { value: "AWS S3", label: "Signed Video Uploads" },
+        { value: "Redis", label: "Popular Time Cache" },
+        { value: "NFC/QR", label: "Business Discovery" }
       ],
       difficulty: [
-        { label: "AI & Agents", score: 45 },
-        { label: "Automation", score: 85 },
+        { label: "AI & Agents", score: 40 },
+        { label: "Automation", score: 80 },
         { label: "Backend", score: 98 },
-        { label: "Frontend", score: 70 }
+        { label: "Frontend", score: 65 }
       ],
       codeStats: [
-        { label: "Video Upload", value: "30s limit transcoding" },
-        { label: "Analytics", value: "Real-time feeds/trends" },
-        { label: "Caching", value: "Redis rating graphs" },
-        { label: "Dev Workflow", value: "Husky hooks" }
+        { label: "Video Storage", value: "AWS S3 Signed URLs" },
+        { label: "Database", value: "PostgreSQL + Prisma" },
+        { label: "Caching", value: "Redis insights" },
+        { label: "Dev Workflow", value: "Husky + ESLint" }
       ],
-      flowNodes: ["Record", "Transcode", "Social Feed", "Analytics", "QR Discover"],
+      flowNodes: ["Record", "S3 Upload", "PostgreSQL", "Publish", "FCM Notify", "Redis Cache", "QR/NFC"],
       nodeTooltips: [
-        "User records 30s video review on mobile device.",
-        "Node.js transcoder processes video for low-bandwidth streaming.",
-        "Redis routes new reviews to followers and syncs feed instantly.",
-        "Calculates real-time ratings, trend graphs, and popular times.",
-        "NFC/QR scanner retrieves profile details for business onboarding."
+        "User records 30-second video review in the Flutter mobile app.",
+        "Backend generates signed AWS S3 URL — video is uploaded securely to S3.",
+        "Review metadata stored in PostgreSQL via Prisma ORM.",
+        "Review is published to the business profile and follower feed.",
+        "Firebase FCM sends push notifications to all followers.",
+        "Popular review time insights cached in Redis for fast retrieval.",
+        "NFC tags and QR codes redirect users to dynamic business profiles."
       ],
       terminalScript: [
-        { text: "$ tapsy-transcode --file=\"review_SarahK_coffee.mov\"", delay: 400 },
-        { text: "Compressing video to H.264 standard format...", delay: 450 },
-        { text: "✓ Transcoded to 4.2MB web-optimized stream (310ms)", delay: 350 },
-        { text: "Saving file to cloud storage...", delay: 600 },
-        { text: "✓ Storage upload confirmed", delay: 300 },
-        { text: "Triggering social feed dispatch API...", delay: 500 },
-        { text: "✓ Notifying 4,200 followers via Firebase FCM", delay: 400 },
-        { text: "Syncing business popular time graphs in Redis...", delay: 550 },
-        { text: "✓ Cache updated successfully (8ms)", delay: 300 },
-        { text: "Transaction completed successfully.", delay: 300 }
+        { text: "$ tapsy-upload --user=\"sarah_k\" --business=\"Blue Tokai Coffee\"", delay: 400 },
+        { text: "Generating signed AWS S3 upload URL...", delay: 450 },
+        { text: "✓ Signed URL generated (expires in 5min)", delay: 300 },
+        { text: "Uploading 30s video review to S3...", delay: 700 },
+        { text: "✓ S3 upload confirmed (4.2MB, H.264)", delay: 350 },
+        { text: "Saving review metadata to PostgreSQL via Prisma...", delay: 500 },
+        { text: "✓ Review published to business profile", delay: 300 },
+        { text: "Triggering Firebase FCM push notifications...", delay: 500 },
+        { text: "✓ 4,200 followers notified (Firebase FCM)", delay: 400 },
+        { text: "Caching popular review time data in Redis...", delay: 450 },
+        { text: "✓ Redis cache updated (8ms)", delay: 300 },
+        { text: "✓ Transaction completed successfully.", delay: 300 }
       ],
-      aiExplainer: "This high-performance taxi backend utilizes Node.js and TypeScript for rapid execution, Redis caching for ultra-low latency driver routing, database indexing for rapid Prisma queries, Twilio for communication, and Firebase for socket synchronization.",
-      architecture: ["Node.js API", "Redis Caching", "Prisma DB", "Twilio Messaging", "Firebase Sync"],
+      aiExplainer: "A scalable Flutter video-review backend built on Node.js/TypeScript/Fastify. Handles secure 30s video uploads via AWS S3 signed URLs, stores review metadata in PostgreSQL through Prisma ORM, distributes Firebase FCM push notifications to followers, caches popular review insights in Redis, and maps NFC/QR scans to dynamic business profiles.",
+      architecture: ["Flutter App", "Fastify API", "AWS S3 Upload", "PostgreSQL + Prisma", "Redis Cache", "Firebase FCM", "NFC/QR Discovery"],
       lastUpdated: "Jun 2026",
       technicalMetrics: [
-        { label: "Fastify Latency", value: "< 40ms" },
-        { label: "DB Query Time", value: "< 20ms" },
-        { label: "Runtime Engine", value: "NodeJS & TS" },
-        { label: "SLA Deliverability", value: "99.98%" },
-        { label: "Telephony Route", value: "Twilio Gateway" },
-        { label: "Dev Workflow", value: "Husky Hooks" }
+        { label: "API Latency", value: "< 40ms" },
+        { label: "Storage", value: "AWS S3" },
+        { label: "DB ORM", value: "Prisma + PostgreSQL" },
+        { label: "Notifications", value: "Firebase FCM" },
+        { label: "Caching", value: "Redis" },
+        { label: "Dev Safety", value: "Husky Hooks" }
       ],
       hoverStats: [
-        "Distributed Node.js Core",
-        "Prisma Database Indexing",
-        "Redis Active Cache Layer",
-        "Twilio & Firebase Sync"
+        "AWS S3 Signed Uploads",
+        "Prisma + PostgreSQL",
+        "Redis Popular Time Cache",
+        "Firebase FCM Notifications"
       ],
       caseStudy: {
-        problem: "Boring text reviews are easily faked and fail to convey the true look, feel, or vibe of physical businesses like restaurants and salons.",
-        solution: "A scalable Node.js architecture utilizing Redis cache grids, Prisma spatial indexes, and real-time FCM updates.",
+        problem: "Text reviews are unreliable, easily faked, and fail to convey the real atmosphere, food quality, or service experience of physical businesses like restaurants and salons.",
+        solution: "Built the complete backend for a Flutter video review app — secure AWS S3 video uploads, PostgreSQL data storage, Redis caching, Firebase notifications, and NFC/QR discovery maps.",
         impact: [
-          "✓ sub-40ms match latency",
-          "✓ 4x faster DB lookups",
-          "✓ Automated Twilio SMS alert",
-          "✓ Real-time Firebase sync"
+          "✓ Secure 30s video uploads via AWS S3",
+          "✓ < 40ms Fastify API responses",
+          "✓ Real-time FCM push to followers",
+          "✓ NFC/QR physical business tags",
+          "✓ Husky pre-commits prevent broken deploys"
         ]
       },
       productionReadiness: [
-        "Husky Git pre-commits",
-        "Redis replication",
-        "Prisma Indexing Audit",
-        "Twilio Voice integration",
-        "Firebase FCM sync",
-        "Docker multi-container"
+        "AWS S3 Signed URL Auth",
+        "Prisma DB Indexing",
+        "Redis Replication",
+        "Firebase FCM Active",
+        "Twilio SMS/OTP",
+        "Husky Pre-commit Hooks",
+        "ESLint Code Quality"
       ],
-      n8nBadge: { nodes: "N/A", integrations: "Twilio, Firebase, Redis" }
+      n8nBadge: { nodes: "N/A", integrations: "AWS S3, Prisma, Firebase, Redis, Twilio" }
     },
     {
       title: "Bear Intelligence Pipeline",
@@ -586,6 +510,98 @@ export default function Projects({ onInspect }: ProjectsProps) {
         "n8n Execution Logs"
       ],
       n8nBadge: { nodes: "18 Nodes", integrations: "Retell AI, OpenAI, Sheets" }
+    },
+    {
+      title: "Dental AI Revenue Engine",
+      subtitle: "PATIENT ACQUISITION AUTOMATION PLATFORM",
+      description: "End-to-end AI-powered patient acquisition system combining Google/Meta Ads, GoHighLevel CRM, Vapi AI voice calling, and Supabase to automatically qualify dental leads and book appointments without manual intervention.",
+      category: "ghl",
+      tags: ["🦷 GoHighLevel", "🤖 Vapi AI", "📞 Twilio", "🗄️ Supabase", "⚡ n8n", "📣 Meta Ads", "🔍 Google Ads"],
+      gradientClass: styles.gradPurple,
+      icon: "🦷",
+      linkText: "▶ Explore Patient Acquisition System",
+      metrics: [
+        { value: "< 2 Min", label: "Lead Response Time" },
+        { value: "24/7", label: "AI Calling Agent SLA" },
+        { value: "100%", label: "Automated Follow-Up" },
+        { value: "9 Fields", label: "Structured AI Output" }
+      ],
+      difficulty: [
+        { label: "AI & Agents", score: 94 },
+        { label: "Automation", score: 97 },
+        { label: "Backend", score: 88 },
+        { label: "Frontend", score: 65 }
+      ],
+      codeStats: [
+        { label: "Voice AI", value: "Vapi AI" },
+        { label: "CRM Platform", value: "GoHighLevel" },
+        { label: "Database", value: "Supabase/PostgreSQL" },
+        { label: "Automation", value: "n8n Webhooks" }
+      ],
+      flowNodes: ["Ads", "GHL CRM", "Webhook", "Supabase", "Vapi AI", "Qualify", "AI Output", "Follow-Up", "Book"],
+      nodeTooltips: [
+        "Google Ads and Meta Ads drive qualified dental traffic to landing pages.",
+        "GoHighLevel captures leads, manages pipeline, and triggers automations.",
+        "Webhooks sync lead data in real-time between GHL and Supabase.",
+        "Supabase/PostgreSQL stores all leads, call logs, transcripts, and AI analysis.",
+        "Vapi AI places outbound voice calls to leads within minutes of capture.",
+        "AI qualifies treatment interest, availability, budget, and buying intent.",
+        "Structured JSON output: intent, score, budget, objections, next action.",
+        "GHL triggers SMS, email, and ringless voicemail follow-up sequences.",
+        "Qualified leads are booked directly into the dental clinic calendar."
+      ],
+      terminalScript: [
+        { text: "$ dental-ai --new-lead=\"patient_id_1234\" --source=\"google-ads\"", delay: 400 },
+        { text: "Lead captured in GoHighLevel CRM. Syncing to Supabase...", delay: 500 },
+        { text: "✓ Supabase record created (patient_id: 1234)", delay: 300 },
+        { text: "Triggering Vapi AI outbound call via Twilio...", delay: 600 },
+        { text: "✓ Call connected. AI voice agent active...", delay: 350 },
+        { text: "AI: 'Hi! I'm calling about your dental inquiry. What treatment are you interested in?'", delay: 800 },
+        { text: "Patient: 'I need a dental implant consultation.'", delay: 700 },
+        { text: "AI qualifying: treatment, availability, budget, intent...", delay: 500 },
+        { text: "✓ Call completed (Duration: 3m 42s). Extracting structured data...", delay: 400 },
+        { text: "✓ JSON output: intent=implant, score=87, stage=HOT, budget=$3000-5000", delay: 350 },
+        { text: "Updating GHL stage → HOT LEAD. Triggering follow-up sequence...", delay: 500 },
+        { text: "✓ SMS sent. Appointment booked. Database updated.", delay: 300 }
+      ],
+      aiExplainer: "A complete patient acquisition engine combining paid ads traffic with GoHighLevel CRM, Vapi AI voice calling, and Supabase database. The AI agent qualifies each dental lead through natural conversation — capturing treatment interest, budget, availability, and buying intent — then auto-books appointments and triggers personalized GHL follow-up campaigns.",
+      architecture: ["Google/Meta Ads", "GHL CRM", "Webhook Bridge", "Supabase DB", "Vapi AI Voice", "Lead Qualification", "Structured Output", "GHL Campaigns", "Appointment Booking"],
+      lastUpdated: "Jun 2026",
+      technicalMetrics: [
+        { label: "Lead Response", value: "< 2 min" },
+        { label: "AI Platform", value: "Vapi AI" },
+        { label: "CRM", value: "GoHighLevel" },
+        { label: "Database", value: "Supabase" },
+        { label: "Structured Fields", value: "9" },
+        { label: "Calling SLA", value: "24/7 Automated" }
+      ],
+      hoverStats: [
+        "Vapi AI Voice Calling",
+        "GoHighLevel CRM Sync",
+        "Supabase DB Storage",
+        "9-Field AI Extraction"
+      ],
+      caseStudy: {
+        problem: "Dental clinics waste ad spend because leads are not followed up instantly — most calls happen hours or days later when intent has cooled.",
+        solution: "Vapi AI calls every new lead within minutes of ad form submission, qualifies them, and books appointments automatically — all synced to GoHighLevel CRM.",
+        impact: [
+          "✓ Instant lead response (< 2 min)",
+          "✓ 24/7 AI calling agent",
+          "✓ Structured qualification output",
+          "✓ Automated CRM stage updates",
+          "✓ End-to-end appointment booking"
+        ]
+      },
+      productionReadiness: [
+        "GHL Webhook Integration",
+        "Vapi AI Voice Active",
+        "Supabase DB Schema",
+        "Structured JSON Output",
+        "DNC List Validation",
+        "GHL Campaign Triggers",
+        "SMS/Email Automation"
+      ],
+      n8nBadge: { nodes: "12 Nodes", integrations: "GHL, Vapi, Supabase, Twilio" }
     }
   ];
 
@@ -770,10 +786,10 @@ function ProjectCard({ project, onInspect }: ProjectCardProps) {
     if (
       project.title === "Production AI SEO Pipeline" ||
       project.title === "Autonomous Voice Architecture" ||
-      project.title === "GHL Revenue Automation" ||
       project.title === "Tapsy Backend Platform" ||
       project.title.includes("Bear") ||
-      project.title.includes("Thermo")
+      project.title.includes("Thermo") ||
+      project.title.includes("Dental")
     ) {
       onInspect(project.title);
     } else {
@@ -810,8 +826,12 @@ function ProjectCard({ project, onInspect }: ProjectCardProps) {
 
         {/* Top Header section */}
         <div className={styles.cardHeaderArea}>
-          <div className={`${styles.cardImage} ${project.gradientClass}`}>
-            <span className={styles.cardIcon}>{project.icon}</span>
+          <div className={`${styles.cardImage} ${project.gradientClass}`} style={project.title.includes("Tapsy") ? { background: "white", border: "1px solid #e8d5f5", padding: 0, overflow: "hidden" } : {}}>
+            {project.title.includes("Tapsy") ? (
+              <img src="/tapsy-logo.png" alt="Tapsy Logo" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "8px" }} />
+            ) : (
+              <span className={styles.cardIcon}>{project.icon}</span>
+            )}
           </div>
           <div className={styles.cardHeaderTitleWrap}>
             <h3 className={styles.cardTitle}>{project.title}</h3>

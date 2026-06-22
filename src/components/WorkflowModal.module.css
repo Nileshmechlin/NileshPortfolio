@@ -1331,3 +1331,166 @@
     max-height: 40vh;
   }
 }
+
+/* ===== WORKFLOW MODAL LIGHT THEME ADAPTATIONS ===== */
+:global([data-theme="light"]) .overlay {
+  background: rgba(255, 255, 255, 0.75);
+}
+
+:global([data-theme="light"]) .modal {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(0, 0, 0, 0.05);
+}
+
+:global([data-theme="light"]) .header {
+  background: rgba(0, 0, 0, 0.02);
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+:global([data-theme="light"]) .canvas {
+  background-color: #fcfcfc;
+}
+
+:global([data-theme="light"]) .gridDots {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1.5px, transparent 1.5px);
+}
+
+:global([data-theme="light"]) .stageGroup {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+:global([data-theme="light"]) .node {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+:global([data-theme="light"]) .node:hover {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+:global([data-theme="light"]) .footer {
+  background: rgba(0, 0, 0, 0.02);
+  border-top-color: rgba(0, 0, 0, 0.08);
+}
+
+:global([data-theme="light"]) .modeToggleGroup {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+:global([data-theme="light"]) .caseStudyCard,
+:global([data-theme="light"]) .specsCard {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+:global([data-theme="light"]) .caseStudyCard:hover,
+:global([data-theme="light"]) .specsCard:hover {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+:global([data-theme="light"]) .specsSectionTitle {
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+:global([data-theme="light"]) .techPill {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+:global([data-theme="light"]) .techPill:hover {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.2);
+  color: #000000;
+}
+
+:global([data-theme="light"]) .macWindowWrapper {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+}
+
+:global([data-theme="light"]) .macTitlebar {
+  background: #f4f4f5;
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+:global([data-theme="light"]) .macContent {
+  background: #fafafa;
+}
+
+:global([data-theme="light"]) .architectureImg {
+  border-color: rgba(0, 0, 0, 0.05);
+}
+
+:global([data-theme="light"]) .modalArchitectureFlowSequence {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.04);
+}
+
+:global([data-theme="light"]) .terminalView {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+:global([data-theme="light"]) .terminalHeader {
+  background: #f4f4f5;
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+:global([data-theme="light"]) .terminalBody {
+  background: #ffffff;
+  color: #333333;
+}
+
+:global([data-theme="light"]) .terminalLine {
+  color: #00882b;
+}
+
+:global([data-theme="light"]) .terminalCursor {
+  color: #00882b;
+}
+
+:global([data-theme="light"]) .node[data-type="ai"] {
+  border-left-color: #00aa44;
+}
+
+:global([data-theme="light"]) .node[data-type="ai"] .nodeIcon {
+  background: rgba(0, 170, 68, 0.08);
+  color: #00aa44;
+}
+
+:global([data-theme="light"]) .prevStepBtn,
+:global([data-theme="light"]) .nextStepBtn {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+:global([data-theme="light"]) .prevStepBtn:hover:not(:disabled),
+:global([data-theme="light"]) .nextStepBtn:hover:not(:disabled) {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+:global([data-theme="light"]) .lightboxOverlay {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+:global([data-theme="light"]) .lightboxControls {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+:global([data-theme="light"]) .lightboxControlBtn:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #000000;
+}
