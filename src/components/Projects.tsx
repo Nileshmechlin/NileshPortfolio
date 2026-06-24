@@ -55,6 +55,11 @@ interface ProjectItem {
   caseStudy: CaseStudyData;
   productionReadiness: string[];
   n8nBadge: { nodes: string; integrations: string };
+  businessImpact: string;
+  companyLogo?: string;
+  techStackMap?: { [key: string]: string };
+  results?: string[];
+  screenshots?: string[];
 }
 
 interface ProjectsProps {
@@ -148,7 +153,9 @@ export default function Projects({ onInspect }: ProjectsProps) {
         "HTML Export",
         "Duplicate Prevention"
       ],
-      n8nBadge: { nodes: "26 Nodes", integrations: "6 Integrations" }
+      n8nBadge: { nodes: "26 Nodes", integrations: "6 Integrations" },
+      businessImpact: "Automatically scales content marketing without hiring writers.",
+      techStackMap: { "Frontend": "Google Workspace", "Backend": "Node.js", "AI Layer": "GPT-5", "Automation": "n8n", "Communications": "Slack" }
     },
     {
       title: "Autonomous Voice Architecture",
@@ -177,16 +184,14 @@ export default function Projects({ onInspect }: ProjectsProps) {
         { label: "Telephony", value: "Twilio trunk" },
         { label: "Database", value: "Supabase DB" }
       ],
-      flowNodes: ["Trigger", "Twilio", "Voice AI", "Groq AI", "FastAPI", "Supabase", "Dashboard", "Action"],
+      flowNodes: ["Trigger", "Twilio", "Voice AI", "Groq LLM", "Backend DB", "Dashboard"],
       nodeTooltips: [
         "Customer call or outbound trigger event.",
         "Twilio telephony and voice routing.",
         "Real-time voice stream handled by Vocode.",
-        "Ultra-low latency reasoning and response generation via Groq API.",
-        "FastAPI backend handling request coordination and webhooks.",
-        "Supabase PostgreSQL storage for call logs, transcriptions, and lead data.",
-        "Next.js frontend dashboard updating in real-time.",
-        "Automated follow-up actions (SMS, Email, scheduling)."
+        "Ultra-low latency reasoning via Groq API.",
+        "FastAPI webhook handling and Supabase DB logging.",
+        "Next.js frontend dashboard updating in real-time."
       ],
       terminalScript: [
         { text: "$ voice-platform --initiate-call=\"+1234567890\" --pipeline=\"vocode-groq\"", delay: 500 },
@@ -241,7 +246,10 @@ export default function Projects({ onInspect }: ProjectsProps) {
         "Next.js Dashboard Live",
         "24/7 Voice SLA"
       ],
-      n8nBadge: { nodes: "N/A", integrations: "Vocode, Twilio, Supabase, Groq" }
+      n8nBadge: { nodes: "N/A", integrations: "Vocode, Twilio, Supabase, Groq" },
+      businessImpact: "Reduced manual calling workload by automating lead qualification and appointment booking.",
+      companyLogo: "AC Medics",
+      techStackMap: { "Frontend": "Next.js", "Backend": "FastAPI", "Database": "Supabase", "AI Layer": "Groq", "Voice AI": "Vocode", "Communications": "Twilio" }
     },
     {
       title: "Tapsy Backend Platform",
@@ -270,10 +278,9 @@ export default function Projects({ onInspect }: ProjectsProps) {
         { label: "Caching", value: "Redis insights" },
         { label: "Dev Workflow", value: "Husky + ESLint" }
       ],
-      flowNodes: ["Record", "S3 Upload", "PostgreSQL", "Publish", "FCM Notify", "Redis Cache", "QR/NFC"],
+      flowNodes: ["S3 Upload", "PostgreSQL", "Publish", "FCM Notify", "Redis Cache", "QR/NFC"],
       nodeTooltips: [
-        "User records 30-second video review in the Flutter mobile app.",
-        "Backend generates signed AWS S3 URL — video is uploaded securely to S3.",
+        "Backend generates signed AWS S3 URL for secure video upload.",
         "Review metadata stored in PostgreSQL via Prisma ORM.",
         "Review is published to the business profile and follower feed.",
         "Firebase FCM sends push notifications to all followers.",
@@ -331,11 +338,13 @@ export default function Projects({ onInspect }: ProjectsProps) {
         "Husky Pre-commit Hooks",
         "ESLint Code Quality"
       ],
-      n8nBadge: { nodes: "N/A", integrations: "AWS S3, Prisma, Firebase, Redis, Twilio" }
+      n8nBadge: { nodes: "N/A", integrations: "AWS S3, Prisma, Firebase, Redis, Twilio" },
+      businessImpact: "Created authentic social proof by replacing easily faked text reviews with verifiable 30s video footage.",
+      techStackMap: { "Frontend": "Flutter App", "Backend": "Fastify", "Database": "PostgreSQL", "Caching": "Redis", "Storage": "AWS S3" }
     },
     {
       title: "Bear Intelligence Pipeline",
-      subtitle: "TEMPORAL RAG KNOWLEDGE SYSTEM",
+      subtitle: "SMART DOCUMENT CHAT SYSTEM",
       description: "AI-powered Temporal RAG platform transforming scripts, transcripts, and documents into an intelligent Next.js conversational chat base.",
       category: "fullstack",
       tags: ["⚡ n8n", "🧠 Jina AI", "🗄️ Qdrant", "💻 Next.js", "🤖 Groq LLM", "🔌 Webhooks"],
@@ -360,14 +369,12 @@ export default function Projects({ onInspect }: ProjectsProps) {
         { label: "Automation Engine", value: "n8n Workflow" },
         { label: "LLM Reasoner", value: "Groq LLM" }
       ],
-      flowNodes: ["Webhook", "Embed", "Qdrant", "Temporal", "Retrieve", "Context", "Ask Groq", "Response"],
+      flowNodes: ["Webhook", "Embed", "Qdrant", "Retrieve", "Ask Groq", "Response"],
       nodeTooltips: [
         "Webhook receives the user query from the Next.js interface.",
         "Query is converted into vector embedding by Jina AI.",
         "Vector search finds the most relevant script chunks in Qdrant.",
-        "Applies time-based filters for relevance.",
         "Fetches relevant timeline chunks from matched documents.",
-        "Context is built with temporal logic and relevance scoring.",
         "Groq AI LLM generates the final intelligent response.",
         "Response is sent back to the webhook and displayed in the UI."
       ],
@@ -419,12 +426,15 @@ export default function Projects({ onInspect }: ProjectsProps) {
         "Vercel CDN Edge",
         "Docker Local Testing"
       ],
-      n8nBadge: { nodes: "8 Stages", integrations: "n8n, Qdrant, Groq, Jina" }
+      n8nBadge: { nodes: "8 Stages", integrations: "n8n, Qdrant, Groq, Jina" },
+      businessImpact: "Eliminated manual document search by instantly answering complex questions across thousands of scripts.",
+      companyLogo: "APCC",
+      techStackMap: { "Frontend": "Next.js", "Database": "Qdrant", "AI Layer": "Groq", "Embeddings": "Jina AI", "Automation": "n8n" }
     },
     {
       title: "ThermoConnect AI",
       subtitle: "CONVERSATIONAL AI AUTOMATION ENGINE",
-      description: "Autonomous Retell AI voice qualifying agent calling, scoring, and booking appointments for HVAC leads synced to Google Sheets and CRMs.",
+      description: "AI voice agent that qualifies, scores, and books appointments for HVAC leads — synced to Google Sheets and CRMs.",
       category: "automation",
       tags: ["📞 Retell AI", "⚡ n8n", "🟢 Next.js", "🤖 OpenAI", "📊 Sheets", "🔌 Webhooks"],
       gradientClass: styles.gradThermo,
@@ -448,16 +458,14 @@ export default function Projects({ onInspect }: ProjectsProps) {
         { label: "Integrations", value: "5" },
         { label: "Automation Level", value: "100%" }
       ],
-      flowNodes: ["Trigger", "Read", "DNC", "Call", "Webhook", "Extract", "Score", "Update"],
+      flowNodes: ["Read CRM", "DNC Check", "Voice Call", "Webhook", "LLM Score", "Update DB"],
       nodeTooltips: [
-        "Triggers every 15 minutes to find new leads.",
-        "Reads customer profiles from Google Sheets or CRM database.",
-        "Checks Do-Not-Call registry and previous call history.",
+        "Reads customer profiles from CRM.",
+        "Checks Do-Not-Call registry history.",
         "Triggers outbound Retell AI voice call.",
         "Receives call completion status webhook.",
         "Extracts structured conversation data using OpenAI.",
-        "Scores and qualifies lead based on custom business rules.",
-        "Updates Google Sheets / DB with summaries and follow-ups."
+        "Updates Google Sheets / DB with follow-ups."
       ],
       terminalScript: [
         { text: "$ n8n-trigger --schedule=\"15m\"", delay: 400 },
@@ -509,7 +517,10 @@ export default function Projects({ onInspect }: ProjectsProps) {
         "Twilio Caller ID Verification",
         "n8n Execution Logs"
       ],
-      n8nBadge: { nodes: "18 Nodes", integrations: "Retell AI, OpenAI, Sheets" }
+      n8nBadge: { nodes: "18 Nodes", integrations: "Retell AI, OpenAI, Sheets" },
+      businessImpact: "Saved over 100+ hours of calling labor monthly and increased booking conversions by up to 50%.",
+      companyLogo: "HVAC Voice Agent",
+      techStackMap: { "Frontend": "React", "Backend": "Node.js", "Database": "Google Sheets", "Voice AI": "Retell", "Automation": "n8n" }
     },
     {
       title: "Dental AI Revenue Engine",
@@ -601,7 +612,10 @@ export default function Projects({ onInspect }: ProjectsProps) {
         "GHL Campaign Triggers",
         "SMS/Email Automation"
       ],
-      n8nBadge: { nodes: "12 Nodes", integrations: "GHL, Vapi, Supabase, Twilio" }
+      n8nBadge: { nodes: "12 Nodes", integrations: "GHL, Vapi, Supabase, Twilio" },
+      businessImpact: "Maximized ad spend ROI by engaging and qualifying 100% of dental leads under 2 minutes, 24/7.",
+      companyLogo: "Bellagio Employee Hub",
+      techStackMap: { "Frontend": "GoHighLevel", "Database": "Supabase", "AI Layer": "GPT-4", "Voice AI": "Vapi AI", "Communications": "Twilio" }
     }
   ];
 
@@ -620,7 +634,7 @@ export default function Projects({ onInspect }: ProjectsProps) {
 
         <div className={styles.header}>
           <span className={styles.badge}>Production Ready</span>
-          <h2 className={styles.title}>Featured AI Systems</h2>
+          <h2 className={styles.title}>Production AI Systems</h2>
           <div className={styles.featuredStatsGrid}>
             <div className={styles.featuredStatItem}>
               <span className={styles.featuredStatVal}>6</span>
@@ -834,6 +848,11 @@ function ProjectCard({ project, onInspect }: ProjectCardProps) {
             )}
           </div>
           <div className={styles.cardHeaderTitleWrap}>
+            {project.companyLogo && (
+              <span className={styles.companyLogoText} style={{ fontSize: "0.75rem", fontWeight: 700, color: "var(--purple)", marginBottom: "4px", display: "inline-block", textTransform: "uppercase", letterSpacing: "0.5px" }}>
+                ❖ {project.companyLogo}
+              </span>
+            )}
             <h3 className={styles.cardTitle}>{project.title}</h3>
             <span className={styles.cardCategoryLabel}>{project.subtitle}</span>
           </div>
@@ -991,16 +1010,16 @@ function ProjectCard({ project, onInspect }: ProjectCardProps) {
         </div>
 
         {/* Description & Tags */}
-        <div className={styles.cardBody}>
+        <div className={styles.cardBody} style={{ flexGrow: 1, display: "flex", flexDirection: "column" }}>
           <div className={styles.tagWrapper}>
-            {project.tags.map((tag, tIdx) => (
+            {project.tags.slice(0, 5).map((tag, tIdx) => (
               <span key={tIdx} className={styles.tag}>
                 {tag}
               </span>
             ))}
           </div>
 
-          <p className={styles.cardText} style={{ fontWeight: 600 }}>
+          <p className={styles.cardText} style={{ fontWeight: 600, paddingRight: "0", whiteSpace: "normal", wordBreak: "break-word" }}>
             {activeTab === "dashboard" && project.description}
             {activeTab === "case_study" && (project.title.includes("SEO") ? "Case Study analysis covering business problem, solution, and impact." : "Case study details highlighting business value.")}
 
@@ -1011,11 +1030,10 @@ function ProjectCard({ project, onInspect }: ProjectCardProps) {
         {/* Footer Action Area */}
         <div className={styles.cardActionFooter}>
           <button
-            className={styles.primaryActionBtn}
-            style={{ width: "100%" }}
+            className={styles.ghostActionBtn}
             onClick={() => onInspect(project.title)}
           >
-            {project.linkText} <span className={styles.btnArrow}>→</span>
+            {project.linkText.replace("▶ ", "")} <span className={styles.btnArrow}>➔</span>
           </button>
         </div>
 

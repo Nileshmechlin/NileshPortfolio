@@ -686,6 +686,56 @@
   max-width: 90%;
 }
 
+.architectureStack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 1.5rem auto;
+  width: 100%;
+  max-width: 600px;
+}
+
+.archStackNode {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: rgba(10, 10, 20, 0.8);
+  border: 1px solid var(--border-glow);
+  padding: 12px 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.archStackNode:hover {
+  border-color: var(--border-hover);
+  background: rgba(15, 15, 25, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.archStackLayer {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--purple);
+  letter-spacing: 0.05em;
+  font-family: var(--font-mono);
+}
+
+.archStackTech {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-bright);
+}
+
+.archStackArrow {
+  font-size: 1.2rem;
+  color: var(--green);
+  opacity: 0.6;
+}
+
 .modalArchSequenceNode {
   font-size: 0.85rem;
   color: var(--text-bright);

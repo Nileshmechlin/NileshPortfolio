@@ -9,7 +9,7 @@ interface WorkflowModalProps {
   projectTitle: string;
 }
 
-type ViewMode = "story" | "pipeline" | "architecture" | "workflow" | "terminal" | "specs" | "website";
+type ViewMode = "story" | "architecture" | "n8n_workflow" | "website" | "pipeline" | "terminal" | "results";
 
 export default function WorkflowModal({ isOpen, onClose, projectTitle }: WorkflowModalProps) {
   const [activeStage, setActiveStage] = useState<number | null>(null);
@@ -23,11 +23,11 @@ export default function WorkflowModal({ isOpen, onClose, projectTitle }: Workflo
   const [terminalLogs, setTerminalLogs] = useState<string[]>([]);
   const terminalContainerRef = React.useRef<HTMLDivElement>(null);
 
-  const views: ViewMode[] = projectTitle.includes("Thermo")
-    ? ["story", "pipeline", "architecture", "workflow", "terminal", "specs"]
+  const views: ViewMode[] = projectTitle.includes("Thermo") 
+    ? ["story", "architecture", "n8n_workflow", "pipeline", "terminal", "results"]
     : projectTitle.includes("Tapsy")
-    ? ["story", "pipeline", "architecture", "website", "terminal", "specs"]
-    : ["story", "pipeline", "architecture", "terminal", "specs"];
+    ? ["story", "architecture", "website", "pipeline", "terminal", "results"]
+    : ["story", "architecture", "pipeline", "terminal", "results"];
   const currentIdx = views.indexOf(viewMode);
 
   const handleNext = () => {
@@ -317,13 +317,13 @@ export default function WorkflowModal({ isOpen, onClose, projectTitle }: Workflo
               {views.map((view) => {
                 const getViewLabel = (v: ViewMode) => {
                   switch (v) {
-                    case "story": return "● 1. Problem";
-                    case "pipeline": return "● 2. Pipeline";
-                    case "architecture": return "● 3. Architecture";
-                    case "website": return "● 4. Website";
-                    case "workflow": return "● 4. n8n Workflow";
-                    case "terminal": return projectTitle.includes("Thermo") ? "● 5. Live Simulation" : projectTitle.includes("Tapsy") ? "● 5. Live Simulation" : "● 4. Live Simulation";
-                    case "specs": return projectTitle.includes("Thermo") || projectTitle.includes("Tapsy") ? "● 6. Specs" : "● 5. Specs";
+                    case "story": return "Business Case Study";
+                    case "architecture": return "Architecture";
+                    case "n8n_workflow": return "n8n Workflow";
+                    case "website": return "App / Website";
+                    case "pipeline": return "Live Workflow";
+                    case "terminal": return "Execution";
+                    case "results": return "Results";
                     default: return "";
                   }
                 };
@@ -1099,186 +1099,43 @@ export default function WorkflowModal({ isOpen, onClose, projectTitle }: Workflo
             </div>
           )}
 
-          {viewMode === "architecture" && (() => {
-            const archImageSrc = getArchitectureImage();
-            return (
-              <div className={styles.macWindowWrapperCol}>
-                <div
-                  className={styles.macWindowWrapper}
-                  onClick={() => openZoom(archImageSrc)}
-                >
-                  <div className={styles.macTitlebar}>
-                    <div className={styles.macDotRed}></div>
-                    <div className={styles.macDotYellow}></div>
-                    <div className={styles.macDotGreen}></div>
-                    <span className={styles.macTitle}>Pipeline Architecture</span>
-                    <span className={styles.inspectBadge}>🔍 Click to inspect</span>
-                  </div>
-                  <div className={styles.macContent}>
-                    <img
-                      src={archImageSrc}
-                      alt="System Architecture Diagram"
-                      className={styles.architectureImg}
-                    />
-                  </div>
-                </div>
-                <div className={styles.modalArchitectureFlowSequence}>
-                  {projectTitle.includes("SEO") ? (
-                    <>
-                      <span className={styles.modalArchSequenceNode}>Research</span>
-                      <span className={styles.modalArchSequenceArrow}>→</span>
-                      <span className={styles.modalArchSequenceNode}>Qualification</span>
-                      <span className={styles.modalArchSequenceArrow}>→</span>
-                      <span className={styles.modalArchSequenceNode}>Writing</span>
-                      <span className={styles.modalArchSequenceArrow}>→</span>
-                      <span className={styles.modalArchSequenceNode}>Publishing</span>
-                    </>
-                  ) : projectTitle.includes("Autonomous") ? (
-                    <>
-                      <span className={styles.modalArchSequenceNode}>Twilio Telephony</span>
-                      <span className={styles.modalArchSequenceArrow}>→</span>
-                      <span className={styles.modalArchSequenceNode}>FastAPI Engine</span>
-                      <span className={styles.modalArchSequenceArrow}>→</span>
-                      <span className={styles.modalArchSequenceNode}>Groq LLM</span>
-                      <span className={styles.modalArchSequenceArrow}>→</span>
-                      <span className={styles.modalArchSequenceNode}>Supabase DB</span>
-                      <span className={styles.modalArchSequenceArrow}>→</span>
-                      <span className={styles.modalArchSequenceNode}>Next.js UI</span>
-                    </>
-                  ) : projectTitle.includes("Thermo") ? (
-                    <>
-                      <span className={styles.modalArchSequenceNode}>Lead Intake</span>
-                      <span className={styles.modalArchSequenceArrow}>→</span>
-                      <span className={styles.modalArchSequenceNode}>Retell AI Call</span>
-                      <span className={styles.modalArchSequenceArrow}>→</span>
-                      <span className={styles.modalArchSequenceNode}>Webhook Dispatch</span>
-                      <span className={styles.modalArchSequenceArrow}>→</span>
-                      <span className={styles.modalArchSequenceNode}>OpenAI Extraction</span>
-                      <span className={styles.modalArchSequenceArrow}>→</span>
-                      <span className={styles.modalArchSequenceNode}>Sheets Update</span>
-                    </>
-                  ) : projectTitle.includes("Bear") ? (
-                    <>
-                      <span className={styles.modalArchSequenceNode}>User Query</span>
-                      <span className={styles.modalArchSequenceArrow}>→</span>
-                      <span className={styles.modalArchSequenceNode}>Jina AI Embedding</span>
-                      <span className={styles.modalArchSequenceArrow}>→</span>
-                      <span className={styles.modalArchSequenceNode}>Qdrant Vector DB</span>
-                      <span className={styles.modalArchSequenceArrow}>→</span>
-                      <span className={styles.modalArchSequenceNode}>Temporal Filtering</span>
-                      <span className={styles.modalArchSequenceArrow}>→</span>
-                      <span className={styles.modalArchSequenceNode}>Groq LLM</span>
-                      <span className={styles.modalArchSequenceArrow}>→</span>
-                      <span className={styles.modalArchSequenceNode}>Next.js Chat UI</span>
-                    </>
-                  ) : projectTitle.includes("Tapsy") ? (
-                    <>
-                      <span className={styles.modalArchSequenceNode}>Mobile Recording</span>
-                      <span className={styles.modalArchSequenceArrow}>→</span>
-                      <span className={styles.modalArchSequenceNode}>Node.js Transcoder</span>
-                      <span className={styles.modalArchSequenceArrow}>→</span>
-                      <span className={styles.modalArchSequenceNode}>Redis Feed Router</span>
-                      <span className={styles.modalArchSequenceArrow}>→</span>
-                      <span className={styles.modalArchSequenceNode}>Firebase FCM</span>
-                      <span className={styles.modalArchSequenceArrow}>→</span>
-                      <span className={styles.modalArchSequenceNode}>QR Discovery</span>
-                    </>
-                  ) : projectTitle.includes("Dental") ? (
-                    <>
-                      <span className={styles.modalArchSequenceNode}>Ads Traffic</span>
-                      <span className={styles.modalArchSequenceArrow}>→</span>
-                      <span className={styles.modalArchSequenceNode}>GHL CRM</span>
-                      <span className={styles.modalArchSequenceArrow}>→</span>
-                      <span className={styles.modalArchSequenceNode}>Vapi AI Call</span>
-                      <span className={styles.modalArchSequenceArrow}>→</span>
-                      <span className={styles.modalArchSequenceNode}>Qualify Lead</span>
-                      <span className={styles.modalArchSequenceArrow}>→</span>
-                      <span className={styles.modalArchSequenceNode}>Book Appointment</span>
-                    </>
-                  ) : (
-                    <>
-                      <span className={styles.modalArchSequenceNode}>Checkout Webhook</span>
-                      <span className={styles.modalArchSequenceArrow}>→</span>
-                      <span className={styles.modalArchSequenceNode}>n8n Route Node</span>
-                      <span className={styles.modalArchSequenceArrow}>→</span>
-                      <span className={styles.modalArchSequenceNode}>HubSpot CRM</span>
-                      <span className={styles.modalArchSequenceArrow}>→</span>
-                      <span className={styles.modalArchSequenceNode}>Slack Alerts</span>
-                    </>
-                  )}
-                </div>
+          {viewMode === "architecture" && (
+            <div className={styles.macWindowWrapperCol}>
+              {/* Title removed per user request */}
+              
+              <div className={styles.workflowImageContainer} style={{ borderRadius: "8px", overflow: "hidden", border: "1px solid var(--border-glow)", cursor: "pointer" }} onClick={() => openZoom(getArchitectureImage())}>
+                <img
+                  src={getArchitectureImage()}
+                  alt={`${projectTitle} Architecture`}
+                  style={{ width: "100%", height: "auto", display: "block", objectFit: "contain" }}
+                />
               </div>
-            );
-          })()}
+            </div>
+          )}
+
+          {viewMode === "n8n_workflow" && projectTitle.includes("Thermo") && (
+            <div className={styles.macWindowWrapperCol}>
+              <div className={styles.workflowImageContainer} style={{ borderRadius: "8px", overflow: "hidden", border: "1px solid var(--border-glow)", cursor: "pointer" }} onClick={() => openZoom("/thermoconnect-workflow.png")}>
+                <img
+                  src="/thermoconnect-workflow.png"
+                  alt={`${projectTitle} n8n Workflow`}
+                  style={{ width: "100%", height: "auto", display: "block", objectFit: "contain" }}
+                />
+              </div>
+            </div>
+          )}
 
           {viewMode === "website" && projectTitle.includes("Tapsy") && (
             <div className={styles.macWindowWrapperCol}>
-              <div
-                className={styles.macWindowWrapper}
-                onClick={() => openZoom("/tapsy-website.png")}
-              >
-                <div className={styles.macTitlebar}>
-                  <div className={styles.macDotRed}></div>
-                  <div className={styles.macDotYellow}></div>
-                  <div className={styles.macDotGreen}></div>
-                  <span className={styles.macTitle}>tapsy.app — Live Product Website</span>
-                  <span className={styles.inspectBadge}>🔍 Click to inspect</span>
-                </div>
+              <div className={styles.workflowImageContainer} style={{ borderRadius: "8px", overflow: "hidden", border: "1px solid var(--border-glow)", cursor: "pointer" }} onClick={() => openZoom("/tapsy-website.png")}>
                 <img
                   src="/tapsy-website.png"
-                  alt="Tapsy Website"
-                  style={{ width: "100%", display: "block", borderRadius: "0 0 8px 8px" }}
+                  alt={`${projectTitle} Website`}
+                  style={{ width: "100%", height: "auto", display: "block", objectFit: "contain" }}
                 />
               </div>
-              <div className={styles.modalArchitectureFlowSequence}>
-                <span className={styles.modalArchSequenceNode}>Flutter App</span>
-                <span className={styles.modalArchSequenceArrow}>→</span>
-                <span className={styles.modalArchSequenceNode}>Video Reviews</span>
-                <span className={styles.modalArchSequenceArrow}>→</span>
-                <span className={styles.modalArchSequenceNode}>AWS S3</span>
-                <span className={styles.modalArchSequenceArrow}>→</span>
-                <span className={styles.modalArchSequenceNode}>Business Profiles</span>
-                <span className={styles.modalArchSequenceArrow}>→</span>
-                <span className={styles.modalArchSequenceNode}>NFC/QR Discovery</span>
-              </div>
             </div>
           )}
-
-          {viewMode === "workflow" && (
-            <div className={styles.macWindowWrapperCol}>
-              <div
-                className={styles.macWindowWrapper}
-                onClick={() => openZoom("/thermoconnect-workflow.png")}
-              >
-                <div className={styles.macTitlebar}>
-                  <div className={styles.macDotRed}></div>
-                  <div className={styles.macDotYellow}></div>
-                  <div className={styles.macDotGreen}></div>
-                  <span className={styles.macTitle}>n8n Workflow Canvas</span>
-                  <span className={styles.inspectBadge}>🔍 Click to inspect</span>
-                </div>
-                <div className={styles.macContent}>
-                  <img
-                    src="/thermoconnect-workflow.png"
-                    alt="n8n Workflow Canvas"
-                    className={styles.architectureImg}
-                  />
-                </div>
-              </div>
-              <div className={styles.modalArchitectureFlowSequence}>
-                <span className={styles.modalArchSequenceNode}>Schedule Trigger</span>
-                <span className={styles.modalArchSequenceArrow}>→</span>
-                <span className={styles.modalArchSequenceNode}>Read Leads</span>
-                <span className={styles.modalArchSequenceArrow}>→</span>
-                <span className={styles.modalArchSequenceNode}>Retell Call</span>
-                <span className={styles.modalArchSequenceArrow}>→</span>
-                <span className={styles.modalArchSequenceNode}>AI Analysis</span>
-                <span className={styles.modalArchSequenceArrow}>→</span>
-                <span className={styles.modalArchSequenceNode}>Update sheets & Send Followup</span>
-              </div>
-            </div>
-          )}
-
 
           {viewMode === "terminal" && (
             <div className={styles.terminalView}>
@@ -1299,15 +1156,15 @@ export default function WorkflowModal({ isOpen, onClose, projectTitle }: Workflo
             </div>
           )}
 
-          {viewMode === "specs" && (
+          {viewMode === "results" && (
             <div className={styles.specsTabContent}>
               <div className={styles.specsHeader}>
-                <h4 className={styles.specsTitle}>Technical Validation & Verified Outcomes</h4>
+                <h4 className={styles.specsTitle}>Verified Business Outcomes</h4>
                 <p className={styles.specsSubtitle}>Production readiness metrics, business outcomes, and core APIs utilized.</p>
               </div>
               <div className={styles.specsGrid}>
-                <div className={styles.specsCard}>
-                  <h5 className={styles.specsSectionTitle}>Verified Business Outcomes</h5>
+                <div className={styles.specsCard} style={{ width: "100%" }}>
+                  <h5 className={styles.specsSectionTitle}>Impact & Scale</h5>
                   <ul className={styles.specsList}>
                     {projectTitle.includes("Thermo") ? (
                       <>
@@ -1357,30 +1214,6 @@ export default function WorkflowModal({ isOpen, onClose, projectTitle }: Workflo
                       </>
                     )}
                   </ul>
-                </div>
-
-                <div className={styles.specsCard}>
-                  <h5 className={styles.specsSectionTitle}>Tech Stack & APIs</h5>
-                  <div className={styles.techPillsContainer}>
-                    {projectTitle.includes("Tapsy") && ["Node.js", "TypeScript", "Prisma ORM", "Redis Cache", "Firebase FCM", "Twilio API", "Husky", "DB Indexing", "ESLint"].map(p => (
-                      <span key={p} className={styles.techPill}>{p}</span>
-                    ))}
-                    {projectTitle.includes("SEO") && ["n8n", "GPT-5", "Google Sheets", "Google Docs", "Google Drive", "Deep Research API", "OAuth2", "REST API"].map(p => (
-                      <span key={p} className={styles.techPill}>{p}</span>
-                    ))}
-                    {projectTitle.includes("Autonomous") && ["Next.js", "FastAPI", "Supabase", "Groq LLM", "Twilio", "Python", "TypeScript", "REST APIs", "Webhooks"].map(p => (
-                      <span key={p} className={styles.techPill}>{p}</span>
-                    ))}
-                    {projectTitle.includes("Bear") && ["n8n Workflow", "Jina AI Embeddings", "Qdrant Vector DB", "Groq LLM", "Next.js UI", "Temporal-aware logic", "Webhooks"].map(p => (
-                      <span key={p} className={styles.techPill}>{p}</span>
-                    ))}
-                    {projectTitle.includes("Thermo") && ["n8n", "Retell AI", "OpenAI API", "Google Sheets", "FastAPI", "Webhooks", "JSON Schema", "Docker"].map(p => (
-                      <span key={p} className={styles.techPill}>{p}</span>
-                    ))}
-                    {!projectTitle.includes("SEO") && !projectTitle.includes("Autonomous") && !projectTitle.includes("Tapsy") && !projectTitle.includes("Bear") && !projectTitle.includes("Thermo") && ["n8n Mesh", "HubSpot CRM", "Stripe API", "Slack Webhooks", "OAuth2", "Make.com Router", "Fail-safe retries"].map(p => (
-                      <span key={p} className={styles.techPill}>{p}</span>
-                    ))}
-                  </div>
                 </div>
               </div>
             </div>

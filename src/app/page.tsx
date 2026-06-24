@@ -11,6 +11,7 @@ import Services from "../components/Services";
 import AutomationLab from "../components/AutomationLab";
 import Projects from "../components/Projects";
 import ProgressionDashboard from "../components/ProgressionDashboard";
+import TechStackGrid from "../components/TechStackGrid";
 import Timeline from "../components/Timeline";
 import ContactForm from "../components/ContactForm";
 import WorkflowModal from "../components/WorkflowModal";
@@ -257,6 +258,11 @@ export default function Home() {
         {/* 4.25 RPG Career Progression stats */}
         <div className="revealNode">
           <ProgressionDashboard />
+        </div>
+
+        {/* 4.3 Tech Stack Grid */}
+        <div className="revealNode">
+          <TechStackGrid />
         </div>
 
         {/* 4.5 Experience Journey Timeline */}

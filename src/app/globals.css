@@ -111,7 +111,7 @@
   --name-gradient: linear-gradient(135deg, #000000 0%, #444444 100%);
   --grid-line-color: rgba(0, 0, 0, 0.03);
   --card-bg: #ffffff;
-  --card-bg-hover: #f4f4f5;
+  --card-bg-hover: #ffffff;
   --card-border: rgba(0, 0, 0, 0.08);
   --card-border-hover: rgba(0, 0, 0, 0.18);
   --card-fade-bg: rgba(255, 255, 255, 0.98);
@@ -120,64 +120,64 @@
   --terminal-bg: #f8f9fa;
   --terminal-header-bg: #e9ecef;
   
-  --glass-bg: #ffffff;
+  --glass-bg: rgba(255, 255, 255, 0.75);
   --glass-border: 1px solid rgba(0, 0, 0, 0.08);
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.04);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.06);
   
-  /* Monochrome Accent Overrides */
-  --orange: #000000;
-  --orange-dim: #f4f4f5;
-  --orange-glow: rgba(0, 0, 0, 0.02);
+  /* Brand Accent Restoration for Light Mode */
+  --orange: #ff5c00;
+  --orange-dim: rgba(255, 92, 0, 0.08);
+  --orange-glow: rgba(255, 92, 0, 0.15);
   
-  --blue: #18181b;
-  --blue-dim: #f4f4f5;
-  --blue-glow: rgba(0, 0, 0, 0.02);
+  --blue: #0075ff;
+  --blue-dim: rgba(0, 117, 255, 0.08);
+  --blue-glow: rgba(0, 117, 255, 0.15);
   
-  --purple: #27272a;
-  --purple-dim: #f4f4f5;
-  --purple-glow: rgba(0, 0, 0, 0.02);
+  --purple: #8a2be2;
+  --purple-dim: rgba(138, 43, 226, 0.08);
+  --purple-glow: rgba(138, 43, 226, 0.15);
   
-  --green: #000000;
-  --green-dim: #f4f4f5;
-  --green-glow: rgba(0, 0, 0, 0.02);
+  --green: #00c853;
+  --green-dim: rgba(0, 200, 83, 0.08);
+  --green-glow: rgba(0, 200, 83, 0.15);
   
-  --pink: #3f3f46;
-  --pink-dim: #f4f4f5;
+  --pink: #ff007f;
+  --pink-dim: rgba(255, 0, 127, 0.08);
 
-  --yellow: #000000;
-  --yellow-dim: #f4f4f5;
-  --yellow-glow: rgba(0, 0, 0, 0.02);
+  --yellow: #eab308;
+  --yellow-dim: rgba(234, 179, 8, 0.08);
+  --yellow-glow: rgba(234, 179, 8, 0.15);
   
-  --services-glow-orange: rgba(0, 0, 0, 0.02);
-  --services-glow-blue: rgba(0, 0, 0, 0.02);
-  --services-glow-purple: rgba(0, 0, 0, 0.02);
+  --services-glow-orange: rgba(255, 92, 0, 0.05);
+  --services-glow-blue: rgba(0, 117, 255, 0.05);
+  --services-glow-purple: rgba(138, 43, 226, 0.05);
   
-  --grad-orange-start: rgba(0, 0, 0, 0.06);
-  --grad-orange-end: rgba(0, 0, 0, 0.01);
-  --grad-green-start: rgba(0, 0, 0, 0.06);
-  --grad-green-end: rgba(0, 0, 0, 0.01);
-  --grad-purple-start: rgba(0, 0, 0, 0.06);
-  --grad-purple-end: rgba(0, 0, 0, 0.01);
-  --grad-blue-start: rgba(0, 0, 0, 0.06);
-  --grad-blue-end: rgba(0, 0, 0, 0.01);
-  --grad-pink-start: rgba(0, 0, 0, 0.06);
-  --grad-pink-end: rgba(0, 0, 0, 0.01);
-  --grad-cyan-start: rgba(0, 0, 0, 0.06);
-  --grad-cyan-end: rgba(0, 0, 0, 0.01);
-  --grad-yellow-start: rgba(0, 0, 0, 0.06);
-  --grad-yellow-end: rgba(0, 0, 0, 0.01);
+  --grad-orange-start: rgba(255, 92, 0, 0.12);
+  --grad-orange-end: rgba(255, 92, 0, 0.02);
+  --grad-green-start: rgba(0, 200, 83, 0.12);
+  --grad-green-end: rgba(0, 200, 83, 0.02);
+  --grad-purple-start: rgba(138, 43, 226, 0.12);
+  --grad-purple-end: rgba(138, 43, 226, 0.02);
+  --grad-blue-start: rgba(0, 117, 255, 0.12);
+  --grad-blue-end: rgba(0, 117, 255, 0.02);
+  --grad-pink-start: rgba(255, 0, 127, 0.12);
+  --grad-pink-end: rgba(255, 0, 127, 0.02);
+  --grad-cyan-start: rgba(0, 255, 255, 0.12);
+  --grad-cyan-end: rgba(0, 255, 255, 0.02);
+  --grad-yellow-start: rgba(234, 179, 8, 0.12);
+  --grad-yellow-end: rgba(234, 179, 8, 0.02);
   
-  --primary-btn-bg: #000000;
+  --primary-btn-bg: linear-gradient(135deg, var(--blue) 0%, #0056cc 100%);
   --primary-btn-text: #ffffff;
-  --primary-btn-bg-hover: #27272a;
-  --primary-btn-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  --primary-btn-shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.16);
+  --primary-btn-bg-hover: linear-gradient(135deg, var(--blue) 0%, #0044b3 100%);
+  --primary-btn-shadow: 0 4px 15px rgba(0, 117, 255, 0.25);
+  --primary-btn-shadow-hover: 0 6px 20px rgba(0, 117, 255, 0.4);
   --typewriter-glow: none;
   
-  --chat-user-bg: #000000;
-  --chat-user-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  --chat-launcher-hover-border: var(--foreground);
-  --chat-launcher-hover-shadow: 0 8px 25px var(--border-glow);
+  --chat-user-bg: linear-gradient(135deg, var(--orange) 0%, #cc4a00 100%);
+  --chat-user-shadow: 0 4px 15px rgba(255, 92, 0, 0.25);
+  --chat-launcher-hover-border: var(--orange);
+  --chat-launcher-hover-shadow: 0 8px 25px var(--orange-glow);
   
   /* Scrollbar variables */
   --scrollbar-track: #ffffff;
@@ -185,9 +185,9 @@
   --scrollbar-thumb-hover: #cbd5e1;
 }
 
-/* Hide ambient dark blur blobs in light mode to maintain clean, crisp white background */
+/* Ambient blobs can stay but be lighter for light mode to preserve brand identity */
 [data-theme="light"] .ambient-glow {
-  display: none !important;
+  opacity: 0.25;
 }
 
 /* Base resets & setups */

@@ -72,6 +72,13 @@ export default function ContactForm() {
 
     setJsonOutput(`// Connecting to webhook URL...\nGET https://api.nilesh.vijay/v1/inbound ...`);
 
+    // Send the actual email notification in the background
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, service, message })
+    }).catch(console.error);
+
     // Simulated Webhook Pipeline sequence
     // Step 1: Listening/Received
     setTimeout(() => {

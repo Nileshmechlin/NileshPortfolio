@@ -1,12 +1,12 @@
 .section {
   position: relative;
   z-index: 2;
-  padding: 2.5rem 2rem;
+  padding: 1.5rem 2rem;
 }
 
 @media (max-width: 768px) {
   .section {
-    padding: 1.5rem 1.25rem;
+    padding: 1rem 1.25rem;
   }
 }
 
@@ -16,7 +16,7 @@
 
 .header {
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .badge {
@@ -251,9 +251,10 @@
 }
 
 .miniValue {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--text-bright);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--orange);
+  font-family: var(--font-mono);
 }
 
 .miniLabel {
@@ -263,6 +264,15 @@
 }
 
 /* Right Panel: Skill Tree */
+.panelTitleHero {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-bright);
+  margin-bottom: 1.75rem;
+  border-bottom: 1px solid var(--border-glow);
+  padding-bottom: 0.75rem;
+}
+
 .panelTitle {
   font-size: 1.2rem;
   font-weight: 700;
@@ -278,62 +288,38 @@
   gap: 1.5rem;
 }
 
-.skillItem {
+.skillCategoryItem {
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
 }
 
-.skillHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 6px;
-}
-
-.skillName {
+.skillCategoryHeader {
   font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--text-bright);
-}
-
-.skillLevel {
-  font-size: 0.72rem;
-  font-family: var(--font-mono);
   font-weight: 700;
-  background: var(--border-glow);
-  border: 1px solid var(--border-hover);
-  padding: 2px 8px;
-  border-radius: 4px;
-  color: var(--foreground-dim);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
-.skillTrack {
-  height: 8px;
-  width: 100%;
-  background: var(--border-glow);
-  border: 1px solid var(--border-hover);
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.skillFill {
-  height: 100%;
-  border-radius: inherit;
-  width: 0%;
-  transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.skillFooter {
+.skillPills {
   display: flex;
-  justify-content: flex-end;
-  margin-top: 4px;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
-.skillXP {
-  font-size: 0.7rem;
-  font-family: var(--font-mono);
-  color: var(--foreground-dim);
-  font-weight: 600;
+.skillPill {
+  font-size: 0.75rem;
+  background: var(--border-glow);
+  border: 1px solid var(--border-hover);
+  padding: 4px 10px;
+  border-radius: 999px;
+  color: var(--text-bright);
+  transition: all 0.3s ease;
+}
+
+.skillPill:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Missions Completed */
@@ -343,7 +329,7 @@
 
 .missionsGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
 }
 
@@ -368,13 +354,17 @@
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  transition: var(--transition-bezier);
+  transition: var(--transition-normal);
+  backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
 }
 
 .missionCard:hover {
   transform: translateY(-4px) scale(1.02);
   border-color: var(--card-border-hover);
-  background: var(--bg-secondary);
+  background: var(--card-bg-hover);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 24px rgba(255, 140, 0, 0.3);
 }
 
 .missionHeader {
@@ -417,14 +407,34 @@
 
 .missionFooter {
   margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.missionIcon {
+  font-size: 1.5rem;
+}
+
+.missionLink {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--foreground-dim);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.missionLink:hover {
+  color: var(--text-bright);
 }
 
 .statusSuccess {
-  font-size: 0.72rem;
+  font-size: 0.65rem;
   font-family: var(--font-mono);
-  font-weight: 700;
+  font-weight: 800;
   color: var(--green);
   text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 @media (max-width: 480px) {

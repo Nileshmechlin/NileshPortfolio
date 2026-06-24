@@ -1,13 +1,13 @@
 .section {
   position: relative;
   z-index: 2;
-  padding: 5rem 2rem;
+  padding: 3rem 2rem;
   overflow: hidden;
 }
 
 @media (max-width: 768px) {
   .section {
-    padding: 3rem 1.25rem;
+    padding: 1.5rem 1rem;
   }
 }
 
@@ -82,6 +82,44 @@
   margin: 0 auto;
 }
 
+/* Featured Stats global bar */
+.featuredStatsGrid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.featuredStatItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.featuredStatVal {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-bright);
+  font-family: var(--font-mono);
+}
+
+.featuredStatLbl {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--foreground-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.featuredStatDivider {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(180deg, transparent, var(--border-hover), transparent);
+  box-shadow: 0 0 10px var(--border-glow);
+}
+
 /* Filters buttons */
 .filters {
   display: flex;
@@ -111,23 +149,26 @@
 }
 
 .filterActive {
-  background: var(--text-bright);
-  color: var(--bg-primary);
-  border-color: var(--text-bright);
-  box-shadow: var(--glass-shadow);
+  background: transparent;
+  color: var(--text-bright);
+  border-color: var(--card-border);
+  box-shadow: 0 4px 15px rgba(0, 117, 255, 0.2);
+  border-bottom: 2px solid var(--blue);
 }
 
 .filterActive:hover {
-  background: var(--foreground);
-  color: var(--bg-primary);
-  border-color: var(--foreground);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-bright);
+  border-color: var(--card-border-hover);
 }
 
 /* Projects grid (re-designed for 2 columns to give widgets ample room) */
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 3rem;
+  gap: 2rem;
+  align-items: stretch;
+  grid-auto-rows: 1fr;
 }
 
 @media (max-width: 992px) {
@@ -142,6 +183,8 @@
   transform: translateY(20px);
   animation: cardFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 @keyframes cardFadeIn {
@@ -158,7 +201,7 @@
 
 /* Card layout & Styling */
 .card {
-  height: 100%;
+  flex: 1;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: 20px;
@@ -174,6 +217,7 @@
 .card:hover {
   border-color: var(--card-border-hover);
   background: var(--card-bg-hover);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 24px rgba(255, 140, 0, 0.3);
 }
 
 /* Card reactive light layer disabled */
@@ -181,7 +225,11 @@
   display: none;
 }
 
-
+.cardActionFooter {
+  margin-top: auto;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
 
 /* Floating AI Explainer Orb */
 .aiOrb {
@@ -308,6 +356,14 @@
   margin-top: 1px;
 }
 
+.header {
+  text-align: center;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /* Status Indicator Widget */
 .statusIndicator {
   margin-left: auto;
@@ -321,10 +377,10 @@
 .statusBadge {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   background: rgba(0, 255, 102, 0.08);
   border: 1px solid rgba(0, 255, 102, 0.2);
-  padding: 2px 6px;
+  padding: 4px 10px;
   border-radius: 999px;
 }
 
@@ -521,27 +577,26 @@
 .flowNodeCard {
   display: flex;
   align-items: center;
-  gap: 4px;
-  background: var(--border-glow);
-  border: 1px solid var(--border-hover);
-  padding: 3px 6px;
-  border-radius: 4px;
+  gap: 6px;
+  background: rgba(10, 10, 20, 0.6);
+  border: 1px solid var(--border-glow);
+  padding: 4px 10px;
+  border-radius: 6px;
   white-space: nowrap;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .flowNodeCircle {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--green);
-  box-shadow: 0 0 6px var(--green);
+  display: none;
 }
 
 .flowNodeName {
-  font-size: 0.62rem;
-  font-weight: 600;
+  font-size: 0.65rem;
+  font-weight: 700;
   color: var(--text-bright);
+  font-family: var(--font-sans);
+  letter-spacing: 0.02em;
 }
 
 .flowConnector {
@@ -620,15 +675,18 @@
 }
 
 .metricVal {
-  font-size: 0.85rem;
-  font-weight: 800;
+  font-size: 1.15rem;
+  font-weight: 900;
   color: var(--text-bright);
   font-family: var(--font-mono);
 }
 
 .metricLabel {
-  font-size: 0.55rem;
+  font-size: 0.5rem;
+  font-weight: 600;
   color: var(--foreground-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   margin-top: 2px;
 }
 
@@ -1705,6 +1763,32 @@
   border-color: rgba(255, 92, 0, 0.4);
 }
 
+.ghostActionBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--text-bright);
+  font-size: 0.82rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  padding: 6px 0;
+  transition: all 0.3s ease;
+}
+
+.ghostActionBtn:hover {
+  color: var(--orange);
+}
+
+.ghostActionBtn .btnArrow {
+  font-size: 1.1em;
+}
+
+.ghostActionBtn:hover .btnArrow {
+  transform: translateX(4px);
+}
+
 .btnArrow {
   display: inline-block;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1713,6 +1797,8 @@
 .primaryActionBtn:hover .btnArrow {
   transform: translateX(4px);
 }
+
+
 
 /* ===== COMPREHENSIVE MOBILE RESPONSIVE OVERRIDES ===== */
 

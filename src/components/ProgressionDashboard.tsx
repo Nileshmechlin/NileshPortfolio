@@ -3,10 +3,9 @@
 import React, { useEffect, useState, useRef } from "react";
 import styles from "./ProgressionDashboard.module.css";
 
-interface SkillStat {
+interface SkillCategory {
   name: string;
-  level: number;
-  xpPercent: number;
+  skills: string[];
   color: string;
 }
 
@@ -36,35 +35,45 @@ export default function ProgressionDashboard() {
     };
   }, []);
 
-  const stats: SkillStat[] = [
-    { name: "n8n Self-Hosted Workflows", level: 5, xpPercent: 95, color: "var(--orange)" },
-    { name: "GHL Snapshots & CRM Custom APIs", level: 4, xpPercent: 90, color: "var(--blue)" },
-    { name: "Fullstack SaaS (Next.js / Node.js)", level: 4, xpPercent: 85, color: "var(--purple)" },
-    { name: "RAG & Vector search (Qdrant)", level: 3, xpPercent: 80, color: "var(--green)" },
-    { name: "AI Voice agents (Vocode / Vapi)", level: 3, xpPercent: 75, color: "var(--pink)" },
+  const skillCategories: SkillCategory[] = [
+    { name: "Automation & Workflows", skills: ["n8n", "Make.com", "GoHighLevel Automations"], color: "var(--orange)" },
+    { name: "Fullstack Engineering", skills: ["Next.js", "Node.js", "TypeScript", "FastAPI"], color: "var(--purple)" },
+    { name: "AI & Data Layers", skills: ["Supabase", "Qdrant", "OpenAI / Groq API"], color: "var(--green)" },
+    { name: "Voice & Real-time AI", skills: ["Vocode", "Vapi", "Twilio", "WebRTC"], color: "var(--blue)" },
   ];
 
-  const missions = [
+  const systems = [
     {
-      title: "Real Estate SEO Auto-Blog",
-      desc: "Constructed deep-research keyword search flow with Slack review gate.",
-      xp: "+1,200 XP",
-      badge: "🏆 Gold Badge",
+      title: "Real Estate SEO Engine",
+      icon: "📰",
+      desc: "✓ 26-node automation platform\n✓ 4000-word AI articles\n✓ Google Workspace publishing",
+      metric: "High Volume",
       accent: "var(--orange)",
+      liveMetric: "LIVE • 4K+ ARTICLES PUBLISHED",
     },
     {
-      title: "Timeline RAG Knowledgebase",
-      desc: "Mapped text chunking to Jina AI Embeddings and Qdrant queries.",
-      xp: "+1,000 XP",
-      badge: "⚡ Silver Badge",
+      title: "Timeline RAG Platform",
+      icon: "🐻",
+      desc: "✓ 10,000+ indexed documents\n✓ <80ms retrieval latency\n✓ Jina + Qdrant + Next.js",
+      metric: "Enterprise AI",
       accent: "var(--purple)",
+      liveMetric: "LIVE • SUB-200MS API LATENCY",
     },
     {
-      title: "Vocode Voice CRM snaps",
-      desc: "Wired Twilio call hooks and CloseBot SMS responders to GHL Pipelines.",
-      xp: "+950 XP",
-      badge: "🔥 Bronze Badge",
+      title: "Voice Calling Platform",
+      icon: "📞",
+      desc: "✓ Twilio + Vocode platform\n✓ Sub-200ms conversational latency\n✓ Automated CRM appointment booking",
+      metric: "Real-time Voice",
       accent: "var(--blue)",
+      liveMetric: "LIVE • 5000+ CALLS AUTOMATED",
+    },
+    {
+      title: "Dental Acquisition Engine",
+      icon: "🦷",
+      desc: "✓ GoHighLevel + Vapi AI\n✓ < 2 min lead response time\n✓ Auto-booking pipeline",
+      metric: "Growth Engine",
+      accent: "var(--green)",
+      liveMetric: "LIVE • 24/7 SLA",
     },
   ];
 
@@ -73,86 +82,67 @@ export default function ProgressionDashboard() {
       <div className={styles.container}>
         {/* Header */}
         <div className={styles.header}>
-          <span className={styles.badge}>System Stats</span>
-          <h2 className={styles.title}>Career Achievements</h2>
+          <span className={styles.badge}>Impact Metrics</span>
+          <h2 className={styles.title}>Career Impact</h2>
           <p className={styles.subtitle}>
-            Tracking my developer growth and completed missions in real-time.
+            Tracking professional experience and delivered production systems.
           </p>
         </div>
 
         {/* Dashboard Grid */}
         <div className={styles.dashboard}>
-          {/* Left Panel: Level & Core Profile */}
+          {/* Left Panel: Impact Dashboard */}
           <div className={`${styles.profilePanel} stagger-item`}>
             <div className={styles.levelCard}>
               <div className={styles.shieldWrapper}>
                 <div className={styles.glowingOrb}></div>
-                <div className={styles.shield}>5</div>
+                <div className={styles.shield}>AI</div>
               </div>
               <div className={styles.levelDetails}>
-                <span className={styles.rankLabel}>CURRENT RANK</span>
-                <h3 className={styles.rankTitle}>AI Automation Arch-Mage</h3>
-                <p className={styles.rankDesc}>Level 5 — Fullstack & Automation Specialist</p>
+                <span className={styles.rankLabel}>CORE FOCUS</span>
+                <h3 className={styles.rankTitle}>AI + Full-Stack Engineering</h3>
+                <p className={styles.rankDesc}>Architecting scalable automations and intelligent systems</p>
               </div>
-            </div>
-
-            {/* Total XP Bar */}
-            <div className={styles.xpProgressGroup}>
-              <div className={styles.xpLabels}>
-                <span className={styles.xpText}>TOTAL EXPERIENCE</span>
-                <span className={styles.xpNumber}>4,850 / 5,000 XP (97%)</span>
-              </div>
-              <div className={styles.xpTrack}>
-                <div
-                  className={styles.xpFill}
-                  style={{ width: animate ? "97%" : "0%" }}
-                />
-              </div>
-              <span className={styles.xpNextLevel}>150 XP remaining to Level 6 Onboarding Specialist</span>
             </div>
 
             {/* Sub Stats Cards Grid */}
-            <div className={styles.gridMiniStats}>
+            <div className={styles.gridMiniStats} style={{ marginTop: '2rem' }}>
               <div className={styles.miniStatCard}>
-                <span className={styles.miniValue}>5+ Years</span>
-                <span className={styles.miniLabel}>Total Campaign Time</span>
+                <span className={styles.miniValue} style={{ fontSize: "2.2rem", color: "var(--orange)" }}>5M+</span>
+                <span className={styles.miniLabel}>API Requests Processed</span>
               </div>
               <div className={styles.miniStatCard}>
-                <span className={styles.miniValue}>500k+</span>
-                <span className={styles.miniLabel}>Workflow Actions Executed</span>
+                <span className={styles.miniValue} style={{ fontSize: "1.8rem", color: "var(--orange)" }}>500K+</span>
+                <span className={styles.miniLabel}>Workflow Runs</span>
               </div>
               <div className={styles.miniStatCard}>
-                <span className={styles.miniValue}>US·EU·AEST</span>
-                <span className={styles.miniLabel}>Multiplayer Time Zones</span>
+                <span className={styles.miniValue} style={{ fontSize: "1.5rem", color: "var(--orange)" }}>100+</span>
+                <span className={styles.miniLabel}>Automations Built</span>
               </div>
               <div className={styles.miniStatCard}>
-                <span className={styles.miniValue}>Remote</span>
-                <span className={styles.miniLabel}>Deployment Strategy</span>
+                <span className={styles.miniValue} style={{ fontSize: "1.5rem", color: "var(--orange)" }}>10+</span>
+                <span className={styles.miniLabel}>SaaS Systems Delivered</span>
+              </div>
+              <div className={styles.miniStatCard} style={{ gridColumn: "span 2" }}>
+                <span className={styles.miniValue} style={{ fontSize: "1.3rem", fontWeight: 700, color: "var(--purple)" }}>US-Based Clients</span>
+                <span className={styles.miniLabel} style={{ marginTop: "4px" }}>Remote Delivery across Real Estate, Healthcare, & SaaS</span>
               </div>
             </div>
           </div>
 
-          {/* Right Panel: Skill stats XP levels */}
+          {/* Right Panel: Core Competencies */}
           <div className={`${styles.skillsPanel} stagger-item`}>
-            <h3 className={styles.panelTitle}>Leveling Tree (Skill Progression)</h3>
+            <h3 className={styles.panelTitleHero}>Core Competencies</h3>
             <div className={styles.skillList}>
-              {stats.map((skill, idx) => (
-                <div key={idx} className={styles.skillItem}>
-                  <div className={styles.skillHeader}>
-                    <span className={styles.skillName}>{skill.name}</span>
-                    <span className={styles.skillLevel}>Lvl {skill.level}</span>
+              {skillCategories.map((category, idx) => (
+                <div key={idx} className={styles.skillCategoryItem}>
+                  <div className={styles.skillCategoryHeader} style={{ color: category.color }}>
+                    {category.name}
                   </div>
-                  <div className={styles.skillTrack}>
-                    <div
-                      className={styles.skillFill}
-                      style={{
-                        backgroundColor: skill.color,
-                        width: animate ? `${skill.xpPercent}%` : "0%",
-                      }}
-                    />
-                  </div>
-                  <div className={styles.skillFooter}>
-                    <span className={styles.skillXP}>{skill.xpPercent}% Mastered</span>
+                  <div className={styles.skillPills}>
+                    {category.skills.map((skill, sIdx) => (
+                      <span key={sIdx} className={styles.skillPill} style={{ border: `1px solid ${category.color}`, color: category.color, backgroundColor: `color-mix(in srgb, ${category.color} 10%, transparent)` }}>{skill}</span>
+                    ))}
                   </div>
                 </div>
               ))}
@@ -160,24 +150,29 @@ export default function ProgressionDashboard() {
           </div>
         </div>
 
-        {/* Campaign Missions Showcase */}
+        {/* Production Systems Showcase */}
         <div className={`${styles.missionsSection} stagger-item`}>
-          <h3 className={styles.panelTitle}>Campaign Missions Completed</h3>
+          <h3 className={styles.panelTitle}>Production Systems Delivered</h3>
           <div className={styles.missionsGrid}>
-            {missions.map((mission, idx) => (
+            {systems.map((system, idx) => (
               <div
                 key={idx}
                 className={styles.missionCard}
-                style={{ "--mission-accent": mission.accent } as React.CSSProperties}
+                style={{ "--mission-accent": system.accent } as React.CSSProperties}
               >
                 <div className={styles.missionHeader}>
-                  <span className={styles.missionBadge}>{mission.badge}</span>
-                  <span className={styles.missionXP}>{mission.xp}</span>
+                  <span className={styles.missionBadge} style={{ backgroundColor: system.accent }}>{system.metric}</span>
+                  <span className={styles.missionIcon}>{system.icon}</span>
                 </div>
-                <h4 className={styles.missionTitle}>{mission.title}</h4>
-                <p className={styles.missionDesc}>{mission.desc}</p>
+                <h4 className={styles.missionTitle}>{system.title}</h4>
+                <div className={styles.missionDesc}>
+                  {system.desc.split('\n').map((line, i) => (
+                    <div key={i} style={{ marginBottom: "6px" }}>{line}</div>
+                  ))}
+                </div>
                 <div className={styles.missionFooter}>
-                  <span className={styles.statusSuccess}>● Mission Accomplished</span>
+                  <span className={styles.statusSuccess}>✓ {system.liveMetric}</span>
+                  <a href="#work" className={styles.missionLink}>View Details ➔</a>
                 </div>
               </div>
             ))}
@@ -187,3 +182,4 @@ export default function ProgressionDashboard() {
     </section>
   );
 }
+
